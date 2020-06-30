@@ -1,0 +1,28 @@
+@import 'normalize.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-size: 1em;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+main {
+  letter-spacing: -0.25px;
+}
