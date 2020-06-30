@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import Header from "./Header"
+import Header from "./header"
 import "../css/base.scss"
 
 class Layout extends React.Component {
