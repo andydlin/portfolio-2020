@@ -43,7 +43,7 @@ const ProjectThumbnail = (props) => {
 
   const thumbnailVariants = {
     end: {
-      x: -80,
+      x: -160,
       width: '100vw',
       transition: {
         delay: 0.9,

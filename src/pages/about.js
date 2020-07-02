@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion"
@@ -15,7 +14,7 @@ const pageVariants = {
     transition: {
       delay: 0.75,
       duration: 0.5,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   },
   exiting: {
@@ -24,7 +23,7 @@ const pageVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   },
   hidden: {
@@ -33,7 +32,7 @@ const pageVariants = {
     y: -50,
     transition: {
       duration: 0.75,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   }
 }
@@ -57,9 +56,6 @@ const AboutPage = (props) => {
               <h1>Hi this about me.</h1>
               <p>Welcome to your new Gatsby site.</p>
               <p>Now go build something great.</p>
-              <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-                <Image />
-              </div>
               <Link to="/page-2/">Go to page 2</Link> <br />
               <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
               <p>Doggo ipsum snoot maximum borkdrive shooberino fluffer long woofer, super chub heckin good boys. big ol pupper tungg clouds.  Clouds heckin good boys noodle horse super chub long woofer h*ck, shoober pats I am bekom fat long doggo long woofer extremely cuuuuuute, wow such tempt corgo big ol borkdrive. Heckin good boys waggy wags heckin good boys and girls what a nice floof floofs, shoob long doggo shoob. Sub woofer you are doin me a concern blop maximum borkdrive boofers. Wow such tempt such treat extremely cuuuuuute smol very hand that feed shibe, heckin good boys and girls heck. Wow very biscit snoot wow very biscit blop, heckin good boys and girls big ol pupper much ruin diet long bois, length boy pats. What a nice floof vvv I am bekom fat doggo porgo very jealous pupper, pupper blep blop.

@@ -12,7 +12,6 @@ import { colors } from '../styles/colors'
 import { Box, Container } from '../styles/global'
 import { spacing } from '../styles/spacing'
 import { H1, H2, H3, H4 } from "../styles/typography"
-
 import ProjectThumbnail from "../components/ProjectThumbnail"
 
 const GreetingMessage = styled.h1`
@@ -69,7 +68,7 @@ const pageVariants = {
     transition: {
       delay: 0.75,
       duration: 0.5,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   },
   exiting: {
@@ -78,7 +77,7 @@ const pageVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   },
   hidden: {
@@ -87,7 +86,7 @@ const pageVariants = {
     y: -50,
     transition: {
       duration: 0.75,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   }
 }
@@ -99,7 +98,7 @@ const listVariants = {
     transition: {
       delay: 1,
       duration: 0.5,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   },
   hidden: {
@@ -107,37 +106,46 @@ const listVariants = {
     y: 100,
     transition: {
       duration: 0.5,
-      ease: [0.09, 0.71, 0.73, 1],
+      ease: [0.09, 0.8, 0.44, 1],
     }
   }
-}
-
-function animateThumbnail(exit, node) {
-  console.log('hi this is animateThumbnail function');
-  console.log(exit);
-  console.log(node);
 }
 
 const IndexPage = (props) => {
 
   const data = useStaticQuery(graphql`
     query {
-      profileImage: file(relativePath: { eq: "profile.png" }) {
+      profileImage: file(relativePath: { eq: "images/profile.png" }) {
         childImageSharp {
           fluid(maxWidth: 200) {
             ...GatsbyImageSharpFluid
           }
         }
       },
-      waveImage: file(relativePath: { eq: "wave.png" }) {
+      waveImage: file(relativePath: { eq: "images/wave.png" }) {
         childImageSharp {
           fluid(maxWidth: 48) {
             ...GatsbyImageSharpFluid
           }
         }
+      },
+      allPortfolioCard {
+        nodes {
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1440) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          alt
+          client
+          description
+          title
+        }
       }
     }
-  `)
+  `);
 
   return (
     <TransitionState>
@@ -193,7 +201,19 @@ const IndexPage = (props) => {
               variants={listVariants}
               animate={transitionStatus}
             >
-              <Container>
+              <Container
+                css={`
+                    padding: 0 10rem;
+                `}
+              >
+                {data.allPortfolioCard.nodes.map((card, index, arr) => {
+                  return (
+                    <div key={card.title}>
+                      <Img alt={card.alt} fluid={card.image.childImageSharp.fluid}/>
+                      <h3>{card.client}</h3>
+                    </div>
+                  )
+                })}
                 <Link
                   to='/project/dictionary-mobile-app'
                   exit={{

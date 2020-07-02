@@ -1,7 +1,52 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path');
+const portfolio = require('./src/data/portfolio.json');
+const IMAGE_PATH = './src/images/projects';
 
-// You can delete this file if you're not using it
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  portfolio.forEach((card) => {
+    const {
+      title,
+      client,
+      description,
+      image,
+      alt,
+      link
+    } = card;
+
+    const { name, ext } = path.parse(image);
+    const absolutePath = path.resolve(__dirname, IMAGE_PATH, image);
+
+    const data = {
+      name,
+      ext,
+      absolutePath, // <-- required
+      extension: ext.substring(1), // <-- required, remove the dot in `ext`
+    };
+
+    const imageNode = {
+      ...data,
+      id: createNodeId(`card-image-${name}`),
+      internal: {
+        type: 'PortfolioCardImage',
+        contentDigest: createContentDigest(data),
+      },
+    };
+
+    actions.createNode(imageNode);
+    const node = {
+      title,
+      client,
+      description,
+      image: imageNode,
+      alt,
+      link,
+      id: createNodeId(`card-${title}`),
+      internal: {
+        type: 'PortfolioCard',
+        contentDigest: createContentDigest(card),
+      }
+    };
+
+    actions.createNode(node);
+  });
+}
