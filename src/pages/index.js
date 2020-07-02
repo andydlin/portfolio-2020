@@ -12,7 +12,7 @@ import { colors } from '../styles/colors'
 import { Box, Container } from '../styles/global'
 import { spacing } from '../styles/spacing'
 import { H1, H2, H3, H4 } from "../styles/typography"
-import ProjectThumbnail from "../components/ProjectThumbnail"
+import ProjectList from "../components/projectsList.js"
 
 const GreetingMessage = styled.h1`
   color: ${colors.gray200};
@@ -147,6 +147,8 @@ const IndexPage = (props) => {
     }
   `);
 
+  console.log(data.allPortfolioCard);
+
   return (
     <TransitionState>
       {({mount, transitionStatus}) => {
@@ -201,31 +203,7 @@ const IndexPage = (props) => {
               variants={listVariants}
               animate={transitionStatus}
             >
-              <Container
-                css={`
-                    padding: 0 10rem;
-                `}
-              >
-                {data.allPortfolioCard.nodes.map((card, index, arr) => {
-                  return (
-                    <div key={card.title}>
-                      <Img alt={card.alt} fluid={card.image.childImageSharp.fluid}/>
-                      <h3>{card.client}</h3>
-                    </div>
-                  )
-                })}
-                <Link
-                  to='/project/dictionary-mobile-app'
-                  exit={{
-                    length: 1.65,
-                  }}
-                  entry={{
-                    delay: 1.65,
-                  }}
-                >
-                  <ProjectThumbnail/>
-                </Link>
-              </Container>
+              <ProjectList/>
             </motion.div>
           </Layout>
         )
