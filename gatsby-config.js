@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,8 +14,22 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+      },
+    },
+
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaultQuality: 80,
+        jpegQuality: 80,
+      }
+    },
     {
       resolve: `gatsby-plugin-transition-link`,
       options: {

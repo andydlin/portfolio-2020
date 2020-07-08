@@ -25,7 +25,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
 
     const imageNode = {
       ...data,
-      id: createNodeId(`card-image-${name}`),
+      id: createNodeId(`card-image-${name}-${ext}`),
       internal: {
         type: 'PortfolioCardImage',
         contentDigest: createContentDigest(data),

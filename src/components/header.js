@@ -139,6 +139,9 @@ class Header extends React.Component {
           exit={{
             length: 0.5
           }}
+          css={`
+            height: 28px;
+          `}
         >
           <Logo />
         </NavLink>

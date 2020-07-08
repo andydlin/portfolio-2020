@@ -3,9 +3,13 @@ import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion"
+import Img from "gatsby-image"
+import styled from 'styled-components'
 
+import { spacing, layout } from '../../styles/spacing'
 import Layout from "../../components/layout"
 import { Container } from "../../styles/global"
+import HeroImage from "../../components/heroImage"
 
 const pageVariants = {
   visible: {
@@ -53,17 +57,12 @@ const DictionaryProject = (props) => {
       variants={pageVariants}
       animate={mount ? 'visible' : 'hidden'}
     >
-      <div css={`
-        background: dodgerBlue;
-        height: 648px;
-        width: 100%;
-      `}>
-      </div>
+      <HeroImage image={props.heroImage.childImageSharp.fluid}/>
       <Container
         css={`
           max-width: 800px;
           position: relative;
-          top: -50px;
+          top: -${layout.l500};
         `}  
       >
         <motion.div
@@ -93,22 +92,16 @@ const DictionaryProject = (props) => {
 const ProjectPage = (props) => {
   const data = useStaticQuery(graphql`
     query {
-      profileImage: file(relativePath: { eq: "profile.png" }) {
+      heroImage: file(relativePath: { eq: "images/projects/dcom/thumbnail.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
+          fluid(maxWidth: 2880, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
       },
-      waveImage: file(relativePath: { eq: "wave.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 48) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
     }
   `)
+  console.log(data);
 
   return (
     <TransitionState>
@@ -120,7 +113,7 @@ const ProjectPage = (props) => {
             transitionStatus={transitionStatus}
           >
             <SEO title="Project: Dictionary.com Mobile App" />
-            <DictionaryProject mount={mount} transitionStatus={transitionStatus}/>
+            <DictionaryProject mount={mount} transitionStatus={transitionStatus} heroImage={data.heroImage}/>
           </Layout>
         )
       }}

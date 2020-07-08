@@ -73,12 +73,9 @@ const ProjectThumbnail = (props) => {
               initial='start'
               variants={thumbnailVariants}
               animate={thumbnailStatus}
-              css={`
-                background: dodgerBlue;
-                height: 648px;
-                width: 100%;
-              `}
             >
+              <Img alt={props.card.alt} fluid={props.card.image.childImageSharp.fluid}/>
+              <h3>{props.card.client}</h3>
             </motion.div>
           </motion.div>
         )

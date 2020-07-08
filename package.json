@@ -20,6 +20,7 @@
     "gatsby-plugin-transition-link": "^1.18.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.3.8",
+    "gatsby-transformer-json": "^2.4.10",
     "gatsby-transformer-sharp": "^2.5.3",
     "gsap": "^3.3.4",
     "node-sass": "^4.14.1",
