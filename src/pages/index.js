@@ -45,11 +45,15 @@ const CartoonProfile = styled.div`
   }
 `
 
-const WaveIcon = styled.div`
+const WaveIcon = styled(motion.div)`
   left: -${spacing.s600};
   position: absolute;
   top: -${spacing.s100};
   width: 24px;
+
+  &.wave-animation {
+s
+  }
 
   @media (max-width: 900px) {
     display: inline-block;
@@ -111,6 +115,24 @@ const listVariants = {
   }
 }
 
+const waveVariants = {
+  entered: {
+    scale: 1,
+    transition: {
+      delay: 1,
+      duration: 0.25,
+      ease: [1,-0.5,.25,1.25],
+    }
+  },
+  hidden: {
+    scale: 0,
+    transition: {
+      duration: 0.25,
+      ease: [1,-0.5,.25,1.25],
+    }
+  }
+}
+
 const IndexPage = (props) => {
 
   const data = useStaticQuery(graphql`
@@ -147,8 +169,6 @@ const IndexPage = (props) => {
     }
   `);
 
-  console.log(data.allPortfolioCard);
-
   return (
     <TransitionState>
       {({mount, transitionStatus}) => {
@@ -184,7 +204,12 @@ const IndexPage = (props) => {
                     }
                   `}>
                     <GreetingMessage>
-                      <WaveIcon>
+                      <WaveIcon
+                        initial={'hidden'}
+                        variants={waveVariants}
+                        animate={transitionStatus}
+                        className={transitionStatus === 'entered' ? 'wave-animation' : ''}
+                      >
                         <Img fluid={data.waveImage.childImageSharp.fluid}/>
                       </WaveIcon>
                       Hi, my name is Andy.
