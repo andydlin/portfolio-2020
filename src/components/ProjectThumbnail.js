@@ -11,6 +11,12 @@ import { Box } from '../styles/global'
 import { layout } from '../styles/spacing'
 import { H1, H2, H3, H4 } from "../styles/typography"
 
+const CustomImg = styled(Img)`
+  height: 100%;
+  position: absolute;
+  width: 100%;
+`
+
 const ProjectThumbnail = (props) => {
   const containerRef = useRef(null);
   var newTop = 0;
@@ -42,8 +48,12 @@ const ProjectThumbnail = (props) => {
   }
 
   const thumbnailVariants = {
+    start: {
+      height: 'auto',
+    },
     end: {
       x: -160,
+      height: 'calc(100vh - 124px)',
       width: '100vw',
       transition: {
         delay: 0.9,
@@ -73,10 +83,16 @@ const ProjectThumbnail = (props) => {
               initial='start'
               variants={thumbnailVariants}
               animate={thumbnailStatus}
+              css={`
+                position: relative;
+              `}
             >
-              <Img alt={props.card.alt} fluid={props.card.image.childImageSharp.fluid}/>
-              <h3>{props.card.client}</h3>
+              <CustomImg
+                alt={props.card.alt}
+                fluid={props.card.image.childImageSharp.fluid} 
+              />
             </motion.div>
+            <h3>{props.card.client}</h3>
           </motion.div>
         )
       }}
