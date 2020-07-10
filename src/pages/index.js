@@ -12,7 +12,7 @@ import { colors } from '../styles/colors'
 import { Box, Container } from '../styles/global'
 import { spacing } from '../styles/spacing'
 import { H1, H2, H3, H4 } from "../styles/typography"
-import ProjectList from "../components/projectsList"
+import ProjectList from "../components/projectsList.js"
 
 const GreetingMessage = styled.h1`
   color: ${colors.gray200};
