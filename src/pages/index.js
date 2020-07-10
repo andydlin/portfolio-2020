@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion"
 import Link from "gatsby-plugin-transition-link";
@@ -45,14 +45,24 @@ const CartoonProfile = styled.div`
   }
 `
 
+const waveAnimation = keyframes`
+  0% { transform: rotateZ(0deg)}
+  25% { transform: rotateZ(-5deg)}
+  50% { transform: rotateZ(10deg)}
+  100% { transform: rotateZ(0deg)}
+`
+
 const WaveIcon = styled(motion.div)`
   left: -${spacing.s600};
   position: absolute;
   top: -${spacing.s100};
+  transform: rotateZ(0deg);
   width: 24px;
 
   &.wave-animation {
-s
+    animation-name: ${waveAnimation};
+    animation-duration: 1s;
+    animation-iteration-count: 4;
   }
 
   @media (max-width: 900px) {
@@ -120,7 +130,7 @@ const waveVariants = {
     scale: 1,
     transition: {
       delay: 1,
-      duration: 0.25,
+      duration: 0.5,
       ease: [1,-0.5,.25,1.25],
     }
   },
@@ -214,7 +224,7 @@ const IndexPage = (props) => {
                       </WaveIcon>
                       Hi, my name is Andy.
                     </GreetingMessage>
-                    <WelcomeMessage>I’m a multidisciplinary designer with a focus on interaction design from San Francisco, CA.</WelcomeMessage>
+                    <WelcomeMessage>I’m a product designer with a focus on interaction design from San Francisco, CA.</WelcomeMessage>
                     <CurrentMessage>Currently a Product Designer at <span>Dictionary.com</span></CurrentMessage>
                   </div>
                   <CartoonProfile>
