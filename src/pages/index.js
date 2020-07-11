@@ -46,22 +46,26 @@ const CartoonProfile = styled.div`
 `
 
 const waveAnimation = keyframes`
-  0% { transform: rotateZ(0deg)}
-  25% { transform: rotateZ(-5deg)}
-  50% { transform: rotateZ(10deg)}
-  100% { transform: rotateZ(0deg)}
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
 `
 
 const WaveIcon = styled(motion.div)`
   left: -${spacing.s600};
   position: absolute;
   top: -${spacing.s100};
-  transform: rotateZ(0deg);
+  transform-origin: 70% 70%;
   width: 24px;
 
   &.wave-animation {
     animation-name: ${waveAnimation};
-    animation-duration: 1s;
+    animation-duration: 2.5s;
     animation-iteration-count: 4;
   }
 
