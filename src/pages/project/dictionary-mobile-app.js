@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion"
-import Img from "gatsby-image"
 import styled from 'styled-components'
 
 import { spacing, layout } from '../../styles/spacing'

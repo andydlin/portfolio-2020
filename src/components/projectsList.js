@@ -1,12 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from 'styled-components'
-import { motion } from "framer-motion"
 import Link from "gatsby-plugin-transition-link";
 
-import { Logo } from "./logo"
-import { colors } from '../styles/colors'
-import { spacing, layout } from '../styles/spacing'
 import { Container } from '../styles/global'
 import ProjectThumbnail from './projectThumbnail'
 

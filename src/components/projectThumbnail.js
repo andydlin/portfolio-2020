@@ -1,6 +1,4 @@
 import React, { useRef, useState, useEffect } from "react"
-import { Link } from "gatsby"
-import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from 'styled-components'
 import { TransitionState } from "gatsby-plugin-transition-link";
@@ -8,7 +6,6 @@ import { motion, useCycle } from "framer-motion"
 
 import { colors } from '../styles/colors'
 import { Box } from '../styles/global'
-import { layout } from '../styles/spacing'
 import { H1, H2, H3, H4 } from "../styles/typography"
 
 const CustomImg = styled(Img)`
@@ -19,13 +16,18 @@ const CustomImg = styled(Img)`
 
 const ProjectThumbnail = (props) => {
   const containerRef = useRef(null);
-  var newTop = 0;
+  var newTop, newXPos = 0;
   if(containerRef.current !== undefined && containerRef.current !== null) {
     const navbar = document.querySelector('header')
     const navbarDimensions = navbar.getBoundingClientRect()
     const distanceToTop =
     containerRef.current.getBoundingClientRect().top - navbarDimensions.height
     newTop = distanceToTop * -1;
+  }
+  if(window.innerWidth <= 1200) {
+    newXPos = -24;
+  } else {
+    newXPos = -160;
   }
 
   const projectVariants = {
@@ -51,8 +53,8 @@ const ProjectThumbnail = (props) => {
     start: {
       height: 'auto',
     },
-    end: {
-      x: -160,
+    end: (custom) => ({
+      x: custom.newXPos,
       height: 'calc(100vh - 124px)',
       width: '100vw',
       transition: {
@@ -60,7 +62,7 @@ const ProjectThumbnail = (props) => {
         duration: 0.25,
         ease: [0.65, 0.01, 0.5, 1],
       }
-    }
+    })
   }
 
   const [thumbnailStatus, cycleThumbStatus] = useCycle('start', 'end');
@@ -83,6 +85,9 @@ const ProjectThumbnail = (props) => {
               initial='start'
               variants={thumbnailVariants}
               animate={thumbnailStatus}
+              custom={{
+                newXPos: newXPos,
+              }}
               css={`
                 position: relative;
               `}

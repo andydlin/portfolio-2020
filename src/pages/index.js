@@ -42,6 +42,7 @@ const CartoonProfile = styled.div`
   @media (max-width: 600px) {
     order: 1;
     margin: 0 0 ${spacing.s300} 0;
+    min-width: 80px;
   }
 `
 
@@ -202,7 +203,11 @@ const IndexPage = (props) => {
                 <Box css={`
                   margin: 0 auto;
                   max-width: 800px;
-                  padding: calc(50vh - 250px) 0 40vh 0;
+                  padding: calc(50vh - 250px) 0 30vh 0;
+
+                  @media (max-width: 1200px) {
+                    padding: calc(50vh - 250px) 0 20vh 0;
+                  }
 
                   @media (max-width: 600px) {
                     align-items: flex-start;
@@ -228,7 +233,7 @@ const IndexPage = (props) => {
                       </WaveIcon>
                       Hi, my name is Andy.
                     </GreetingMessage>
-                    <WelcomeMessage>I’m a product designer with a focus on interaction design from San Francisco, CA.</WelcomeMessage>
+                    <WelcomeMessage>I’m a product designer with a focus on interaction and web design.</WelcomeMessage>
                     <CurrentMessage>Currently a Product Designer at <span>Dictionary.com</span></CurrentMessage>
                   </div>
                   <CartoonProfile>
