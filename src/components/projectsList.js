@@ -1,9 +1,15 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Link from "gatsby-plugin-transition-link";
+import styled from 'styled-components'
 
 import { Container } from '../styles/global'
+import { layout } from '../styles/spacing'
 import ProjectThumbnail from './projectThumbnail'
+
+const ThumbnailWrapper = styled.div`
+  margin-bottom: ${layout.l600};
+`
 
 const ProjectsList = (props) => {
   const data = useStaticQuery(graphql`
@@ -35,7 +41,7 @@ const ProjectsList = (props) => {
     >
       {data.allPortfolioCard.nodes.map((card, index, arr) => {
         return (
-          <div key={card.title}>
+          <ThumbnailWrapper key={card.title}>
             <Link
               to={card.link}
               exit={{
@@ -44,10 +50,13 @@ const ProjectsList = (props) => {
               entry={{
                 delay: 1.65,
               }}
+              css={`
+                text-decoration: none;
+              `}
             >
               <ProjectThumbnail card={card} />
             </Link>
-          </div>
+          </ThumbnailWrapper>
         )
       })}
     </Container>

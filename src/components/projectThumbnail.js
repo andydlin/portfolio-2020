@@ -5,13 +5,26 @@ import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion, useCycle } from "framer-motion"
 
 import { colors } from '../styles/colors'
-import { Box } from '../styles/global'
-import { H1, H2, H3, H4 } from "../styles/typography"
+import { spacing } from '../styles/spacing'
+import { H1 } from "../styles/typography"
 
 const CustomImg = styled(Img)`
+  box-shadow: 0 0 0 rgba(0,115,220,0);
   height: 100%;
   position: absolute;
+  transition: box-shadow 0.5s ease-in-out;
   width: 100%;
+
+  &:hover {
+    box-shadow: 0 16px 48px rgba(0,115,220,0.8);
+  }
+`
+
+const ProjectTitle = styled.h3`
+  ${H1}
+  color: ${colors.gray300};
+  margin-top: ${spacing.s100};
+  text-decoration: none;
 `
 
 const ProjectThumbnail = (props) => {
@@ -97,7 +110,7 @@ const ProjectThumbnail = (props) => {
                 fluid={props.card.image.childImageSharp.fluid} 
               />
             </motion.div>
-            <h3>{props.card.client}</h3>
+            <ProjectTitle>{props.card.client}</ProjectTitle>
           </motion.div>
         )
       }}
