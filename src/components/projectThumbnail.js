@@ -37,10 +37,13 @@ const ProjectThumbnail = (props) => {
     containerRef.current.getBoundingClientRect().top - navbarDimensions.height
     newTop = distanceToTop * -1;
   }
-  if(window.innerWidth <= 1200) {
-    newXPos = -24;
-  } else {
-    newXPos = -160;
+
+  if(window !== undefined) {
+    if(window.innerWidth <= 1200) {
+      newXPos = -24;
+    } else {
+      newXPos = -160;
+    }
   }
 
   const projectVariants = {
