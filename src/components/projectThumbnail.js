@@ -38,7 +38,7 @@ const ProjectThumbnail = (props) => {
     newTop = distanceToTop * -1;
   }
 
-  if(window) {
+  if(typeof window !== 'undefined') {
     if(window.innerWidth <= 1200) {
       newXPos = -24;
     } else {
