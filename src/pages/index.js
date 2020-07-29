@@ -11,18 +11,34 @@ import Layout from "../components/layout"
 import { colors } from '../styles/colors'
 import { Box, Container } from '../styles/global'
 import { spacing } from '../styles/spacing'
-import { H1, H2, H3, H4 } from "../styles/typography"
+import { H3, H4 } from "../styles/typography"
 import ProjectList from "../components/projectsList.js"
 
 const GreetingMessage = styled.h1`
   color: ${colors.gray200};
   ${H4}
+
+  @media (min-width: 1024px) {
+    font-size: 2.35vw;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 2rem;
+  }
 `
 
 const WelcomeMessage = styled.h2`
   color: ${colors.gray400};
   ${H3}
   margin: ${spacing.s000} 0 ${spacing.s100} 0;
+
+  @media (min-width: 1024px) {
+    font-size: 3.15vw;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 2.85rem;
+  }
 `
 
 const CurrentMessage = styled.p`
@@ -203,10 +219,15 @@ const IndexPage = (props) => {
                 <Box css={`
                   margin: 0 auto;
                   max-width: 800px;
-                  padding: calc(50vh - 250px) 0 30vh 0;
+                  padding: calc(50vh - 350px) 0 30vh 0;
 
                   @media (max-width: 1200px) {
-                    padding: calc(50vh - 250px) 0 20vh 0;
+                    padding: calc(50vh - 350px) 0 20vh 0;
+                  }
+
+                  @media (min-width: 1024px) {
+                    max-width: 860px;
+                    width: 60vw;
                   }
 
                   @media (max-width: 600px) {
