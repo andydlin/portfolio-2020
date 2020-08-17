@@ -1,21 +1,36 @@
 import { css } from 'styled-components'
 
-export const H1 = css`
+export const Giant = css`
   font-size: 3rem;
-  line-height: 1.5;
+  line-height: 1.25;
 `
 
-export const H2 = css`
+export const Xlarge = css`
   font-size: 2.5rem;
   line-height: 1.25;
 `
 
-export const H3 = css`
+export const Large = css`
   font-size: 2rem;
   line-height: 1.25;
 `
 
-export const H4 = css`
+export const Medium = css`
   font-size: 1.5rem;
+  line-height: 1.25;
+`
+
+export const Schemdium = css`
+  font-size: 1.25rem;
+  line-height: 1.25;
+`
+
+export const Regular = css`
+  font-size: 1rem;
+  line-height: 1.25;
+`
+
+export const Small = css`
+  font-size: 0.875rem;
   line-height: 1.25;
 `

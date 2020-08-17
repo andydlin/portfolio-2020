@@ -11,12 +11,12 @@ import Layout from "../components/layout"
 import { colors } from '../styles/colors'
 import { Box, Container } from '../styles/global'
 import { spacing } from '../styles/spacing'
-import { H3, H4 } from "../styles/typography"
+import { Large, Medium } from "../styles/typography"
 import ProjectList from "../components/projectsList.js"
 
 const GreetingMessage = styled.h1`
   color: ${colors.gray200};
-  ${H4}
+  ${Medium}
 
   @media (min-width: 1024px) {
     font-size: 2.35vw;
@@ -29,7 +29,7 @@ const GreetingMessage = styled.h1`
 
 const WelcomeMessage = styled.h2`
   color: ${colors.gray400};
-  ${H3}
+  ${Large}
   margin: ${spacing.s000} 0 ${spacing.s100} 0;
 
   @media (min-width: 1024px) {
@@ -254,7 +254,7 @@ const IndexPage = (props) => {
                       </WaveIcon>
                       Hi, my name is Andy.
                     </GreetingMessage>
-                    <WelcomeMessage>I’m a product designer with a focus on interaction and web design.</WelcomeMessage>
+                    <WelcomeMessage>I’m a product designer that gets excited about interaction design and design ops.</WelcomeMessage>
                     <CurrentMessage>Currently a Product Designer at <span>Dictionary.com</span></CurrentMessage>
                   </div>
                   <CartoonProfile>

@@ -6,25 +6,51 @@ import { motion, useCycle } from "framer-motion"
 
 import { colors } from '../styles/colors'
 import { spacing } from '../styles/spacing'
-import { H1 } from "../styles/typography"
+import { Giant, Large, Schmedium, Regular } from "../styles/typography"
 
 const CustomImg = styled(Img)`
-  box-shadow: 0 0 0 rgba(0,115,220,0);
   height: 100%;
   position: absolute;
-  transition: box-shadow 0.5s ease-in-out;
   width: 100%;
+`
 
-  &:hover {
-    box-shadow: 0 16px 48px rgba(0,115,220,0.8);
+const ThumbnailInner = styled(motion.div)`
+  border-radius: 8px;
+  box-shadow: 0 0 0 rgba(0,115,220,0);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.5s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 16px 48px rgba(0,115,220,0.8);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    border-radius: 16px;
   }
 `
 
-const ProjectTitle = styled.h3`
-  ${H1}
+const ProjectTitle = styled.h2`
   color: ${colors.gray300};
+  ${Large}
   margin-top: ${spacing.s100};
   text-decoration: none;
+
+  @media (min-width: 1024px) {
+    ${Giant}
+  }
+`
+
+const ProjectDescription = styled.p`
+  color: ${colors.gray200};
+  ${Regular}
+  margin-top: ${spacing.s000};
+
+  @media (min-width: 1024px) {
+    ${Schmedium}
+  }
 `
 
 const ProjectThumbnail = (props) => {
@@ -36,13 +62,13 @@ const ProjectThumbnail = (props) => {
     const distanceToTop =
     containerRef.current.getBoundingClientRect().top - navbarDimensions.height
     newTop = distanceToTop * -1;
-  }
 
-  if(typeof window !== 'undefined') {
-    if(window.innerWidth <= 1200) {
-      newXPos = -24;
-    } else {
-      newXPos = -160;
+    if(typeof window !== 'undefined') {
+      if(window.innerWidth <= 1024) {
+        newXPos = -24;
+      } else {
+        newXPos = ((window.innerWidth - containerRef.current.getBoundingClientRect().width)/2) * -1;
+      }
     }
   }
 
@@ -72,6 +98,7 @@ const ProjectThumbnail = (props) => {
     end: (custom) => ({
       x: custom.newXPos,
       height: 'calc(100vh - 124px)',
+      borderRadius: '0px',
       width: '100vw',
       transition: {
         delay: 0.9,
@@ -97,23 +124,21 @@ const ProjectThumbnail = (props) => {
             ref={containerRef}
             onTap={() => cycleThumbStatus()}
           >
-            <motion.div
+            <ThumbnailInner
               initial='start'
               variants={thumbnailVariants}
               animate={thumbnailStatus}
               custom={{
                 newXPos: newXPos,
               }}
-              css={`
-                position: relative;
-              `}
             >
               <CustomImg
                 alt={props.card.alt}
                 fluid={props.card.image.childImageSharp.fluid} 
               />
-            </motion.div>
+            </ThumbnailInner>
             <ProjectTitle>{props.card.client}</ProjectTitle>
+            <ProjectDescription>{props.card.description}</ProjectDescription>
           </motion.div>
         )
       }}

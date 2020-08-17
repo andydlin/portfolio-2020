@@ -13,9 +13,21 @@ export const Box = styled.div`
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding: 0 ${layout.l500};
+  padding: 0 ${spacing.s500};
 
-  @media (max-width: 1200px) {
-    padding: 0 ${spacing.s500};
+  @media (min-width: 1024px) {
+    padding: 0 ${spacing.s800};
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 ${layout.l500};
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 ${layout.l600};
+  }
+
+  @media (min-width: 1680px) {
+    max-width: 90vw;
   }
 `
