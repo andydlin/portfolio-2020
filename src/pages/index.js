@@ -102,7 +102,7 @@ const pageVariants = {
     y: 0,
     transition: {
       delay: 0.75,
-      duration: 0.5,
+      duration: 1.5,
       ease: [0.09, 0.8, 0.44, 1],
     }
   },
@@ -131,14 +131,14 @@ const listVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 1,
-      duration: 0.5,
+      delay: 1.25,
+      duration: 1,
       ease: [0.09, 0.8, 0.44, 1],
     }
   },
   hidden: {
     opacity: 0,
-    y: 100,
+    y: 200,
     transition: {
       duration: 0.5,
       ease: [0.09, 0.8, 0.44, 1],
