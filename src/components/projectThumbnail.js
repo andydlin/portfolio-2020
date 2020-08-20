@@ -131,6 +131,11 @@ const ProjectThumbnail = (props) => {
               custom={{
                 newXPos: newXPos,
               }}
+              whileHover={{
+                scale: 1.02,
+                transition: { duration: 0.25 },
+              }}
+              whileTap={{ scale: 1 }}
             >
               <CustomImg
                 alt={props.card.alt}
