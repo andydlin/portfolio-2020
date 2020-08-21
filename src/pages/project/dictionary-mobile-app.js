@@ -59,7 +59,6 @@ const DictionaryProject = (props) => {
       <HeroImage image={props.heroImage.childImageSharp.fluid}/>
       <Container
         css={`
-          max-width: 800px;
           position: relative;
           top: -${layout.l500};
         `}  
