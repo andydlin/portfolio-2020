@@ -5,10 +5,15 @@ import styled from 'styled-components'
 
 import { Container } from '../styles/global'
 import { layout } from '../styles/spacing'
+import { colors } from '../styles/colors'
 import ProjectThumbnail from './projectThumbnail'
 
 const ThumbnailWrapper = styled.div`
   margin-bottom: ${layout.l600};
+`
+
+const CustomLink = styled(Link)`
+  
 `
 
 const ProjectsList = (props) => {
@@ -38,7 +43,7 @@ const ProjectsList = (props) => {
       {data.allPortfolioCard.nodes.map((card, index, arr) => {
         return (
           <ThumbnailWrapper key={card.title}>
-            <Link
+            <CustomLink
               to={card.link}
               exit={{
                 length: 1.65,
@@ -51,7 +56,7 @@ const ProjectsList = (props) => {
               `}
             >
               <ProjectThumbnail card={card} />
-            </Link>
+            </CustomLink>
           </ThumbnailWrapper>
         )
       })}

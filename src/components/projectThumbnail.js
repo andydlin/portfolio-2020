@@ -35,8 +35,15 @@ const ThumbnailInner = styled(motion.div)`
 const ProjectTitle = styled.h2`
   color: ${colors.gray300};
   ${Large}
-  margin-top: ${spacing.s100};
+  margin-top: ${spacing.s400};
   text-decoration: none;
+  transition: color 0.5s;
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${colors.blue};
+    }
+  }
 
   @media (min-width: 1024px) {
     ${Giant}
