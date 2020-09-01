@@ -140,7 +140,7 @@ const listVariants = {
     opacity: 0,
     y: 200,
     transition: {
-      duration: 0.5,
+      duration: 0.25,
       ease: [0.09, 0.8, 0.44, 1],
     }
   }

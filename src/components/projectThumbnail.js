@@ -19,11 +19,12 @@ const ThumbnailInner = styled(motion.div)`
   box-shadow: 0 0 0 rgba(0,115,220,0);
   overflow: hidden;
   position: relative;
-  transition: box-shadow 1s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
 
   @media (hover: hover) {
     &:hover {
       box-shadow: 0 16px 48px rgba(0,115,220,0.8);
+      transition: box-shadow 1s ease-in-out;
     }
   }
 
