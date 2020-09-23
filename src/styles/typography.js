@@ -27,7 +27,7 @@ export const Schmedium = css`
 
 export const Regular = css`
   font-size: 1rem;
-  line-height: 1.25;
+  line-height: 1.5;
 `
 
 export const Small = css`

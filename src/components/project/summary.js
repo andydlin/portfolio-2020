@@ -19,7 +19,7 @@ const Detail = styled.div`
 `
 
 const SummaryText = styled.div`
-  color: ${colors.gray400};
+  color: ${colors.gray300};
   ${Schmedium}
 
   p {
@@ -45,6 +45,7 @@ const variants = {
     opacity: 1,
     y: 0,
     transition: {
+      delay: 0.5,
       duration: 0.5,
       ease: [0.1, 0.75, 0.5, 1]
     }
@@ -71,6 +72,7 @@ const Summary = (props) => {
               animate={mount ? 'visible' : 'hidden'}
               css={`
                 background: white;
+                border-radius: 8px;
                 box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.1);
                 padding: ${layout.l500};
                 position: relative;
@@ -88,6 +90,28 @@ const Summary = (props) => {
                 }
               `}  
             >
+              <div
+                css={`
+                  margin-bottom: ${spacing.s800};
+                `}
+              >
+                <div
+                  css={`
+                    color: ${colors.gray200};
+                    ${Schmedium}
+                  `}
+                >
+                  Dictionary.com
+                </div>
+                <h1
+                  css={`
+                    color: ${colors.gray400};
+                    ${Giant}
+                  `}
+                >
+                  Mobile App Redesign
+                </h1>
+              </div>
               <Box
                 css={`
                   align-items: flex-start;
@@ -98,7 +122,7 @@ const Summary = (props) => {
                     align-items: flex-start;
                     flex-direction: column;
                     margin-right: ${layout.l400};
-                    max-width: 240px;
+                    max-width: 200px;
                   `}
                 >
                   <div
@@ -114,7 +138,7 @@ const Summary = (props) => {
                       margin-bottom: ${spacing.s500};
                     `}
                   >
-                    <Label>Cateogry</Label>
+                    <Label>Category</Label>
                     <Detail>{props.category}</Detail>
                   </div>
                   <div
