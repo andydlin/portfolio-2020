@@ -19,7 +19,7 @@ const ThumbnailInner = styled(motion.div)`
   box-shadow: 0 0 0 rgba(0,115,220,0);
   overflow: hidden;
   position: relative;
-  transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.5s ease-in-out, transform 0.5s;
 
   @media (hover: hover) {
     &:hover {
@@ -140,7 +140,7 @@ const ProjectThumbnail = (props) => {
                 newXPos: newXPos,
               }}
               whileHover={{
-                scale: 1.02,
+                scale: 1.015,
                 transition: { duration: 1 },
               }}
               whileTap={{ scale: 1 }}
