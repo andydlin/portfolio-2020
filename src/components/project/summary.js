@@ -1,13 +1,12 @@
-import React, { useRef, useState, useEffect } from "react"
-import Img from "gatsby-image"
+import React from "react"
 import styled from 'styled-components'
 import { TransitionState } from "gatsby-plugin-transition-link";
-import { motion, useCycle } from "framer-motion"
+import { motion } from "framer-motion"
 
 import { colors } from '../../styles/colors'
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
-import { Giant, Large, Schmedium, Regular } from "../../styles/typography"
+import { Giant, Schmedium } from "../../styles/typography"
 
 const Label = styled.div`
   color: ${colors.gray200};
@@ -54,11 +53,9 @@ const variants = {
 
 const Summary = (props) => {
 
-  const [thumbnailStatus, cycleThumbStatus] = useCycle('start', 'end');
-
   return (
     <TransitionState>
-      {({mount, transitionStatus}) => {
+      {({mount}) => {
         return (
           <Container
             css={`
