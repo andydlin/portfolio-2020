@@ -20,9 +20,9 @@ export const Medium = css`
   line-height: 1.25;
 `
 
-export const Schemdium = css`
+export const Schmedium = css`
   font-size: 1.25rem;
-  line-height: 1.25;
+  line-height: 1.5;
 `
 
 export const Regular = css`
