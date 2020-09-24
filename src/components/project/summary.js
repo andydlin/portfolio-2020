@@ -25,7 +25,7 @@ const Detail = styled.div`
   }
 `
 
-const SummarySection = styled.div`
+const SummaryDetail = styled.div`
   margin-bottom: ${spacing.s500};
   width: calc(50% - 16px);
 
@@ -186,22 +186,22 @@ const Summary = (props) => {
                     }
                   `}
                 >
-                  <SummarySection>
+                  <SummaryDetail>
                     <Label>Role</Label>
                     <Detail>{props.role}</Detail>
-                  </SummarySection>
-                  <SummarySection>
+                  </SummaryDetail>
+                  <SummaryDetail>
                     <Label>Category</Label>
                     <Detail>{props.category}</Detail>
-                  </SummarySection>
-                  <SummarySection>
+                  </SummaryDetail>
+                  <SummaryDetail>
                     <Label>Platforms</Label>
                     <Detail>{props.platforms}</Detail>
-                  </SummarySection>
-                  <SummarySection>
+                  </SummaryDetail>
+                  <SummaryDetail>
                     <Label>Timeframe</Label>
                     <Detail>{props.timeframe}</Detail>
-                  </SummarySection>
+                  </SummaryDetail>
                 </Box>
                 <SummaryText>
                   {props.summary}
