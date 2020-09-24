@@ -6,27 +6,110 @@ import { motion } from "framer-motion"
 import { colors } from '../../styles/colors'
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
-import { Giant, Schmedium } from "../../styles/typography"
+import { Giant, Large, Schmedium, Regular, Small } from "../../styles/typography"
 
 const Label = styled.div`
   color: ${colors.gray200};
+  ${Small}
+
+  @media (min-width: 768px) {
+    ${Regular}
+  }
 `
 
 const Detail = styled.div`
   color: ${colors.gray400};
-  ${Schmedium}
+
+  @media (min-width: 768px) {
+    ${Schmedium}
+  }
 `
 
-const SummaryText = styled.div`
-  color: ${colors.gray300};
-  ${Schmedium}
+const SummarySection = styled.div`
+  margin-bottom: ${spacing.s500};
+  width: calc(50% - 16px);
 
-  p {
-    margin-bottom: ${spacing.s500};
+  &:nth-of-type(1),
+  &:nth-of-type(3) {
+    margin-right: ${spacing.s300};
+  }
+
+  @media (min-width: 768px) {
+    width: calc(25% - 16px);
+  }
+
+  @media (min-width: 1024px) {
+    margin-right: 0;
+    width: 100%;
 
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+`
+
+const SummaryText = styled.div`
+  color: ${colors.gray300};
+
+  p {
+    margin-bottom: ${spacing.s300};
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    ${Schmedium}
+
+    p {
+      margin-bottom: ${spacing.s500};
+    }
+  }
+`
+
+const Card = styled(motion.div)`
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.1);
+  padding: ${layout.l300} ${layout.l200};
+  position: relative;
+
+  &:after {
+    bottom: 0;
+    box-shadow: 0px 4px 200px rgba(0, 0, 0, 0.2);
+    content: '';
+    height: 50px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: calc(100% - 400px);
+    z-index: -1;
+  }
+
+  @media (min-width: 480px) {
+    padding: ${layout.l300};
+  }
+
+  @media (min-width: 1024px) {
+    padding: ${layout.l500};
+  }
+`
+
+const Title = styled.h1`
+  color: ${colors.gray400};
+  ${Large}
+
+  @media (min-width: 768px) {
+    ${Giant}
+  }
+`
+
+const Subtitle = styled.div`
+  color: ${colors.gray200};
+
+  @media (min-width: 768px) {
+    ${Schmedium}
   }
 `
 
@@ -63,99 +146,68 @@ const Summary = (props) => {
               top: -${layout.l500};
             `}  
           >
-            <motion.div
+            <Card
               initial='hidden'
               variants={variants}
               animate={mount ? 'visible' : 'hidden'}
-              css={`
-                background: white;
-                border-radius: 8px;
-                box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.1);
-                padding: ${layout.l500};
-                position: relative;
-
-                &:after {
-                  bottom: 0;
-                  box-shadow: 0px 4px 200px rgba(0, 0, 0, 0.2);
-                  content: '';
-                  height: 50px;
-                  left: 50%;
-                  position: absolute;
-                  transform: translateX(-50%);
-                  width: calc(100% - 400px);
-                  z-index: -1;
-                }
-              `}  
             >
               <div
                 css={`
-                  margin-bottom: ${spacing.s800};
+                  margin-bottom: ${spacing.s600};
+
+                  @media (min-width: 1024px) {
+                    margin-bottom: ${spacing.s800};
+                  }
                 `}
               >
-                <div
-                  css={`
-                    color: ${colors.gray200};
-                    ${Schmedium}
-                  `}
-                >
-                  Dictionary.com
-                </div>
-                <h1
-                  css={`
-                    color: ${colors.gray400};
-                    ${Giant}
-                  `}
-                >
-                  Mobile App Redesign
-                </h1>
+                <Subtitle>Dictionary.com</Subtitle>
+                <Title>Mobile App Redesign</Title>
               </div>
               <Box
                 css={`
                   align-items: flex-start;
+                  flex-direction: column;
+
+                  @media (min-width: 1024px) {
+                    flex-direction: row;
+                  }
                 `}
               >
                 <Box
                   css={`
                     align-items: flex-start;
-                    flex-direction: column;
-                    margin-right: ${layout.l400};
-                    max-width: 200px;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+
+                    @media (min-width: 1024px) {
+                      flex-direction: column;
+                      margin-right: ${layout.l400};
+                      max-width: 200px;
+                    }
                   `}
                 >
-                  <div
-                    css={`
-                      margin-bottom: ${spacing.s500};
-                    `}
-                  >
+                  <SummarySection>
                     <Label>Role</Label>
                     <Detail>{props.role}</Detail>
-                  </div>
-                  <div
-                    css={`
-                      margin-bottom: ${spacing.s500};
-                    `}
-                  >
+                  </SummarySection>
+                  <SummarySection>
                     <Label>Category</Label>
                     <Detail>{props.category}</Detail>
-                  </div>
-                  <div
-                    css={`
-                      margin-bottom: ${spacing.s500};
-                    `}
-                  >
+                  </SummarySection>
+                  <SummarySection>
                     <Label>Platforms</Label>
                     <Detail>{props.platforms}</Detail>
-                  </div>
-                  <div>
+                  </SummarySection>
+                  <SummarySection>
                     <Label>Timeframe</Label>
                     <Detail>{props.timeframe}</Detail>
-                  </div>
+                  </SummarySection>
                 </Box>
                 <SummaryText>
                   {props.summary}
                 </SummaryText>
               </Box>
-            </motion.div>
+            </Card>
           </Container>
         )
       }}

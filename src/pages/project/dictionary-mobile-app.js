@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 import { spacing, layout } from '../../styles/spacing'
 import Layout from "../../components/layout"
-import HeroImage from "../../components/heroImage"
+import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
 import SectionTitle from "../../components/project/sectionTitle"
 

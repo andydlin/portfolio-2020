@@ -14,7 +14,7 @@ export const layout = {
   l000: '1rem',
   l100: '1.5rem',
   l200: '2rem',
-  l300: '2.5rem',
+  l300: '3rem',
   l400: '4rem',
   l500: '5rem',
   l600: '10rem',

@@ -9,7 +9,11 @@ import { colors } from '../styles/colors'
 import ProjectThumbnail from './projectThumbnail'
 
 const ThumbnailWrapper = styled.div`
-  margin-bottom: ${layout.l600};
+  margin-bottom: ${layout.l400};
+
+  @media (min-width: 1024px) {
+    margin-bottom: ${layout.l600};
+  }
 `
 
 const CustomLink = styled(Link)`
