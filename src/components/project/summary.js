@@ -142,8 +142,13 @@ const Summary = (props) => {
         return (
           <Container
             css={`
+              margin-bottom: ${layout.l200};
               position: relative;
               top: -${layout.l500};
+
+              @media (min-width: 768px) {
+                margin-bottom: ${layout.l500};
+              }
             `}  
           >
             <Card
