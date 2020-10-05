@@ -2,36 +2,38 @@ import React from "react"
 import styled from 'styled-components'
 
 import { colors } from '../../styles/colors'
-import { spacing, layout } from '../../styles/spacing'
-import { Container, Box } from "../../styles/global"
-import { Giant, Large, Schmedium } from "../../styles/typography"
+import { spacing } from '../../styles/spacing'
+import { Container } from "../../styles/global"
+import { Giant, Large, Medium } from "../../styles/typography"
 
 const Title = styled.h2`
-  color: ${colors.gray400};
+  color: ${colors.gray300};
   ${Medium}
   margin-bottom: ${spacing.s100};
 
   @media (min-width: 768px) {
     ${Large}
-    margin-bottom: ${spacing.s300};
   }
 `
 
 const Description = styled.p`
   color: ${colors.gray300};
-  
-  @media (min-width: 768px) {
-    ${Schmedium}
-  }
 `
 
 const SubSectionTitle = (props) => {
 
   return (
-    <div>
-      <Title>{props.title}</Title>
-      <Description>{props.description}</Description>
-    </div>
+    <Container>
+      <div
+        css={`
+          margin: 0 auto;
+          max-width: 480px;
+        `}
+      >
+        <Title>{props.title}</Title>
+        <Description>{props.description}</Description>
+      </div>
+    </Container>
   )
 }
 
