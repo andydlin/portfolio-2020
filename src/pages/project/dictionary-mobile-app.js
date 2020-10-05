@@ -9,7 +9,7 @@ import { spacing, layout } from '../../styles/spacing'
 import Layout from "../../components/layout"
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
-import MainSection from "../../components/project/mainSection"
+import MainSection from "../../components/project/mainSectionTitle"
 
 const pageVariants = {
   visible: {

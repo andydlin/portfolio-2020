@@ -1,7 +1,5 @@
 import React from "react"
 import styled from 'styled-components'
-import { TransitionState } from "gatsby-plugin-transition-link";
-import { motion } from "framer-motion"
 
 import { colors } from '../../styles/colors'
 import { spacing, layout } from '../../styles/spacing'
@@ -41,7 +39,7 @@ const Line = styled.span`
   }
 `
 
-const MainSection = (props) => {
+const MainSectionTitle = (props) => {
 
   return (
     <Container
@@ -73,4 +71,4 @@ const MainSection = (props) => {
   )
 }
 
-export default MainSection
+export default MainSectionTitle
