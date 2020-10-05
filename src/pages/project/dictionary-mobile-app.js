@@ -7,11 +7,13 @@ import styled from 'styled-components'
 
 import { spacing, layout } from '../../styles/spacing'
 import Layout from "../../components/layout"
+import { Container, Box } from "../../styles/global"
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
 import MainSectionTitle from "../../components/project/mainSectionTitle"
 import SubSectionTitle from "../../components/project/subSectionTitle"
 import ImageResponsive from "../../components/project/ImageResponsive"
+import ImageBleedLeft from "../../components/project/ImageBleedLeft"
 
 const pageVariants = {
   visible: {
@@ -52,7 +54,14 @@ const DictionaryProject = (props) => {
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff. Doggorino the neighborhood pupper extremely cuuuuuute aqua doggo floofs, fluffer dat tungg tho you are doin me a concern doing me a frighten shoob, floofs wrinkler many pats.`}
       />
       <ImageResponsive image={props.data.testImageResponsive.childImageSharp.fluid}/>
-      <SubSectionTitle
+      <Container>
+        <SubSectionTitle
+          title={`Sub Section Title`}
+          description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
+        />
+      </Container>
+      <ImageBleedLeft
+        image={props.data.testImageResponsive.childImageSharp.fluid}
         title={`Sub Section Title`}
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
       />
