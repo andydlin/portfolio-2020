@@ -11,6 +11,7 @@ import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
 import MainSectionTitle from "../../components/project/mainSectionTitle"
 import SubSectionTitle from "../../components/project/subSectionTitle"
+import ImageResponsive from "../../components/project/ImageResponsive"
 
 const pageVariants = {
   visible: {
@@ -38,7 +39,7 @@ const DictionaryProject = (props) => {
       variants={pageVariants}
       animate={mount ? 'visible' : 'hidden'}
     >
-      <HeroImage image={props.heroImage.childImageSharp.fluid}/>
+      <HeroImage image={props.data.heroImage.childImageSharp.fluid}/>
       <Summary
         role={`UI & UX`}
         category={`Education`}
@@ -50,6 +51,7 @@ const DictionaryProject = (props) => {
         title={`Section Title`}
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff. Doggorino the neighborhood pupper extremely cuuuuuute aqua doggo floofs, fluffer dat tungg tho you are doin me a concern doing me a frighten shoob, floofs wrinkler many pats.`}
       />
+      <ImageResponsive image={props.data.testImageResponsive.childImageSharp.fluid}/>
       <SubSectionTitle
         title={`Sub Section Title`}
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
@@ -62,6 +64,13 @@ const ProjectPage = (props) => {
   const data = useStaticQuery(graphql`
     query {
       heroImage: file(relativePath: { eq: "images/projects/dcom/thumbnail.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2880, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      testImageResponsive: file(relativePath: { eq: "images/projects/testImage_responsive.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2880, quality: 100) {
             ...GatsbyImageSharpFluid
@@ -82,7 +91,7 @@ const ProjectPage = (props) => {
             transitionStatus={transitionStatus}
           >
             <SEO title="Project: Dictionary.com Mobile App" />
-            <DictionaryProject mount={mount} transitionStatus={transitionStatus} heroImage={data.heroImage}/>
+            <DictionaryProject mount={mount} transitionStatus={transitionStatus} data={data}/>
           </Layout>
         )
       }}
