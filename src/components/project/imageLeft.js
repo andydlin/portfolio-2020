@@ -13,6 +13,7 @@ const CustomImg = styled(Img)`
   width: 100%;
 
   @media (min-width: 768px) {
+    margin-bottom: 0;
     max-width: 50vw;
   }
 `

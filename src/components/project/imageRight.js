@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
-import SubSectionTitle from "../../components/project/subSectionTitle"
+import SubSectionTitle from "./subSectionTitle"
 
 const CustomImg = styled(Img)`
   height: auto;
@@ -14,6 +14,7 @@ const CustomImg = styled(Img)`
   width: 100%;
 
   @media (min-width: 768px) {
+    margin-bottom: 0;
     max-width: 50vw;
     order: 2;
   }

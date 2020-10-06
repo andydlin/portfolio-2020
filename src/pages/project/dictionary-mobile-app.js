@@ -13,8 +13,8 @@ import Summary from "../../components/project/summary"
 import MainSectionTitle from "../../components/project/mainSectionTitle"
 import SubSectionTitle from "../../components/project/subSectionTitle"
 import ImageResponsive from "../../components/project/ImageResponsive"
-import ImageBleedLeft from "../../components/project/ImageBleedLeft"
-import ImageBleedRight from "../../components/project/ImageBleedRight"
+import ImageLeft from "../../components/project/ImageLeft"
+import ImageRight from "../../components/project/ImageRight"
 
 const pageVariants = {
   visible: {
@@ -71,17 +71,24 @@ const DictionaryProject = (props) => {
           description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
         />
       </Container>
-      <ImageBleedLeft
+      <ImageLeft
         image={props.data.testImageResponsive.childImageSharp.fluid}
         title={`Sub Section Title`}
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
       />
-      <ImageBleedRight
+      <ImageRight
         image={props.data.testImageResponsive.childImageSharp.fluid}
         title={`Sub Section Title`}
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
       />
       <ImageResponsive image={props.data.testImageResponsive.childImageSharp.fluid}/>
+      <Container>
+        <ImageLeft
+          image={props.data.testImageResponsive.childImageSharp.fluid}
+          title={`Sub Section Title`}
+          description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
+        />
+      </Container>
     </motion.div>
   )
 }
