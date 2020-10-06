@@ -10,14 +10,16 @@ const CustomImg = styled(Img)`
   height: auto;
   margin-bottom: ${layout.l100};
   max-width: 100vw;
+  order: 1;
   width: 100%;
 
   @media (min-width: 768px) {
     max-width: 50vw;
+    order: 2;
   }
 `
 
-const ImageBleedLeft = (props) => {
+const ImageBleedRight = (props) => {
 
   return (
     <div
@@ -34,24 +36,25 @@ const ImageBleedLeft = (props) => {
           }
         `}
       >
-        <CustomImg fluid={props.image} />
         <SubSectionTitle
           title={props.title}
           description={props.description}
           css={`
+            order: 2;
             padding: 0 ${spacing.s300};
-            
 
             @media (min-width: 768px) {
-              margin-left: ${layout.l400};
-              padding: 0 ${spacing.s300} 0 0;
+              margin-right: ${layout.l400};
+              order: 1;
+              padding: 0 0 0 ${spacing.s300};
               width: 50vw;
             }
           `}
         />
+        <CustomImg fluid={props.image} />
       </Box>
     </div>
   )
 }
 
-export default ImageBleedLeft
+export default ImageBleedRight

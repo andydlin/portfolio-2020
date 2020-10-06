@@ -1,25 +1,16 @@
 import React from "react"
 import Img from "gatsby-image"
 
-import { layout } from '../../styles/spacing'
-import { Container } from "../../styles/global"
-
 const ImageResponsive = (props) => {
 
   return (
-    <Container
+    <Img
+      fluid={props.image}
       css={`
-        margin-bottom: ${layout.l600};
+        height: auto;
+        width: 100%;
       `}
-    >
-      <Img
-        fluid={props.image}
-        css={`
-          height: auto;
-          width: 100%;
-        `}
-      />
-    </Container>
+    />
   )
 }
 
