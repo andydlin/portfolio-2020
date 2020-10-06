@@ -17,7 +17,7 @@ export const Large = css`
 
 export const Medium = css`
   font-size: 1.5rem;
-  line-height: 1.25;
+  line-height: 1.5;
 `
 
 export const Schmedium = css`

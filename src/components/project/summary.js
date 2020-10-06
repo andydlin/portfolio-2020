@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { colors } from '../../styles/colors'
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
-import { Giant, Large, Schmedium, Regular, Small } from "../../styles/typography"
+import { Giant, Large, Medium, Schmedium, Regular, Small } from "../../styles/typography"
 
 const Label = styled.div`
   color: ${colors.gray200};
@@ -72,6 +72,8 @@ const Card = styled(motion.div)`
   background: white;
   border-radius: 8px;
   box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 1440px;
   padding: ${layout.l300} ${layout.l200};
   position: relative;
 
