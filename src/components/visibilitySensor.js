@@ -29,8 +29,8 @@ class VizSensor extends React.Component {
         }
         partialVisibility = {true}
         offset = {{
-          bottom: 100,
-          top: 100
+          bottom: '100',
+          top: '100'
         }}
       >
         <VizContainer
