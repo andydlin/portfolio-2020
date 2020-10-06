@@ -1,6 +1,8 @@
 import React from "react"
 import styled from 'styled-components'
 
+import VizSensor from "../visibilitySensor"
+
 import { colors } from '../../styles/colors'
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
@@ -42,32 +44,34 @@ const Line = styled.span`
 const MainSectionTitle = (props) => {
 
   return (
-    <Container
-      css={`
-        margin-bottom: ${layout.l550};
-      `}
-    >
-      <Box
+    <VizSensor>
+      <Container
         css={`
-          align-items: flex-start;
-          flex-direction: column;
-          margin: 0 auto;
-          max-width: 860px;
-
-          @media (min-width: 768px) {
-            flex-direction: row;
-          }
+          margin-bottom: ${layout.l550};
         `}
       >
-        <div>
-          <Line/>
-        </div>
-        <div>
-          <Title>{props.title}</Title>
-          <Description>{props.description}</Description>
-        </div>
-      </Box>
-    </Container>
+        <Box
+          css={`
+            align-items: flex-start;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 860px;
+
+            @media (min-width: 768px) {
+              flex-direction: row;
+            }
+          `}
+        >
+          <div>
+            <Line/>
+          </div>
+          <div>
+            <Title>{props.title}</Title>
+            <Description>{props.description}</Description>
+          </div>
+        </Box>
+      </Container>
+    </VizSensor>
   )
 }
 

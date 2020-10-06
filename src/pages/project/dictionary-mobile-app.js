@@ -4,10 +4,12 @@ import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion"
 import styled from 'styled-components'
+import VizSensor from "../../components/visibilitySensor"
 
-import { spacing, layout } from '../../styles/spacing'
+import { layout } from '../../styles/spacing'
 import Layout from "../../components/layout"
-import { Container, Box } from "../../styles/global"
+import { Container } from "../../styles/global"
+
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
 import MainSectionTitle from "../../components/project/mainSectionTitle"
@@ -61,16 +63,18 @@ const DictionaryProject = (props) => {
       >
         <ImageResponsive image={props.data.testImageResponsive.childImageSharp.fluid}/>
       </Container>
-      <Container
-        css={`
-          margin-bottom: ${layout.l600};
-        `}
-      >
-        <SubSectionTitle
-          title={`Sub Section Title`}
-          description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
-        />
-      </Container>
+      <VizSensor>
+        <Container
+          css={`
+            margin-bottom: ${layout.l600};
+          `}
+        >
+          <SubSectionTitle
+            title={`Sub Section Title`}
+            description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
+          />
+        </Container>
+      </VizSensor>
       <ImageLeft
         image={props.data.testImageResponsive.childImageSharp.fluid}
         title={`Sub Section Title`}
@@ -112,7 +116,6 @@ const ProjectPage = (props) => {
       },
     }
   `)
-  console.log(data);
 
   return (
     <TransitionState>

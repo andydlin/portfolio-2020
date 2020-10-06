@@ -1,6 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from 'styled-components'
+import VizSensor from "../visibilitySensor"
 
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
@@ -21,37 +22,39 @@ const CustomImg = styled(Img)`
 const ImageBleedLeft = (props) => {
 
   return (
-    <div
-      css={`
-        margin-bottom: ${layout.l600};
-      `}
-    >
-      <Box
+    <VizSensor>
+      <div
         css={`
-          flex-direction: column;
-
-          @media (min-width: 768px) {
-            flex-direction: row;
-          }
+          margin-bottom: ${layout.l600};
         `}
       >
-        <CustomImg fluid={props.image} />
-        <SubSectionTitle
-          title={props.title}
-          description={props.description}
+        <Box
           css={`
-            padding: 0 ${spacing.s300};
-            
+            flex-direction: column;
 
             @media (min-width: 768px) {
-              margin-left: ${layout.l400};
-              padding: 0 ${spacing.s300} 0 0;
-              width: 50vw;
+              flex-direction: row;
             }
           `}
-        />
-      </Box>
-    </div>
+        >
+          <CustomImg fluid={props.image} />
+          <SubSectionTitle
+            title={props.title}
+            description={props.description}
+            css={`
+              padding: 0 ${spacing.s300};
+              
+
+              @media (min-width: 768px) {
+                margin-left: ${layout.l400};
+                padding: 0 ${spacing.s300} 0 0;
+                width: 50vw;
+              }
+            `}
+          />
+        </Box>
+      </div>
+    </VizSensor>
   )
 }
 
