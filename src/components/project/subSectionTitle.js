@@ -27,6 +27,7 @@ const SubSectionTitle = (props) => {
         margin: 0 auto;
         max-width: 480px;
       `}
+      {...props}
     >
       <Title>{props.title}</Title>
       <Description>{props.description}</Description>

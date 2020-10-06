@@ -54,7 +54,11 @@ const DictionaryProject = (props) => {
         description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff. Doggorino the neighborhood pupper extremely cuuuuuute aqua doggo floofs, fluffer dat tungg tho you are doin me a concern doing me a frighten shoob, floofs wrinkler many pats.`}
       />
       <ImageResponsive image={props.data.testImageResponsive.childImageSharp.fluid}/>
-      <Container>
+      <Container
+        css={`
+          margin-bottom: ${layout.l600};
+        `}
+      >
         <SubSectionTitle
           title={`Sub Section Title`}
           description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
