@@ -14,7 +14,6 @@ import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
 import MainSectionTitle from "../../components/project/mainSectionTitle"
 import SubSectionTitle from "../../components/project/subSectionTitle"
-import ImageResponsive from "../../components/project/ImageResponsive"
 import ImageWithSubsectionTitle from "../../components/project/imageWithSubsectionTitle"
 import ImageGrid from "../../components/project/imageGrid"
 
