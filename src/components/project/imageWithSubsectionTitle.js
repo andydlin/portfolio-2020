@@ -22,7 +22,6 @@ const CustomImg = styled(Img)`
 `
 
 const ImageWithSubsectionTitle = (props) => {
-  console.log('imageRight = ' + props.imageRight);
 
   return (
     <VizSensor>

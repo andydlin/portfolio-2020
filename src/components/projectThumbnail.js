@@ -64,6 +64,8 @@ const ProjectDescription = styled.p`
 const ProjectThumbnail = (props) => {
   const containerRef = useRef(null);
   var newTop, newXPos = 0;
+  var isClicked = false;
+
   if(containerRef.current !== undefined && containerRef.current !== null) {
     const navbar = document.querySelector('header')
     const navbarDimensions = navbar.getBoundingClientRect()
@@ -140,7 +142,7 @@ const ProjectThumbnail = (props) => {
                 newXPos: newXPos,
               }}
               whileHover={{
-                scale: 1.015,
+                scale: 1.01,
                 transition: { duration: 1 },
               }}
               whileTap={{ scale: 1 }}
