@@ -40,3 +40,9 @@ export const Container = styled.div`
     max-width: 90vw;
   }
 `
+
+export const ProjectBody = styled.div`
+  > * {
+    margin-bottom: ${layout.l600};
+  }
+`
