@@ -11,6 +11,11 @@ export const Box = styled.div`
   }
 `
 
+export const Grid = styled.div`
+  display: grid;
+  width: 100%;
+`
+
 export const Container = styled.div`
   margin: 0 auto;
   padding: 0 ${spacing.s300};

@@ -20,8 +20,6 @@ class VizSensor extends React.Component {
       <VisibilitySensor
         onChange = {
           (isVisible) => {
-            console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
-        
             this.setState({
               elemViz: isVisible,
             });
