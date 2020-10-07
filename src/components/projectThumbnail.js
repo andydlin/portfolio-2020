@@ -64,8 +64,6 @@ const ProjectDescription = styled.p`
 const ProjectThumbnail = (props) => {
   const containerRef = useRef(null);
   var newTop, newXPos = 0;
-  var isClicked = false;
-
   if(containerRef.current !== undefined && containerRef.current !== null) {
     const navbar = document.querySelector('header')
     const navbarDimensions = navbar.getBoundingClientRect()
