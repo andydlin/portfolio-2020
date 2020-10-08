@@ -29,10 +29,14 @@ const HeaderNav = styled(motion.header)`
 
 const Nav = styled.div`
   display: grid;
-  grid-column-gap: ${spacing.s700};
+  grid-column-gap: ${spacing.s400};
   grid-template-columns: auto auto auto;
   margin: 0 0 0 auto;
   position: relative;
+
+  @media (min-width: 768px) {
+    grid-column-gap: ${spacing.s700};
+  }
 `
 
 const NavUnderline = styled(motion.div)`
