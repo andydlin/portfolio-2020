@@ -1,15 +1,15 @@
 [
   {
-    "title": "DevX Console",
-    "client": "Hulu DevX",
-    "description": "I worked on designing Hulu's first developer console for their entire engineering organization.",
+    "title": "Hulu - DevX Console",
+    "client": "Hulu",
+    "description": "I helped design Hulu's first developer console to support thousands of engineers.",
     "image": "hulu-thumbnail.jpg",
     "alt": "Thumbnail image for Hulu DevX project",
     "link": "/project/hulu-devx",
     "hex": "#0FAE60"
   },
   {
-    "title": "Mobile App",
+    "title": "Dictionary.com - Mobile App",
     "client": "Dictionary.com",
     "description": "I led the redesign of Dictionary.com’s iOS app  to establish their spot in the mobile market.",
     "image": "dcom/thumbnail.jpg",
@@ -18,7 +18,7 @@
     "hex": "#000"
   },
   {
-    "title": "Writing Tool!",
+    "title": "Thesaurus.com - Writing Tool",
     "client": "Thesaurus.com",
     "description": "I led the research, discovery, and design for the Writing Tool",
     "image": "tcom/thumbnail.png",

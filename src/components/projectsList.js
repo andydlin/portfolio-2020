@@ -7,6 +7,7 @@ import { Container } from '../styles/global'
 import { layout } from '../styles/spacing'
 import { colors } from '../styles/colors'
 import ProjectThumbnail from './projectThumbnail'
+import VizSensor from "./visibilitySensor"
 
 const ThumbnailWrapper = styled.div`
   margin-bottom: ${layout.l400};
@@ -48,20 +49,22 @@ const ProjectsList = (props) => {
       {data.allPortfolioCard.nodes.map((card, index, arr) => {
         return (
           <ThumbnailWrapper key={card.title}>
-            <CustomLink
-              to={card.link}
-              exit={{
-                length: 1.65,
-              }}
-              entry={{
-                delay: 1.65,
-              }}
-              css={`
-                text-decoration: none;
-              `}
-            >
-              <ProjectThumbnail card={card} />
-            </CustomLink>
+            <VizSensor>
+              <CustomLink
+                to={card.link}
+                exit={{
+                  length: 1.65,
+                }}
+                entry={{
+                  delay: 1.65,
+                }}
+                css={`
+                  text-decoration: none;
+                `}
+              >
+                <ProjectThumbnail card={card} />
+              </CustomLink>
+            </VizSensor>
           </ThumbnailWrapper>
         )
       })}
