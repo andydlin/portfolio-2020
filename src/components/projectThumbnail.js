@@ -36,7 +36,7 @@ const ThumbnailInner = styled(motion.div)`
 const ProjectTitle = styled.h2`
   color: ${colors.gray300};
   ${Large}
-  margin-top: ${spacing.s400};
+  margin-top: ${spacing.s300};
   text-decoration: none;
   transition: color 0.5s;
 
@@ -44,6 +44,10 @@ const ProjectTitle = styled.h2`
     &:hover {
       color: ${colors.blue};
     }
+  }
+
+  @media (min-width: 768px) {
+    margin-top: ${spacing.s600};
   }
 
   @media (min-width: 1024px) {
@@ -154,7 +158,11 @@ const ProjectThumbnail = (props) => {
             </ThumbnailInner>
             <div
               css={`
-                padding: 0 ${spacing.s600};
+                padding: 0 ${spacing.s400};
+
+                @media (min-width: 768px) {
+                  padding: 0 ${spacing.s600};
+                }
               `}
             >
               <ProjectTitle>{props.card.client}</ProjectTitle>
