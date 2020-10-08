@@ -49,11 +49,7 @@ const MainSectionTitle = (props) => {
 
   return (
     <VizSensor>
-      <Container
-        css={`
-          margin-bottom: ${layout.l550};
-        `}
-      >
+      <Container>
         <div
           css={`
             margin: 0 auto;

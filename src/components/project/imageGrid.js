@@ -44,7 +44,7 @@ const Images = (props) => {
   return (
     <Grid
       css={`
-        grid-template: auto auto auto / auto;
+        grid-template: ${props.images.length === 3 ? 'auto auto auto / auto' : props.images.length === 2 ? 'auto auto / auto' : 'auto / auto'};
         gap: ${spacing.s700};
 
         @media (min-width: 768px) {

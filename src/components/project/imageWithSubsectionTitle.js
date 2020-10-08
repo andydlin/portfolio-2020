@@ -28,7 +28,6 @@ const ImageWithSubsectionTitle = (props) => {
       <Box
         css={`
           flex-direction: column;
-          margin-bottom: ${layout.l600};
 
           @media (min-width: 768px) {
             flex-direction: row;
