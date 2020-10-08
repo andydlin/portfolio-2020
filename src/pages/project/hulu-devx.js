@@ -25,10 +25,12 @@ const ProjectDetails = (props) => {
     >
       <HeroImage image={props.data.heroImage.childImageSharp.fluid}/>
       <Summary
-        role={`UI & UX`}
-        category={`Education`}
-        platforms={`iOS`}
-        timeframe={`Jan - Mar 2020`}
+        subtitle={`Hulu`}
+        title={`DevX Console`}
+        role={`UX Designer`}
+        category={`Productivity`}
+        platforms={`Web`}
+        timeframe={`Mar - Sep 2020`}
         summary={<div><p>I was challenged with creating a cohesive design throughout the site and setting up the infrastructure for the marketing and store pages. The brand uses e-commerce as the face of the company and community stories as the support content.</p><p>In order to provide a seamless experience between both fronts, I worked closely with Victor (founder and designer). We ended up using Wordpress to allow for full customization of our community stories and Shopify as the storefront. I wrote custom code with HTML, CSS, jQuery, and Twig.</p></div>}
       />
       <ProjectBody>

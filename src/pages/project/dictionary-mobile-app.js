@@ -25,6 +25,8 @@ const ProjectDetails = (props) => {
     >
       <HeroImage image={props.data.heroImage.childImageSharp.fluid}/>
       <Summary
+        subtitle={`Dictionary.com`}
+        title={`Mobile App`}
         role={`UI & UX`}
         category={`Education`}
         platforms={`iOS`}

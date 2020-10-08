@@ -171,8 +171,8 @@ const Summary = (props) => {
                   }
                 `}
               >
-                <Subtitle>Dictionary.com</Subtitle>
-                <Title>Mobile App Redesign</Title>
+                <Subtitle>{props.subtitle}</Subtitle>
+                <Title>{props.title}</Title>
               </div>
               <Box
                 css={`
