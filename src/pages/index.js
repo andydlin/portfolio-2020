@@ -219,7 +219,7 @@ const IndexPage = (props) => {
                 <Box css={`
                   margin: 0 auto;
                   max-width: 800px;
-                  padding: calc(50vh - 350px) 0 30vh 0;
+                  padding: calc(30vh - 125px) 0 30vh 0;
 
                   @media (max-width: 1200px) {
                     padding: calc(50vh - 350px) 0 20vh 0;

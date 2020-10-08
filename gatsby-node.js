@@ -10,7 +10,8 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
       description,
       image,
       alt,
-      link
+      link,
+      hex
     } = card;
 
     const { name, ext } = path.parse(image);
@@ -40,6 +41,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
       image: imageNode,
       alt,
       link,
+      hex,
       id: createNodeId(`card-${title}`),
       internal: {
         type: 'PortfolioCard',

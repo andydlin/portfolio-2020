@@ -37,6 +37,7 @@ const ProjectsList = (props) => {
           link
           description
           title
+          hex
         }
       }
     }

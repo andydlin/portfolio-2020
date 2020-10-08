@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react"
 import Img from "gatsby-image"
+import hexToRgba from 'hex-to-rgba';
 import styled from 'styled-components'
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion, useCycle } from "framer-motion"
@@ -16,15 +17,14 @@ const CustomImg = styled(Img)`
 
 const ThumbnailInner = styled(motion.div)`
   border-radius: 8px;
-  box-shadow: 0 0 0 rgba(0,115,220,0);
+  box-shadow: 0 0 0 ${props => props.shadowInitial};
   overflow: hidden;
   position: relative;
-  transition: box-shadow 0.5s ease-in-out, transform 0.5s;
+  transition: box-shadow 0.25s ease-in-out;
 
   @media (hover: hover) {
     &:hover {
-      box-shadow: 0 16px 48px rgba(0,115,220,0.8);
-      transition: box-shadow 1s ease-in-out;
+      box-shadow: 0 16px 40px ${props => props.shadowHover};
     }
   }
 
@@ -140,10 +140,12 @@ const ProjectThumbnail = (props) => {
                 newXPos: newXPos,
               }}
               whileHover={{
-                scale: 1.01,
-                transition: { duration: 1 },
+                scale: 1.005,
+                transition: { duration: 0.25 },
               }}
               whileTap={{ scale: 1 }}
+              shadowInitial={hexToRgba(props.card.hex, '0')}
+              shadowHover={hexToRgba(props.card.hex, '0.3')}
             >
               <CustomImg
                 alt={props.card.alt}
