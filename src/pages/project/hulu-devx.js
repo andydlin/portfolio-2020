@@ -91,7 +91,7 @@ const ProjectDetails = (props) => {
 const ProjectPage = (props) => {
   const data = useStaticQuery(graphql`
     query {
-      heroImage: file(relativePath: { eq: "images/projects/dcom/thumbnail.jpg" }) {
+      heroImage: file(relativePath: { eq: "images/projects/hulu-thumbnail.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2880, quality: 100) {
             ...GatsbyImageSharpFluid
