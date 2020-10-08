@@ -152,8 +152,14 @@ const ProjectThumbnail = (props) => {
                 fluid={props.card.image.childImageSharp.fluid} 
               />
             </ThumbnailInner>
-            <ProjectTitle>{props.card.client}</ProjectTitle>
-            <ProjectDescription>{props.card.description}</ProjectDescription>
+            <div
+              css={`
+                padding: 0 ${spacing.s600};
+              `}
+            >
+              <ProjectTitle>{props.card.client}</ProjectTitle>
+              <ProjectDescription>{props.card.description}</ProjectDescription>
+            </div>
           </motion.div>
         )
       }}
