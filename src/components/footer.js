@@ -3,13 +3,13 @@ import React from "react"
 import styled from 'styled-components'
 
 import { colors } from '../styles/colors'
-import { spacing, layout } from '../styles/spacing'
+import { spacing } from '../styles/spacing'
 
 const CustomFooter = styled.footer`
   color: ${colors.gray200};
   font-size: 1rem;
   line-height: 1.5;
-  padding: ${spacing.s800} ${layout.l500};
+  padding: ${spacing.s800} ${spacing.s500};
   text-align: center;
 
   a {
