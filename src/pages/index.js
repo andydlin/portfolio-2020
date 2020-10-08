@@ -217,11 +217,15 @@ const IndexPage = (props) => {
               <Container>
                 <SEO title="Home" />
                 <Box css={`
+                  align-items: flex-start;
+                  flex-direction: column;
                   margin: 0 auto;
                   max-width: 800px;
-                  padding: calc(30vh - 125px) 0 30vh 0;
+                  padding: 10vh 0;
 
-                  @media (max-width: 1200px) {
+                  @media (min-width: 600px) {
+                    align-items: flex-start;
+                    flex-direction: row;
                     padding: calc(20vh - 76px) 0 20vh 0;
                   }
 
@@ -230,10 +234,8 @@ const IndexPage = (props) => {
                     width: 60vw;
                   }
 
-                  @media (max-width: 600px) {
-                    align-items: flex-start;
-                    flex-direction: column;
-                    padding: 20vh 0;
+                  @media (min-width: 1200px) {
+                    padding: calc(30vh - 125px) 0 30vh 0;
                   }
                 `}>
                   <div css={`
