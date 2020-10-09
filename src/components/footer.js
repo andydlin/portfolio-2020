@@ -29,7 +29,7 @@ class Footer extends React.Component {
     return (
       <CustomFooter>
         <p>Made with lots of sweat and tears in Castro Valley, CA.</p>
-        <p>Designed with <a href="https://www.figma.com/" target="_blank">Figma</a>. Developed with <a href="https://www.gatsbyjs.org" target="_blank">Gatsby</a>.</p>
+        <p>Handcrafted with <a href="https://www.figma.com/" target="_blank">Figma</a> & <a href="https://www.gatsbyjs.org" target="_blank">Gatsby</a>.</p>
       </CustomFooter>
     )
   }

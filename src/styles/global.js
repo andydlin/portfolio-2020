@@ -49,4 +49,16 @@ export const ProjectBody = styled.div`
       margin-bottom: ${layout.l600};
     }
   }
+
+  p {
+    margin-bottom: ${spacing.s300};
+
+    @media (min-width: 768px) {
+      margin-bottom: ${spacing.s500};
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `

@@ -148,10 +148,6 @@ const Summary = (props) => {
               position: relative;
               top: -${layout.l500};
 
-              @media (min-width: 768px) {
-                margin-bottom: ${layout.l500};
-              }
-
               @media (min-width: 1024px) {
                 top: -${layout.l600};
               }

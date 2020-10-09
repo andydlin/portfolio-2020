@@ -30,21 +30,23 @@ const ProjectDetails = (props) => {
         role={`UX Designer`}
         category={`Productivity`}
         platforms={`Web`}
-        timeframe={`Mar - Sep 2020`}
-        summary={<div><p>I was challenged with creating a cohesive design throughout the site and setting up the infrastructure for the marketing and store pages. The brand uses e-commerce as the face of the company and community stories as the support content.</p><p>In order to provide a seamless experience between both fronts, I worked closely with Victor (founder and designer). We ended up using Wordpress to allow for full customization of our community stories and Shopify as the storefront. I wrote custom code with HTML, CSS, jQuery, and Twig.</p></div>}
+        timeframe={`Mar - Aug 2020`}
+        summary={<div><p>For UCI's MHCID capstone project, we had the opportunity to work with Hulu's DevX team. They play a key role in improving the workflow and process for the engineering organization and focus on defining processes and creating tools to help engineers build amazing products.</p><p>I worked in a team of 4 (product manager, researcher, UX designers) to create Hulu's first unified web portal for the engineering organization. At the end of the project, we presented and delivered all our research, hi-fi mockups and prototypes, and detailed documentation to Hulu DevX.</p></div>}
       />
       <ProjectBody>
         <MainSectionTitle
-          title={`Section Title`}
-          description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff. Doggorino the neighborhood pupper extremely cuuuuuute aqua doggo floofs, fluffer dat tungg tho you are doin me a concern doing me a frighten shoob, floofs wrinkler many pats.`}
+          title={`The Challenge`}
+          description={<p>Developers at Hulu have a fragmented workflow that requires them to access many resources from a lot of different sources. On average, Hulu engineers (Hulugans) multi-task and tool switch through a minimum of 8 tools per day. Throughout the entire engineering org, Hulugans use more than 50 different tools and services. Hulu lacks a unified web portal resulting in unorganized, fragmented, and sometimes irrelevant documentation.</p>}
         />
-        <Container>
-          <ImageGrid
-            images={[
-              [props.data.testImageResponsive.childImageSharp.fluid, null]
-            ]}
-          />
-        </Container>
+        <ImageGrid
+          images={[
+            [props.data.overviewImage.childImageSharp.fluid, null]
+          ]}
+        />
+        <MainSectionTitle
+          title={`Overview`}
+          description={<div><p>We partnered with Hulu's DevX team to explore ways to improve the everyday workflow for Hulugans. We aimed to provide a more efficient way to switch between tools, consolidate documentation, and create an onboarding process for new hires - all in one unified web portal.</p></div>}
+        />
         <ImageWithSubsectionTitle
           image={props.data.testImageResponsive.childImageSharp.fluid}
           title={`Sub Section Title`}
@@ -101,6 +103,13 @@ const ProjectPage = (props) => {
         }
       },
       testImageResponsive: file(relativePath: { eq: "images/projects/testImage_responsive.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2880, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      overviewImage: file(relativePath: { eq: "images/projects/hulu/overview.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2880, quality: 100) {
             ...GatsbyImageSharpFluid
