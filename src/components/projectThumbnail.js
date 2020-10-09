@@ -42,7 +42,7 @@ const ProjectTitle = styled.h2`
 
   @media (hover: hover) {
     &:hover {
-      color: ${colors.blue};
+      color: ${props => props.color};
     }
   }
 
@@ -165,7 +165,7 @@ const ProjectThumbnail = (props) => {
                 }
               `}
             >
-              <ProjectTitle>{props.card.client}</ProjectTitle>
+              <ProjectTitle color={props.card.hex}>{props.card.client}</ProjectTitle>
               <ProjectDescription>{props.card.description}</ProjectDescription>
             </div>
           </motion.div>
