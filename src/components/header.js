@@ -48,16 +48,7 @@ const NavUnderline = styled(motion.div)`
   left: 0;
   position: absolute;
   right: 0;
-  width: 100%;
-
-  &.work-active {
-    width: 37px;
-  }
-
-  &.about-active {
-    left: 77px;
-    width: 43px;
-  }
+  width: 0px;
 `
 
 const NavLink = styled(Link)`
@@ -99,33 +90,39 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.myRef = React.createRef();
+    this.workLink = React.createRef();
+    this.aboutLink = React.createRef();
+  }f
+
+  state = {
+    activeleft: 0,
+    activeWidth: 0
+  }
+
+  handleActiveLink = () => {
+    if(this.props.path === 'work') {
+      this.setState({
+        activeLeft: this.workLink.current.offsetLeft,
+        activeWidth: this.workLink.current.offsetWidth
+      });
+    } else if(this.props.path === 'about') {
+      this.setState({
+        activeLeft: this.aboutLink.current.offsetLeft,
+        activeWidth: this.aboutLink.current.offsetWidth
+      });
+    }
+  }
+
+  componentDidMount() {
+   this.handleActiveLink();
+   window.addEventListener('resize', this.handleActiveLink);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleActiveLink);
   }
 
   render() {
-    // old, this is to animate navbar underline
-    /*const NavUnderlineVariants = {
-      start: {
-        left: 0,
-        width: 0,
-      },
-      workentering: {
-        left: 0,
-        width: 120,
-      },
-      workentered: {
-        left: 0,
-        width: 37,
-      },
-      aboutentering: {
-        left: 0,
-        width: 120,
-      },
-      aboutentered: {
-        left: 77,
-        width: 43,
-      }
-    }*/
 
     return (
       <HeaderNav
@@ -160,6 +157,7 @@ class Header extends React.Component {
             exit={{
               length: 0.5
             }}
+            ref={this.workLink}
           >
             Work
           </NavLink>
@@ -176,12 +174,17 @@ class Header extends React.Component {
                 nextPath: 'about'
               }
             }}
+            ref={this.aboutLink}
           >
             About
           </NavLink>
           <NavLink to='/'>Contact</NavLink>
           <NavUnderline
             className={`${this.props.path}` + '-active'}
+            css={`
+              left: ${this.state.activeLeft}px;
+              width: ${this.state.activeWidth}px;
+            `}
           />
         </Nav>
       </HeaderNav>
