@@ -134,7 +134,7 @@ const ProjectThumbnail = (props) => {
               newTop: newTop,
             }}
             ref={containerRef}
-            
+            onClick={() => cycleThumbStatus()}
           >
             <ThumbnailInner
               initial='start'
