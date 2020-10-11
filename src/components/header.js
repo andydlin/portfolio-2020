@@ -92,11 +92,11 @@ class Header extends React.Component {
 
     this.workLink = React.createRef();
     this.aboutLink = React.createRef();
-  }f
 
-  state = {
-    activeleft: 0,
-    activeWidth: 0
+    this.state = {
+      activeleft: 0,
+      activeWidth: 0
+    }
   }
 
   handleActiveLink = () => {

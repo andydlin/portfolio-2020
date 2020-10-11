@@ -15,7 +15,7 @@ const Title = styled.h2`
   }
 `
 
-const Description = styled.p`
+const Description = styled.div`
   color: ${colors.gray300};
 
   @media (min-width: 768px) {
@@ -29,7 +29,7 @@ const SubSectionTitle = (props) => {
     <div
       css={`
         margin: 0 auto;
-        max-width: 480px;
+        max-width: 600px;
       `}
       {...props}
     >

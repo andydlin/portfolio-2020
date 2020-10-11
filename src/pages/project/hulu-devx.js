@@ -15,6 +15,7 @@ import MainSectionTitle from "../../components/project/mainSectionTitle"
 import SubSectionTitle from "../../components/project/subSectionTitle"
 import ImageWithSubsectionTitle from "../../components/project/imageWithSubsectionTitle"
 import ImageGrid from "../../components/project/imageGrid"
+import ImageSlider from "../../components/project/imageSlider"
 
 const ProjectDetails = (props) => {
   const { mount } = props;
@@ -49,55 +50,46 @@ const ProjectDetails = (props) => {
         />
         <MainSectionTitle
           title={`Our Process`}
-          description={<p>First, we established a timline and roadmap with our stakeholders to ensure that everyone is on the same page on expectations and deliverables. This ensured accountability from both parties and lead to a strong partnership.</p>}
+          description={<p>We established a timeline and roadmap with our stakeholders to ensure that everyone is on the same page on expectations and deliverables. This built accountability for both parties and lead to a strong partnership.</p>}
         />
         <Container>
           <ImageWithSubsectionTitle
             image={props.data.doubleDiamondImage.childImageSharp.fluid}
             title={`The Double Diamond`}
-            description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
+            description={<div><p>The double diamond method allowed for a synchronized workflow for our team and provided a structured process for stakeholders to follow. This method is broken down into 4 phases: discover, define, develop, and deliver.</p></div>}
           />
         </Container>
-        <ImageWithSubsectionTitle
-          image={props.data.testImageResponsive.childImageSharp.fluid}
-          title={`Sub Section Title`}
-          description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
-        />
-        <ImageWithSubsectionTitle
-          image={props.data.testImageResponsive.childImageSharp.fluid}
-          title={`Sub Section Title`}
-          description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
-          imageRight={true}
-        />
-        <ImageGrid
-          images={[
-            [props.data.testImageResponsive.childImageSharp.fluid, null]
+        <Container>
+          <ImageGrid
+            images={[
+              [props.data.orgMapScreenshotImage.childImageSharp.fluid,'Screenshot of Hulu\'s engineering organization chart']
+            ]}
+          />
+        </Container>
+        <VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Learning more about Hulu DevX and Engineering`}
+              description={<p>As our researchers prepared survey questions and interview protocols, the other designer and I created an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
+            />
+          </Container>
+        </VizSensor>
+        <ImageSlider
+          slides={[
+            [
+              props.data.discoverOrgChart.childImageSharp.fluid,
+              'This is the caption for this image'
+            ],
+            [
+              props.data.discoverOrgChart.childImageSharp.fluid,
+              'This is the caption for this image'
+            ],
+            [
+              props.data.discoverOrgChart.childImageSharp.fluid,
+              'This is the caption for this image'
+            ]
           ]}
         />
-        <Container>
-          <ImageWithSubsectionTitle
-            image={props.data.testImageResponsive.childImageSharp.fluid}
-            title={`Sub Section Title`}
-            description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff.`}
-          />
-        </Container>
-        <Container>
-          <ImageGrid
-            images={[
-              [props.data.testImageResponsive.childImageSharp.fluid, 'This is an image caption'],
-              [props.data.testImageResponsive.childImageSharp.fluid, null],
-              [props.data.testImageResponsive.childImageSharp.fluid, null]
-            ]}
-          />
-        </Container>
-        <Container>
-          <ImageGrid
-            images={[
-              [props.data.testImageResponsive.childImageSharp.fluid, null],
-              [props.data.testImageResponsive.childImageSharp.fluid, null]
-            ]}
-          />
-        </Container>
       </ProjectBody>
     </ProjectWrapper>
   )
@@ -128,6 +120,20 @@ const ProjectPage = (props) => {
         }
       },
       doubleDiamondImage: file(relativePath: { eq: "images/projects/hulu/double-diamond.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      orgMapScreenshotImage: file(relativePath: { eq: "images/projects/hulu/org-map-screenshot.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverOrgChart: file(relativePath: { eq: "images/projects/hulu/discover-org-chart.png" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 100) {
             ...GatsbyImageSharpFluid
