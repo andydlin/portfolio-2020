@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 import { colors } from '../../styles/colors'
 import { spacing } from '../../styles/spacing'
-import { Giant, Large, Medium } from "../../styles/typography"
+import { Large, Medium, Schmedium } from "../../styles/typography"
 
 const Title = styled.h2`
-  color: ${colors.gray300};
+  color: ${colors.gray400};
   ${Medium}
   margin-bottom: ${spacing.s100};
 
@@ -17,6 +17,10 @@ const Title = styled.h2`
 
 const Description = styled.p`
   color: ${colors.gray300};
+
+  @media (min-width: 768px) {
+    ${Schmedium}
+  }
 `
 
 const SubSectionTitle = (props) => {

@@ -37,7 +37,7 @@ const Title = styled.h2`
   }
 `
 
-const Description = styled.p`
+const Description = styled.div`
   color: ${colors.gray300};
   
   @media (min-width: 768px) {
@@ -54,7 +54,7 @@ const MainSectionTitle = (props) => {
           css={`
             margin: 0 auto;
             max-width: 860px;
-            padding-top: 72px;
+            padding-top: 24px;
 
             @media (min-width: 768px) {
               padding-top: 0;
