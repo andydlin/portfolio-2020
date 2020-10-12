@@ -1,6 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from 'styled-components'
 import VizSensor from "../visibilitySensor"
 
@@ -119,10 +119,8 @@ class ImageSlider extends React.Component {
               });
 
               if(swipe < -swipeConfidenceThreshold) {
-                console.log('hello prev');
                 this.handleSliderPosition(this.state.slideIndex + 1);
               } else if(swipe > swipeConfidenceThreshold) {
-                console.log('hello next');
                 this.handleSliderPosition(this.state.slideIndex - 1);
               }
             }}

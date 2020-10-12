@@ -7,7 +7,6 @@ import Layout from "../../components/layout"
 import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
 import { Container, ProjectBody } from "../../styles/global"
-import { layout } from '../../styles/spacing'
 
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
@@ -77,20 +76,24 @@ const ProjectDetails = (props) => {
         <ImageSlider
           slides={[
             {
-              image: props.data.discoverOrgChart.childImageSharp.fluid,
-              caption: 'This is the caption for this image'
+              image: props.data.discoverWorkflowOverview.childImageSharp.fluid,
+              caption: 'We spoke with the engineer manager to get a better understanding of their workflow.'
             },
             {
               image: props.data.discoverOrgChart.childImageSharp.fluid,
-              caption: 'This is the caption for this image'
+              caption: 'A top level overview of the engineering organization teams.'
             },
             {
-              image: props.data.discoverOrgChart.childImageSharp.fluid,
-              caption: 'This is the caption for this image'
+              image: props.data.discoverBubbleChart.childImageSharp.fluid,
+              caption: 'Mapped out the 50+ tools to see frequency and overlap between teams.'
             },
             {
-              image: props.data.discoverOrgChart.childImageSharp.fluid,
-              caption: 'This is the caption for this image'
+              image: props.data.discoverInternalToolsAnalysis.childImageSharp.fluid,
+              caption: 'Analyzed internal tools to develop a stronger understanding of the tools the engineers use everyday.'
+            },
+            {
+              image: props.data.discoverComparativeAnalysis.childImageSharp.fluid,
+              caption: 'One of our researchers helped perform a comparative analysis on similar platforms.'
             },
           ]}
         />
@@ -137,7 +140,35 @@ const ProjectPage = (props) => {
           }
         }
       },
+      discoverWorkflowOverview: file(relativePath: { eq: "images/projects/hulu/discover-workflow-overview.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
       discoverOrgChart: file(relativePath: { eq: "images/projects/hulu/discover-org-chart.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverInternalToolsAnalysis: file(relativePath: { eq: "images/projects/hulu/discover-internal-tools-analysis.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverComparativeAnalysis: file(relativePath: { eq: "images/projects/hulu/discover-comparative-analysis.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverBubbleChart: file(relativePath: { eq: "images/projects/hulu/discover-bubble-chart.png" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 100) {
             ...GatsbyImageSharpFluid
