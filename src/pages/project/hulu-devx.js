@@ -76,18 +76,22 @@ const ProjectDetails = (props) => {
         </VizSensor>
         <ImageSlider
           slides={[
-            [
-              props.data.discoverOrgChart.childImageSharp.fluid,
-              'This is the caption for this image'
-            ],
-            [
-              props.data.discoverOrgChart.childImageSharp.fluid,
-              'This is the caption for this image'
-            ],
-            [
-              props.data.discoverOrgChart.childImageSharp.fluid,
-              'This is the caption for this image'
-            ]
+            {
+              image: props.data.discoverOrgChart.childImageSharp.fluid,
+              caption: 'This is the caption for this image'
+            },
+            {
+              image: props.data.discoverOrgChart.childImageSharp.fluid,
+              caption: 'This is the caption for this image'
+            },
+            {
+              image: props.data.discoverOrgChart.childImageSharp.fluid,
+              caption: 'This is the caption for this image'
+            },
+            {
+              image: props.data.discoverOrgChart.childImageSharp.fluid,
+              caption: 'This is the caption for this image'
+            },
           ]}
         />
       </ProjectBody>

@@ -1,16 +1,47 @@
 import React from "react"
 import Img from "gatsby-image"
 import { motion, AnimatePresence } from "framer-motion";
-import { wrap } from "@popmotion/popcorn";
 import styled from 'styled-components'
 import VizSensor from "../visibilitySensor"
 
-import { Container } from "../../styles/global"
 import { spacing } from '../../styles/spacing'
-import { Grid } from "../../styles/global"
 import { Regular, Small } from "../../styles/typography"
 import { colors } from "../../styles/colors"
 
+const Slide = styled(motion.div)`
+  flex-grow: 1;
+  margin-right: ${spacing.s700};
+  min-width: 300px;
+
+  @media (min-width: 480px) {
+    min-width: 60vw;
+  }
+
+  @media (min-width: 900px) {
+    min-width: 800px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: grab;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+`
+
+const ImgCaption = styled.div`
+  color: ${colors.gray200};
+  ${Small}
+  font-style: italic;
+  margin-top: ${spacing.s100};
+
+  @media (min-width: 768px) {
+    ${Regular}
+  }
+`
 
 class ImageSlider extends React.Component {
   constructor(props) {
@@ -29,19 +60,15 @@ class ImageSlider extends React.Component {
 
   handleSliderPosition = (newIndex = this.state.slideIndex) => {
     var indexDiff = Math.abs(newIndex - this.state.slideIndex);
-    console.log('xPos = ' + this.state.xPos);
-    console.log('newIndex = ' + newIndex);
-    console.log('slideIndex = ' + this.state.slideIndex);
 
-    if(this.state.slideIndex !== newIndex && newIndex > -1 && newIndex < this.slidesLength) { // check to see if there's any slides before or after and is new slide
+    // check to see if there's any slides before or after and is new slide
+    if(this.state.slideIndex !== newIndex && newIndex > -1 && newIndex < this.slidesLength) {
       console.log('new slide & not first nor last slide');  
       var position = 0;
       if(newIndex > this.state.slideIndex) {
-        console.log('next');
-        position = this.state.xPos - (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth);
+        position = this.state.xPos - (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) - 20;
       } else if(newIndex < this.state.slideIndex) {
-        console.log('prev');
-        position = this.state.xPos + (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth);
+        position = this.state.xPos + (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) + 20;
       }
 
       this.setState({
@@ -60,9 +87,6 @@ class ImageSlider extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({
-    //   xPos: (window.innerWidth/2) - (this.slidesReferences[this.state.slideIndex].offsetWidth/2) - 20
-    // });
     this.setPadding();
     window.addEventListener('resize', this.handleSliderPosition);
     window.addEventListener('resize', this.setPadding);
@@ -106,25 +130,11 @@ class ImageSlider extends React.Component {
               display: inline-flex;
               flex-direction: row;
               padding: 0 ${this.state.padding}px;
-
-              > * {
-                flex-grow: 1;
-                margin-right: ${spacing.s700};
-                min-width: 300px;
-
-                @media (min-width: 480px) {
-                  min-width: 60vw;
-                }
-
-                @media (min-width: 900px) {
-                  min-width: 800px;
-                }
-              }
             `}
           >
             {this.props.slides.map((slide, index) => {
               return (
-                <motion.div
+                <Slide
                   ref={slidesReferences => this.slidesReferences[index] = slidesReferences}
                   key={index}
                   onClick={() => {
@@ -138,10 +148,11 @@ class ImageSlider extends React.Component {
                   }}
                 >
                   <Img
-                    fluid={slide[0]}
+                    fluid={slide.image}
                     draggable={false}
                   />
-                </motion.div>
+                  {slide.caption !== null ? <ImgCaption>{slide.caption}</ImgCaption> : null}
+                </Slide>
               )
             })}
           </motion.div>
