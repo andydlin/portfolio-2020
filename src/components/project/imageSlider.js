@@ -53,7 +53,8 @@ class ImageSlider extends React.Component {
       xPos: 0,
       slideIndex: 0,
       isDraggin: false,
-      padding: 0
+      padding: 0,
+      dragStatus: false
     }
     this.containerRef = React.createRef();
   }
@@ -92,6 +93,9 @@ class ImageSlider extends React.Component {
     this.setPadding();
     window.addEventListener('resize', this.handleSliderPosition);
     window.addEventListener('resize', this.setPadding);
+    this.setState({
+      dragStatus: window.innerWidth > 768 ? 'x' : false
+    })
   }
 
   componentWillUnmount() {
@@ -117,7 +121,7 @@ class ImageSlider extends React.Component {
               x: { type: "spring", stiffness: 300, damping: 200 },
               opacity: { duration: 0.2 }
             }}
-            drag={window.innerWidth > 768 ? "x" : false}
+            drag={this.state.dragStatus}
             dragConstraints={this.containerRef}
             dragElastic={1}
             onDragEnd={(e, {offset, velocity}) => {
