@@ -69,7 +69,7 @@ const ProjectDetails = (props) => {
           <Container>
             <SubSectionTitle
               title={`Learning more about Hulu DevX and Engineering`}
-              description={<p>As our researchers prepared survey questions and interview protocols, the other designer and I created an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
+              description={<p>As our researchers prepared survey questions and interview protocols, I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
             />
           </Container>
         </VizSensor>

@@ -66,9 +66,9 @@ class ImageSlider extends React.Component {
       console.log('new slide & not first nor last slide');  
       var position = 0;
       if(newIndex > this.state.slideIndex) {
-        position = this.state.xPos - (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) - 20;
+        position = this.state.xPos - (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) - 40;
       } else if(newIndex < this.state.slideIndex) {
-        position = this.state.xPos + (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) + 20;
+        position = this.state.xPos + (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) + 40;
       }
 
       this.setState({
@@ -101,27 +101,35 @@ class ImageSlider extends React.Component {
 
     return (
       <VizSensor>
-        <div ref={this.containerRef}>
+        <div
+          ref={this.containerRef}
+          css={`
+            @media (max-width:768px) {
+              overflow-x: auto;
+            }
+          `}
+        >
           <motion.div
             animate={{ x: this.state.xPos}}
             transition={{
               x: { type: "spring", stiffness: 300, damping: 200 },
               opacity: { duration: 0.2 }
             }}
-            drag="x"
+            drag={window.innerWidth > 768 ? "x" : false}
             dragConstraints={this.containerRef}
             dragElastic={1}
             onDragEnd={(e, {offset, velocity}) => {
-              console.log('dragEnd');
-              const swipe = swipePower(offset.x, velocity.x);
-              this.setState({
-                isDragging: true
-              });
+              if(window.innerWidth > 768) {
+                const swipe = swipePower(offset.x, velocity.x);
+                this.setState({
+                  isDragging: true
+                });
 
-              if(swipe < -swipeConfidenceThreshold) {
-                this.handleSliderPosition(this.state.slideIndex + 1);
-              } else if(swipe > swipeConfidenceThreshold) {
-                this.handleSliderPosition(this.state.slideIndex - 1);
+                if(swipe < -swipeConfidenceThreshold) {
+                  this.handleSliderPosition(this.state.slideIndex + 1);
+                } else if(swipe > swipeConfidenceThreshold) {
+                  this.handleSliderPosition(this.state.slideIndex - 1);
+                }
               }
             }}
             css={`
@@ -136,12 +144,14 @@ class ImageSlider extends React.Component {
                   ref={slidesReferences => this.slidesReferences[index] = slidesReferences}
                   key={index}
                   onClick={() => {
-                    if(!this.state.isDragging) {
-                      this.handleSliderPosition(index);
-                    } else {
-                      this.setState({
-                        isDragging: false
-                      });
+                    if(window.innerWidth > 768) {
+                      if(!this.state.isDragging) {
+                        this.handleSliderPosition(index);
+                      } else {
+                        this.setState({
+                          isDragging: false
+                        });
+                      }
                     }
                   }}
                 >
