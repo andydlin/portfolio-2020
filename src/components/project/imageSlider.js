@@ -11,51 +11,73 @@ import { Grid } from "../../styles/global"
 import { Regular, Small } from "../../styles/typography"
 import { colors } from "../../styles/colors"
 
-const variants = {
-  enter: (direction) => {
-    return {
-      x: direction > 0 ? 100 : -100,
-      opacity: 0
-    };
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1
-  },
-  exit: (direction) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 100 : -100,
-      opacity: 0
-    };
-  }
-};
 
 class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
 
-    this.imageRef = React.createRef();
+    this.slidesReferences = [];
+    this.slidesLength = props.slides.length;
     this.state = {
-      xPos: 0
+      xPos: 0,
+      slideIndex: 0,
+      isDraggin: false,
+      padding: 0
     }
+    this.containerRef = React.createRef();
+  }
+
+  handleSliderPosition = (newIndex = this.state.slideIndex) => {
+    var indexDiff = Math.abs(newIndex - this.state.slideIndex);
+    console.log('xPos = ' + this.state.xPos);
+    console.log('newIndex = ' + newIndex);
+    console.log('slideIndex = ' + this.state.slideIndex);
+
+    if(this.state.slideIndex !== newIndex && newIndex > -1 && newIndex < this.slidesLength) { // check to see if there's any slides before or after and is new slide
+      console.log('new slide & not first nor last slide');  
+      var position = 0;
+      if(newIndex > this.state.slideIndex) {
+        console.log('next');
+        position = this.state.xPos - (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth);
+      } else if(newIndex < this.state.slideIndex) {
+        console.log('prev');
+        position = this.state.xPos + (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth);
+      }
+
+      this.setState({
+        xPos: position,
+        slideIndex: newIndex
+      });
+    }
+
+    return;
+  }
+
+  setPadding = () => {
+    this.setState({
+      padding: (window.innerWidth/2) - (this.slidesReferences[this.state.slideIndex].offsetWidth/2) - 20
+    });
   }
 
   componentDidMount() {
-    console.log(this.imageRef.current.offsetWidth);
-    console.log(window.innerWidth);
-    console.log((window.innerWidth/2) - (this.imageRef.current.offsetWidth/2));
-    this.setState({
-      xPos: (window.innerWidth/2) - (this.imageRef.current.offsetWidth/2)
-    });
+    // this.setState({
+    //   xPos: (window.innerWidth/2) - (this.slidesReferences[this.state.slideIndex].offsetWidth/2) - 20
+    // });
+    this.setPadding();
+    window.addEventListener('resize', this.handleSliderPosition);
+    window.addEventListener('resize', this.setPadding);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleSliderPosition);
+    window.removeEventListener('resize', this.setPadding);
   }
 
   render() {
 
     return (
       <VizSensor>
-        <div>
+        <div ref={this.containerRef}>
           <motion.div
             animate={{ x: this.state.xPos}}
             transition={{
@@ -63,51 +85,65 @@ class ImageSlider extends React.Component {
               opacity: { duration: 0.2 }
             }}
             drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
+            dragConstraints={this.containerRef}
             dragElastic={1}
             onDragEnd={(e, {offset, velocity}) => {
+              console.log('dragEnd');
               const swipe = swipePower(offset.x, velocity.x);
+              this.setState({
+                isDragging: true
+              });
 
-              if (swipe < -swipeConfidenceThreshold) {
-                this.setState({
-                  xPos: (this.state.xPos - 100)
-                });
-              } else if (swipe > swipeConfidenceThreshold) {
-                this.setState({
-                  xPos: (this.state.xPos + 100)
-                });
+              if(swipe < -swipeConfidenceThreshold) {
+                console.log('hello prev');
+                this.handleSliderPosition(this.state.slideIndex + 1);
+              } else if(swipe > swipeConfidenceThreshold) {
+                console.log('hello next');
+                this.handleSliderPosition(this.state.slideIndex - 1);
               }
             }}
             css={`
-              display: flex;
+              display: inline-flex;
               flex-direction: row;
+              padding: 0 ${this.state.padding}px;
 
               > * {
                 flex-grow: 1;
-                min-width: 40vw;
+                margin-right: ${spacing.s700};
+                min-width: 300px;
+
+                @media (min-width: 480px) {
+                  min-width: 60vw;
+                }
+
+                @media (min-width: 900px) {
+                  min-width: 800px;
+                }
               }
             `}
           >
-            <motion.div
-              ref={this.imageRef}
-            >
-              <Img
-                fluid={this.props.slides[0][0]}
-                draggable={false}
-              />
-            </motion.div>
-            <motion.div>
-              <Img
-                fluid={this.props.slides[1][0]}
-                draggable={false}
-              />
-            </motion.div>
-            <motion.div>
-              <Img
-                fluid={this.props.slides[2][0]}
-                draggable={false}
-              />
-            </motion.div>
+            {this.props.slides.map((slide, index) => {
+              return (
+                <motion.div
+                  ref={slidesReferences => this.slidesReferences[index] = slidesReferences}
+                  key={index}
+                  onClick={() => {
+                    if(!this.state.isDragging) {
+                      this.handleSliderPosition(index);
+                    } else {
+                      this.setState({
+                        isDragging: false
+                      });
+                    }
+                  }}
+                >
+                  <Img
+                    fluid={slide[0]}
+                    draggable={false}
+                  />
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </VizSensor>
