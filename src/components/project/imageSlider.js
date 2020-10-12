@@ -112,6 +112,7 @@ class ImageSlider extends React.Component {
           css={`
             @media (max-width:768px) {
               overflow-x: auto;
+              -webkit-overflow-scrolling: touch;
             }
           `}
         >
