@@ -65,7 +65,6 @@ class ImageSlider extends React.Component {
 
       // check to see if there's any slides before or after and is new slide
       if(this.state.slideIndex !== newIndex && newIndex > -1 && newIndex < this.slidesLength) {
-        console.log('new slide & not first nor last slide');  
         var position = 0;
         if(newIndex > this.state.slideIndex) {
           position = this.state.xPos - (indexDiff * this.slidesReferences[this.state.slideIndex].offsetWidth) - 40;
@@ -125,16 +124,26 @@ class ImageSlider extends React.Component {
             drag={this.state.dragStatus}
             dragConstraints={this.containerRef}
             dragElastic={1}
-            onDragEnd={(e, {offset, velocity}) => {
-              const swipe = swipePower(offset.x, velocity.x);
+            onDragStart={() => { 
               this.setState({
                 isDragging: true
               });
+            }}
+            onDragEnd={(e, {offset, velocity}) => {
+              const swipe = swipePower(offset.x, velocity.x);
 
               if(swipe < -swipeConfidenceThreshold) {
                 this.handleSliderPosition(this.state.slideIndex + 1);
               } else if(swipe > swipeConfidenceThreshold) {
                 this.handleSliderPosition(this.state.slideIndex - 1);
+              } else {
+                if(Math.abs(offset.x) > 50) {
+                  if(offset.x < 0) {
+                    this.handleSliderPosition(this.state.slideIndex + 1);
+                  } else if(offset.x > 0) {
+                    this.handleSliderPosition(this.state.slideIndex - 1);
+                  }
+                }
               }
             }}
             css={`
@@ -173,7 +182,7 @@ class ImageSlider extends React.Component {
   }
 }
 
-const swipeConfidenceThreshold = 10000;
+const swipeConfidenceThreshold = 1000;
 const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity;
 };

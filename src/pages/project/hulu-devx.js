@@ -64,8 +64,8 @@ const ProjectDetails = (props) => {
           <ImageGrid
             images={[
               {
-                image: props.data.orgMapScreenshotImage.childImageSharp.fluid,
-                caption: 'Screenshot of Hulu\'s engineering organization chart'
+                image: props.data.currentDevxScreenshot.childImageSharp.fluid,
+                caption: 'Screenshot of a demo of Hulu\'s DevX console current progress'
               }
             ]}
           />
@@ -123,6 +123,7 @@ const ProjectDetails = (props) => {
         </Container>
         <Container>
           <ImageWithSubsectionTitle
+            imageRight
             image={props.data.virtualShadowingKeyInsights.childImageSharp.fluid}
             title={'Virtual Shadowing'}
             description={<p>We shadowed 3 participants, each from a different team with different responsibilities. During the 1 hour shadowing session, we asked participants to think out loud to provide insight into their daily tasks.</p>}
@@ -151,6 +152,37 @@ const ProjectDetails = (props) => {
             },
           ]}
         />
+        <Container>
+          <ImageWithSubsectionTitle
+            imageRight
+            image={props.data.interviewsKeyInsights.childImageSharp.fluid}
+            title={'User Interviews'}
+            description={<p>Interviews allowed us to dig deeper after the virtual shadowing. We were able to ask questions and develop a better understanding of the what engineers like, what they dislike, what they think can be improved, and overall thoughts about their workflow and process.</p>}
+            css={`
+              max-width: 1440px;
+            `}
+          />
+        </Container>
+        <ImageSlider
+          slides={[
+            {
+              image: props.data.interviewsInsights1.childImageSharp.fluid,
+              caption: 'Each interview session was 1 hour long over Zoom.'
+            },
+            {
+              image: props.data.interviewsInsights2.childImageSharp.fluid,
+              caption: 'Referrencing some commonly used tools, participants felt that the tools lacked navigation, feedback, felt old, and lacked ownership.'
+            },
+            {
+              image: props.data.interviewsInsights3.childImageSharp.fluid,
+              caption: 'Participants appreciate Hulu Wiki, but felt that the lack of ownership and management created outdated and irrelevant information.'
+            },
+            {
+              image: props.data.interviewsInsights4.childImageSharp.fluid,
+              caption: 'Knowing that most, if not all, Hulu engineers used Apple devices meant that we can use Apple best practices to our advantage.'
+            },
+          ]}
+        />
       </ProjectBody>
     </ProjectWrapper>
   )
@@ -160,13 +192,6 @@ const ProjectPage = (props) => {
   const data = useStaticQuery(graphql`
     query {
       heroImage: file(relativePath: { eq: "images/projects/hulu-thumbnail.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2880, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      },
-      testImageResponsive: file(relativePath: { eq: "images/projects/testImage_responsive.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2880, quality: 100) {
             ...GatsbyImageSharpFluid
@@ -187,7 +212,7 @@ const ProjectPage = (props) => {
           }
         }
       },
-      orgMapScreenshotImage: file(relativePath: { eq: "images/projects/hulu/org-map-screenshot.png" }) {
+      currentDevxScreenshot: file(relativePath: { eq: "images/projects/hulu/current-devx-screenshot.png" }) {
         childImageSharp {
           fluid(maxWidth: 1000, quality: 100) {
             ...GatsbyImageSharpFluid
@@ -272,6 +297,41 @@ const ProjectPage = (props) => {
         }
       },
       virtualShadowingInsights4: file(relativePath: { eq: "images/projects/hulu/virtual-shadowing-insights-4.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      interviewsKeyInsights: file(relativePath: { eq: "images/projects/hulu/interviews-key-insights.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      interviewsInsights1: file(relativePath: { eq: "images/projects/hulu/interviews-insights-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      interviewsInsights2: file(relativePath: { eq: "images/projects/hulu/interviews-insights-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      interviewsInsights3: file(relativePath: { eq: "images/projects/hulu/interviews-insights-3.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      interviewsInsights4: file(relativePath: { eq: "images/projects/hulu/interviews-insights-4.png" }) {
         childImageSharp {
           fluid(maxWidth: 1280, quality: 100) {
             ...GatsbyImageSharpFluid
