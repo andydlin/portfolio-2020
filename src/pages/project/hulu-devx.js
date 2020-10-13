@@ -105,7 +105,7 @@ const ProjectDetails = (props) => {
         <VizSensor>
           <Container>
             <SubSectionTitle
-              description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented were diverse enough to cover the different teams, responsibilities, and time at the company.</p>}
+              description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented different teams, responsibilities, and tenure at Hulu.</p>}
             />
           </Container>
         </VizSensor>
