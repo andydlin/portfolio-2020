@@ -73,8 +73,8 @@ const ProjectDetails = (props) => {
         <VizSensor>
           <Container>
             <MainSectionTitle
-              title={`Research & Synthesis`}
-              description={<p>As our researchers prepared survey questions and interview protocols, I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
+              title={`Discover`}
+              description={<p>In the discover phase, our researchers prepared survey questions and interview protocols while I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
             />
           </Container>
         </VizSensor>
@@ -109,19 +109,49 @@ const ProjectDetails = (props) => {
             />
           </Container>
         </VizSensor>
-      </ProjectBody>
-      <Container>
-        <ImageGrid
-          images={[
+        <Container>
+          <ImageGrid
+            images={[
+              {
+                image: props.data.surveyFindings1.childImageSharp.fluid,
+              },
+              {
+                image: props.data.surveyFindings2.childImageSharp.fluid,
+              }
+            ]}
+          />
+        </Container>
+        <Container>
+          <ImageWithSubsectionTitle
+            image={props.data.virtualShadowingKeyInsights.childImageSharp.fluid}
+            title={'Virtual Shadowing'}
+            description={<p>We shadowed 3 participants, each from a different team with different responsibilities. During the 1 hour shadowing session, we asked participants to think out loud to provide insight into their daily tasks.</p>}
+            css={`
+              max-width: 1440px;
+            `}
+          />
+        </Container>
+        <ImageSlider
+          slides={[
             {
-              image: props.data.surveyFindings1.childImageSharp.fluid,
+              image: props.data.virtualShadowingInsights1.childImageSharp.fluid,
+              caption: 'Each virtual shadowing session was 1 hour long over Zoom.'
             },
             {
-              image: props.data.surveyFindings2.childImageSharp.fluid,
-            }
+              image: props.data.virtualShadowingInsights2.childImageSharp.fluid,
+              caption: 'Participants immediately turned to Slack or documentation when seeking help.'
+            },
+            {
+              image: props.data.virtualShadowingInsights3.childImageSharp.fluid,
+              caption: 'A lot of diversity in the ways participants organized and managed their workflow.'
+            },
+            {
+              image: props.data.virtualShadowingInsights4.childImageSharp.fluid,
+              caption: 'Participants switched between a minimum of 8 differen tools and services.'
+            },
           ]}
         />
-      </Container>
+      </ProjectBody>
     </ProjectWrapper>
   )
 }
@@ -207,6 +237,41 @@ const ProjectPage = (props) => {
         }
       },
       surveyFindings2: file(relativePath: { eq: "images/projects/hulu/survey-findings-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      virtualShadowingKeyInsights: file(relativePath: { eq: "images/projects/hulu/virtual-shadowing-key-insights.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      virtualShadowingInsights1: file(relativePath: { eq: "images/projects/hulu/virtual-shadowing-insights-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      virtualShadowingInsights2: file(relativePath: { eq: "images/projects/hulu/virtual-shadowing-insights-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      virtualShadowingInsights3: file(relativePath: { eq: "images/projects/hulu/virtual-shadowing-insights-3.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      virtualShadowingInsights4: file(relativePath: { eq: "images/projects/hulu/virtual-shadowing-insights-4.png" }) {
         childImageSharp {
           fluid(maxWidth: 1280, quality: 100) {
             ...GatsbyImageSharpFluid

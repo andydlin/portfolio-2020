@@ -28,11 +28,13 @@ const ImageWithSubsectionTitle = (props) => {
       <Box
         css={`
           flex-direction: column;
+          margin: 0 auto;
 
           @media (min-width: 768px) {
             flex-direction: row;
           }
         `}
+        {...props}
       >
         <CustomImg
           fluid={props.image}
