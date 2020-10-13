@@ -36,8 +36,8 @@ const Images = (props) => {
       `}
       key={index}
     >
-      <CustomImg fluid={image[0]} />
-      {image[1] !== null ? <ImgCaption>{image[1]}</ImgCaption> : null}
+      <CustomImg fluid={image.image} />
+      {image.caption !== null ? <ImgCaption>{image.caption}</ImgCaption> : null}
     </div>
   );
 

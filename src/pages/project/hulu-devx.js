@@ -44,7 +44,9 @@ const ProjectDetails = (props) => {
         />
         <ImageGrid
           images={[
-            [props.data.overviewImage.childImageSharp.fluid, null]
+            {
+              image: props.data.overviewImage.childImageSharp.fluid
+            }
           ]}
         />
         <MainSectionTitle
@@ -61,14 +63,17 @@ const ProjectDetails = (props) => {
         <Container>
           <ImageGrid
             images={[
-              [props.data.orgMapScreenshotImage.childImageSharp.fluid,'Screenshot of Hulu\'s engineering organization chart']
+              {
+                image: props.data.orgMapScreenshotImage.childImageSharp.fluid,
+                caption: 'Screenshot of Hulu\'s engineering organization chart'
+              }
             ]}
           />
         </Container>
         <VizSensor>
           <Container>
-            <SubSectionTitle
-              title={`Learning more about Hulu DevX and Engineering`}
+            <MainSectionTitle
+              title={`Research & Synthesis`}
               description={<p>As our researchers prepared survey questions and interview protocols, I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
             />
           </Container>
@@ -93,11 +98,30 @@ const ProjectDetails = (props) => {
             },
             {
               image: props.data.discoverComparativeAnalysis.childImageSharp.fluid,
-              caption: 'One of our researchers helped perform a comparative analysis on similar platforms.'
+              caption: 'Worked with our researcher to perform a comparative analysis on similar platforms.'
             },
           ]}
         />
+        <VizSensor>
+          <Container>
+            <SubSectionTitle
+              description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented were diverse enough to cover the different teams, responsibilities, and time at the company.</p>}
+            />
+          </Container>
+        </VizSensor>
       </ProjectBody>
+      <Container>
+        <ImageGrid
+          images={[
+            {
+              image: props.data.surveyFindings1.childImageSharp.fluid,
+            },
+            {
+              image: props.data.surveyFindings2.childImageSharp.fluid,
+            }
+          ]}
+        />
+      </Container>
     </ProjectWrapper>
   )
 }
@@ -171,6 +195,20 @@ const ProjectPage = (props) => {
       discoverBubbleChart: file(relativePath: { eq: "images/projects/hulu/discover-bubble-chart.png" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      surveyFindings1: file(relativePath: { eq: "images/projects/hulu/survey-findings-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      surveyFindings2: file(relativePath: { eq: "images/projects/hulu/survey-findings-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

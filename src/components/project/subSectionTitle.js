@@ -29,7 +29,7 @@ const SubSectionTitle = (props) => {
     <div
       css={`
         margin: 0 auto;
-        max-width: 600px;
+        max-width: 640px;
       `}
       {...props}
     >
