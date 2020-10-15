@@ -65,7 +65,7 @@ const ProjectDetails = (props) => {
             images={[
               {
                 image: props.data.currentDevxScreenshot.childImageSharp.fluid,
-                caption: 'Screenshot of a demo of Hulu\'s DevX console current progress'
+                caption: 'Old DevX console that Hulu started working on.'
               }
             ]}
           />

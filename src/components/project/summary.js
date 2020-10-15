@@ -74,7 +74,7 @@ const Card = styled(motion.div)`
   box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   max-width: 1440px;
-  padding: ${layout.l300} ${layout.l200};
+  padding: ${layout.l200};
   position: relative;
 
   &:after {
@@ -144,12 +144,11 @@ const Summary = (props) => {
         return (
           <Container
             css={`
-              margin-bottom: -${layout.l200};
               position: relative;
               top: -${layout.l500};
 
               @media (min-width: 1024px) {
-                top: -${layout.l600};
+                margin-bottom: ${layout.l300};
               }
             `}  
           >
