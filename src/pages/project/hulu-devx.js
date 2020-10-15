@@ -60,24 +60,10 @@ const ProjectDetails = (props) => {
             description={<div><p>The double diamond method allowed for a synchronized workflow for our team and provided a structured process for stakeholders to follow. This method is broken down into 4 phases: discover, define, develop, and deliver.</p></div>}
           />
         </Container>
-        <Container>
-          <ImageGrid
-            images={[
-              {
-                image: props.data.currentDevxScreenshot.childImageSharp.fluid,
-                caption: 'Old DevX console that Hulu started working on.'
-              }
-            ]}
-          />
-        </Container>
-        <VizSensor>
-          <Container>
-            <MainSectionTitle
-              title={`Discover`}
-              description={<p>In the discover phase, our researchers prepared survey questions and interview protocols while I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
-            />
-          </Container>
-        </VizSensor>
+        <MainSectionTitle
+          title={`Discover`}
+          description={<p>In the discover phase, our researchers prepared survey questions and interview protocols while I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
+        />
         <ImageSlider
           slides={[
             {
@@ -182,6 +168,10 @@ const ProjectDetails = (props) => {
               caption: 'Knowing that most, if not all, Hulu engineers used Apple devices meant that we can use Apple best practices to our advantage.'
             },
           ]}
+        />
+        <MainSectionTitle
+          title={`Define`}
+          description={<p>After synthesizing our initial findings, we utilized a card sort to figure out what features specifically would be most important to our users. After this check-in, we started translating our research into user personas and user journey maps to help contextualize our end user and their context.</p>}
         />
       </ProjectBody>
     </ProjectWrapper>
