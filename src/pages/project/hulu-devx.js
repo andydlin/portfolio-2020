@@ -56,8 +56,10 @@ const ProjectDetails = (props) => {
         <Container>
           <ImageWithSubsectionTitle
             image={props.data.doubleDiamondImage.childImageSharp.fluid}
-            title={`The Double Diamond`}
             description={<div><p>The double diamond method allowed for a synchronized workflow for our team and provided a structured process for stakeholders to follow. This method is broken down into 4 phases: discover, define, develop, and deliver.</p></div>}
+            css={`
+              max-width: 1440px;
+            `}
           />
         </Container>
         <MainSectionTitle
@@ -105,6 +107,9 @@ const ProjectDetails = (props) => {
                 image: props.data.surveyFindings2.childImageSharp.fluid,
               }
             ]}
+            css={`
+              max-width: 1680px;
+            `}
           />
         </Container>
         <Container>
@@ -169,9 +174,91 @@ const ProjectDetails = (props) => {
             },
           ]}
         />
+        <ImageGrid
+          images={[
+            {
+              image: props.data.defineMuralScreenshot.childImageSharp.fluid
+            }
+          ]}
+        />
         <MainSectionTitle
           title={`Define`}
-          description={<p>After synthesizing our initial findings, we utilized a card sort to figure out what features specifically would be most important to our users. After this check-in, we started translating our research into user personas and user journey maps to help contextualize our end user and their context.</p>}
+          description={<p>After synthesizing our initial findings, we utilized a Mural to figure out what features specifically would be most important to our users. After this check-in, we started translating our research into user personas and user journey maps to help contextualize our end user and their context.</p>}
+        />
+        <Container>
+          <ImageWithSubsectionTitle
+            image={props.data.personasMural.childImageSharp.fluid}
+            title={'User Personas'}
+            description={<p>We took our research and created 3 personas: Nulugan, Seasoned Dev, and Seasoned Manager. These personas represented the interviewees and the demographic of the engineering teams. For each persona we focused on defining their tenure, team, goals, personality, needs, pain points, and tools. The goal of these personas was to help create an image of our end user and to help us further empathize with them.</p>}
+            css={`
+              max-width: 1440px;
+            `}
+          />
+        </Container>
+        <ImageSlider
+          slides={[
+            {
+              image: props.data.personaSeasonedManager.childImageSharp.fluid,
+              caption: 'The senior manager values strong documentation and resources as they seeks to stay up-to-date and support his team.'
+            },
+            {
+              image: props.data.personaSeasonedDev.childImageSharp.fluid,
+              caption: 'The mid-senior level developer supports other Hulu developers and switches between many tools; they often seek more efficiency.'
+            },
+            {
+              image: props.data.personaNulugan.childImageSharp.fluid,
+              caption: 'The Nulugan - a software developer who has just joined Hulu - is highly motivated but overwhelmed by the number of internal tools that they have never previously heard of.'
+            },
+          ]}
+        />
+        <VizSensor>
+          <Container>
+            <SubSectionTitle
+              description={<p>With these three personas in mind, we developed tool insights, ideal features list, impact/effort matrix, user journey maps, userflows, sitemaps, and "How Might We" questions. We paid special attention to our user flows and leveraged feedback from our partner that we should utilize user flows to ensure there aren’t any dead ends in our product.</p>}
+            />
+          </Container>
+        </VizSensor>
+        <ImageSlider
+          slides={[
+            {
+              image: props.data.toolInsights1.childImageSharp.fluid,
+            },
+            {
+              image: props.data.toolInsights2.childImageSharp.fluid,
+            },
+            {
+              image: props.data.toolInsights3.childImageSharp.fluid,
+            },
+            {
+              image: props.data.toolInsights4.childImageSharp.fluid,
+            },
+            {
+              image: props.data.toolInsights5.childImageSharp.fluid,
+            },
+            {
+              image: props.data.toolInsights6.childImageSharp.fluid,
+            },
+          ]}
+        />
+        <VizSensor>
+          <Container>
+            <SubSectionTitle
+              description={<p>We created user journey maps to visualize each persona's userflow through a specific task. This helped us better understand what their expectations, actions, emotions, and opportunities for improvement.</p>}
+            />
+          </Container>
+        </VizSensor>
+        <ImageSlider
+          slides={[
+            {
+              image: props.data.journeyMap1.childImageSharp.fluid,
+            },
+            {
+              image: props.data.journeyMap2.childImageSharp.fluid,
+            },
+            {
+              image: props.data.journeyMap3.childImageSharp.fluid,
+            },
+          ]}
         />
       </ProjectBody>
     </ProjectWrapper>
@@ -324,6 +411,104 @@ const ProjectPage = (props) => {
       interviewsInsights4: file(relativePath: { eq: "images/projects/hulu/interviews-insights-4.png" }) {
         childImageSharp {
           fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      defineMuralScreenshot: file(relativePath: { eq: "images/projects/hulu/define-mural-screenshot.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2880, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      personasMural: file(relativePath: { eq: "images/projects/hulu/personas-mural.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      personaSeasonedManager: file(relativePath: { eq: "images/projects/hulu/persona-seasoned-manager.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      personaNulugan: file(relativePath: { eq: "images/projects/hulu/persona-nulugan.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      personaSeasonedDev: file(relativePath: { eq: "images/projects/hulu/persona-seasoned-dev.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      toolInsights1: file(relativePath: { eq: "images/projects/hulu/tool-insights-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      toolInsights2: file(relativePath: { eq: "images/projects/hulu/tool-insights-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      toolInsights3: file(relativePath: { eq: "images/projects/hulu/tool-insights-3.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      toolInsights4: file(relativePath: { eq: "images/projects/hulu/tool-insights-4.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      toolInsights5: file(relativePath: { eq: "images/projects/hulu/tool-insights-5.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      toolInsights6: file(relativePath: { eq: "images/projects/hulu/tool-insights-6.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      journeyMap1: file(relativePath: { eq: "images/projects/hulu/journey-map-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      journeyMap2: file(relativePath: { eq: "images/projects/hulu/journey-map-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      journeyMap3: file(relativePath: { eq: "images/projects/hulu/journey-map-3.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

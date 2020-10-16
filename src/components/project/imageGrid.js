@@ -46,11 +46,13 @@ const Images = (props) => {
       css={`
         grid-template: ${props.images.length === 3 ? 'auto auto auto / auto' : props.images.length === 2 ? 'auto auto / auto' : 'auto / auto'};
         gap: ${spacing.s700};
+        margin: 0 auto;
 
         @media (min-width: 768px) {
           grid-template: ${props.images.length === 3 ? 'auto auto / auto auto' : props.images.length === 2 ? '1fr / 1fr 1fr' : 'auto / 1fr'};
         }
       `}
+      {...props}
     >
       {imageList}
     </Grid>
@@ -61,7 +63,10 @@ const ImageGrid = (props) => {
 
   return (
     <VizSensor>
-      <Images images={props.images} />
+      <Images
+        images={props.images}
+        {...props}
+      />
     </VizSensor>
   )
 }
