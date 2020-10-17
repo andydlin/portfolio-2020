@@ -218,13 +218,28 @@ const ProjectDetails = (props) => {
             />
           </Container>
         </VizSensor>
+        <Container>
+          <ImageGrid
+            images={[
+              {
+                image: props.data.toolInsights1.childImageSharp.fluid,
+              },
+              {
+                image: props.data.toolInsights2.childImageSharp.fluid,
+              },
+            ]}
+          />
+        </Container>
         <ImageSlider
           slides={[
             {
-              image: props.data.toolInsights1.childImageSharp.fluid,
+              image: props.data.userFlow1.childImageSharp.fluid,
             },
             {
-              image: props.data.toolInsights2.childImageSharp.fluid,
+              image: props.data.userFlow2.childImageSharp.fluid,
+            },
+            {
+              image: props.data.userFlow3.childImageSharp.fluid,
             },
             {
               image: props.data.toolInsights3.childImageSharp.fluid,
@@ -260,6 +275,43 @@ const ProjectDetails = (props) => {
             },
           ]}
         />
+        <ImageGrid
+          images={[
+            {
+              image: props.data.developOverview.childImageSharp.fluid
+            }
+          ]}
+        />
+        <MainSectionTitle
+          title={`Develop`}
+          description={<p>After we defined our user personas, journey maps, and "How Might We" questions, we took our findings to create wireframes, hi-fi mockups, and prototypes. We took an iterative approach by running multiple usability tests before developing final designs.</p>}
+        />
+        <Container>
+          <ImageGrid
+            images={[
+              {
+                image: props.data.onboardingOverviewWireframe.childImageSharp.fluid,
+                caption: 'Wireframes for onboarding screens'
+              },
+              {
+                image: props.data.homeOverviewWireframe.childImageSharp.fluid,
+                caption: 'Wireframes for home and documentation pages'
+              },
+              {
+                image: props.data.menuOverviewWireframe.childImageSharp.fluid,
+                caption: 'Wireframes for the service dropdown menu'
+              },
+            ]}
+          />
+        </Container>
+        <VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Lo-Fi Prototype: Round 1`}
+              description={<p>We initially focused on 5 key features: onboarding, the homepage, documentation, the navigational dropdown, and tool shortcuts.We shared the low fidelity prototype  with our stakeholders to validate our design direction and make sure our partners were happy. After sharing the prototype with them, we tested it with 4 Hulu DevX developers using a moderated, online platform called validately.</p>}
+            />
+          </Container>
+        </VizSensor>
       </ProjectBody>
     </ProjectWrapper>
   )
@@ -509,6 +561,55 @@ const ProjectPage = (props) => {
       journeyMap3: file(relativePath: { eq: "images/projects/hulu/journey-map-3.png" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      developOverview: file(relativePath: { eq: "images/projects/hulu/develop-overview.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2880, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      userFlow1: file(relativePath: { eq: "images/projects/hulu/user-flow-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      userFlow2: file(relativePath: { eq: "images/projects/hulu/user-flow-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      userFlow3: file(relativePath: { eq: "images/projects/hulu/user-flow-3.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      onboardingOverviewWireframe: file(relativePath: { eq: "images/projects/hulu/onboarding-overview-wireframe.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      homeOverviewWireframe: file(relativePath: { eq: "images/projects/hulu/home-overview-wireframe.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1240, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      menuOverviewWireframe: file(relativePath: { eq: "images/projects/hulu/menu-overview-wireframe.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1240, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

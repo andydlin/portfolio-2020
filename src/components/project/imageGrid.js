@@ -49,7 +49,7 @@ const Images = (props) => {
         margin: 0 auto;
 
         @media (min-width: 768px) {
-          grid-template: ${props.images.length === 3 ? 'auto auto / auto auto' : props.images.length === 2 ? '1fr / 1fr 1fr' : 'auto / 1fr'};
+          grid-template: ${props.images.length === 3 ? 'auto / 1fr 1fr' : props.images.length === 2 ? '1fr / 1fr 1fr' : 'auto / 1fr'};
         }
       `}
       {...props}
