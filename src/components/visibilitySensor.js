@@ -33,6 +33,7 @@ class VizSensor extends React.Component {
       >
         <VizContainer
           isViz = {this.state.elemViz}
+          {...this.props}
         >
           {children}
         </VizContainer>
