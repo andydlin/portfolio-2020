@@ -338,7 +338,7 @@ const ProjectDetails = (props) => {
           <Container>
             <SubSectionTitle
               title={`Usability Testing: Round 2`}
-              description={<p>In addition to usability testing, we asked our stakeholders for feedback as well. We incorporated all the feedback, iterated on our prototype, and ran a second usability test.</p>}
+              description={<p>In addition to the first usability testing, we asked our stakeholders for feedback as well. We incorporated all the feedback, iterated on our prototype, and ran a second usability test.</p>}
             />
           </Container>
         </VizSensor>
@@ -367,6 +367,54 @@ const ProjectDetails = (props) => {
             },
           ]}
         />
+        <VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Usability Testing: Round 3`}
+              description={<p>Next, we moved towards a hi-fidelity mockup by using their design system as a starting point. This round we tested all the key features and user flows of DevX. We ran our third and final round of usability testing with five Hulu DevX developers.</p>}
+            />
+          </Container>
+        </VizSensor>
+        <ImageSlider
+          slides={[
+            {
+              image: props.data.usabilityTest3KeyInsights.childImageSharp.fluid,
+            },
+            {
+              image: props.data.usabilityTest3Quotes.childImageSharp.fluid,
+            },
+            {
+              image: props.data.usabilityTest3OnboardingFeedback.childImageSharp.fluid,
+            },
+            {
+              image: props.data.usabilityTest3HomePageFeedback.childImageSharp.fluid,
+            },
+            {
+              image: props.data.usabilityTest3ServiceDropdownFeedback.childImageSharp.fluid,
+            },
+            {
+              image: props.data.usabilityTest3ToolShortcutsFeedback.childImageSharp.fluid,
+            },
+            {
+              image: props.data.usabilityTest3SearchFeedback.childImageSharp.fluid,
+            },
+          ]}
+        />
+        <MainSectionTitle
+          title={`Deliver`}
+          description={<p>After gathering insights from our usability tests and stakeolder feedback, we iterated on hi-fi mockups and prototypes to flush out the user experience throughout the entire DevX Console. We segmented our final mockups into 4 main user flows: onboarding for new users, searching for specific key terms, finding documentation & guides from the service dropdown, and accessing pinned tools from the navbar.
+            </p>}
+        />
+        <Container>
+          <ImageGrid
+            images={[
+              {
+                image: props.data.onboardingFlow.childImageSharp.fluid,
+                caption: 'Onboarding Userflow'
+              }
+            ]}
+          />
+        </Container>
       </ProjectBody>
     </ProjectWrapper>
   )
@@ -756,6 +804,62 @@ const ProjectPage = (props) => {
       usabilityTest2ToolShortcutsFeedback: file(relativePath: { eq: "images/projects/hulu/usability-test-2-tool-shortcuts-feedback.png" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3KeyInsights: file(relativePath: { eq: "images/projects/hulu/usability-test-3-key-insights.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3Quotes: file(relativePath: { eq: "images/projects/hulu/usability-test-3-quotes.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3OnboardingFeedback: file(relativePath: { eq: "images/projects/hulu/usability-test-3-onboarding-feedback.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3HomePageFeedback: file(relativePath: { eq: "images/projects/hulu/usability-test-3-homepage-feedback.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3ServiceDropdownFeedback: file(relativePath: { eq: "images/projects/hulu/usability-test-3-service-dropdown-feedback.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3SearchFeedback: file(relativePath: { eq: "images/projects/hulu/usability-test-3-search-feedback.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      usabilityTest3ToolShortcutsFeedback: file(relativePath: { eq: "images/projects/hulu/usability-test-3-tool-shortcuts-feedback.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      onboardingFlow: file(relativePath: { eq: "images/projects/hulu/onboarding-flow.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

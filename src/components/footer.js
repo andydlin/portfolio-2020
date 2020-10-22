@@ -13,7 +13,12 @@ const CustomFooter = styled.footer`
   text-align: center;
 
   a {
-    color: ${colors.blue};
+    color: ${colors.gray400};
+    transition: color 0.25s;
+
+    &:hover {
+      color: ${colors.blue};
+    }
   }
 `
 
@@ -29,7 +34,7 @@ class Footer extends React.Component {
     return (
       <CustomFooter>
         <p>Made with lots of sweat and tears in Castro Valley, CA.</p>
-        <p><a href="https://github.com/andydlin/portfolio-2020" target="_blank">Handcrafted</a> with <a href="https://www.figma.com/" target="_blank">Figma</a> & <a href="https://www.gatsbyjs.org" target="_blank">Gatsby</a>.</p>
+        <p><a href="https://github.com/andydlin/portfolio-2020" target="_blank">Handcrafted</a> with <a href="https://www.figma.com/" target="_blank">Figma</a>, <a href="https://www.gatsbyjs.org" target="_blank">Gatsby</a>, & <a href="https://www.netlify.com/" target="_blank">Netlify</a>.</p>
       </CustomFooter>
     )
   }
