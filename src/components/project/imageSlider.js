@@ -105,7 +105,11 @@ class ImageSlider extends React.Component {
   render() {
 
     return (
-      <VizSensor>
+      <VizSensor
+        css={`
+          overflow-x: hidden;
+        `}
+      >
         <div
           ref={this.containerRef}
           css={`

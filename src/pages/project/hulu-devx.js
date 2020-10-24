@@ -402,19 +402,73 @@ const ProjectDetails = (props) => {
         />
         <MainSectionTitle
           title={`Deliver`}
-          description={<p>After gathering insights from our usability tests and stakeolder feedback, we iterated on hi-fi mockups and prototypes to flush out the user experience throughout the entire DevX Console. We segmented our final mockups into 4 main user flows: onboarding for new users, searching for specific key terms, finding documentation & guides from the service dropdown, and accessing pinned tools from the navbar.
-            </p>}
+          description={<p>After gathering insights from our usability tests and stakeolder feedback, we iterated on hi-fi mockups and prototypes to flush out the user experience throughout the entire DevX Console. We segmented our final mockups into 4 main user flows: onboarding for new users, searching for specific key terms, finding documentation & guides from the service dropdown, and accessing pinned tools from the navbar.</p>}
+        />
+        <ImageWithSubsectionTitle
+          longImage
+          image={props.data.onboardingScreens.childImageSharp.fluid}
+          title={`Onboarding Nulugans`}
+          description={<div><p>The onboarding screens focused on welcoming Nulugans and informing them about the different tools within their team. This includes an introduction to the DevX console, asking them about their specialties, and showcasing the “Pinned Tools” feature for efficient tool switching.</p><p>Stakeholders loved the idea of tags and how Hulugans can share what skills and areas they're confident in. We also inclued a Tool Mapping screen to show the relationship of their team's to help ease them into their teams.</p></div>}
+        />
+        <ImageWithSubsectionTitle
+          longImage
+          imageRight
+          image={props.data.homeScreen.childImageSharp.fluid}
+          title={`A Central Hub`}
+          description={<div><p>The homepage is structured with the intent of allowing users to discover content while giving them direct access to search, tool switching, and their bookmarks. Participants loved the sleek, minimalist design along with the ability to customize the content on this page.</p><p>Quick links allowed Nulugans to get started, Hulugans to find the right documentation, and others to find the right engineer to contact. The customizable Tools Bar provides a shortcut to their frequently used tools.</p></div>}
+        />
+        <ImageWithSubsectionTitle
+          longImage
+          image={props.data.searchScreen.childImageSharp.fluid}
+          title={`Customized Search`}
+          description={<p>We streamlined the search experience so that it’s accessible on every screen. Search autocomplete is categorized by your tools, suggestions related to your tools, by documentation, and by guides. On the search results page, users can filter by tags to narrow down their search results. In addition to documentation and guides, team members with relevant specialties are also shown. Many participants found this feature helpful because they can reach out to team members with an expertise in that related tag or search.</p>}
+        />
+        <ImageWithSubsectionTitle
+          longImage
+          imageRight
+          image={props.data.navigationScreen.childImageSharp.fluid}
+          title={`Intuitive Navigation`}
+          description={<div><p>The service dropdown was the next most important feature in this console. Almost all participants in our surveys, interviews, and user testing rounds stated that they expect to see some form of menu that lists all the tools. The service dropdown is our proposed solution.</p><p>Users can open the service dropdown from every page. Once they open the service dropdown, they can quickly navigate to guides, documentation, org chart, tool mapping, and developer environments. For documentation, users can browse by tool, by team, or browse specific dev frameworks that are frequently used. Users also mentioned that they liked how this is similar to the menu on AWS, it was new but familiar.</p></div>}
+        />
+        <ImageWithSubsectionTitle
+          longImage
+          image={props.data.docsGuidesScreen.childImageSharp.fluid}
+          title={`Relevant Documentation & Guides`}
+          description={<div><p>Currently, developers have to sift through thousands of documentation in Hulu Wiki. Developers have a hard time finding relevant and updated content.</p><p>With that feedback in mind, we designed these pages to include the date when the documentation or guide was last updated and the author who created the documentation or guide. Users found this detail extremely helpful. In addition to authors and last updated dates, we included the feature to provide inline comments and overall feedback ratings for documentation and guides. Users love this option and think this will help keep content relevant and up to date.</p></div>}
+        />
+        <ImageWithSubsectionTitle
+          longImage
+          imageRight
+          image={props.data.orgChartScreen.childImageSharp.fluid}
+          title={`Find the Right Person`}
+          description={<p>Other requirements from this project included an organization chart and tool mapping. The org chart lists all the team members for each team along with their tags, email, and link to message them on Slack. This allows developers to quickly find specific team members by narrowing down through teams and tags.There was also a need for a clear relationship between tools. The tool mapping shows how tools interact with each other for a specific flow. Users felt that this will be super helpful especially when debugging and error.</p>}
         />
         <Container>
           <ImageGrid
             images={[
               {
-                image: props.data.onboardingFlow.childImageSharp.fluid,
-                caption: 'Onboarding Userflow'
+                image: props.data.moreRecommendations.childImageSharp.fluid
               }
             ]}
           />
         </Container>
+        <MainSectionTitle
+          title={`Results`}
+          description={<p>Capping off our last design sprint, we presented our final prototypes to our stakeholders at Hulu during our last week on the project. We handed off mockups, descriptions, and prototypes for onboarding, home page, search flow, documentation and guides, service dropdown, bookmark flow, org chart, and tool mapping. Each flow accommodates research and data explaining every decision we made.</p>}
+        />
+        <Container>
+          <ImageGrid
+            images={[
+              {
+                image: props.data.userQuotes.childImageSharp.fluid
+              }
+            ]}
+          />
+        </Container>
+        <MainSectionTitle
+          title={`Reflection`}
+          description={<div><p>I was lucky enough to have an amazing team to work with along with great partners from Hulu. Having a dedicated product manager, researcher, and multiple designers on one project allowed us to really get to know the problem and our stakeholders.</p><p>Frequent and open communication, in-depth user research, extensive usability testing, and user-centered design were some of the key factors that allowed us to create a user-centered solution.</p></div>}
+        />
       </ProjectBody>
     </ProjectWrapper>
   )
@@ -858,6 +912,62 @@ const ProjectPage = (props) => {
         }
       },
       onboardingFlow: file(relativePath: { eq: "images/projects/hulu/onboarding-flow.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      onboardingScreens: file(relativePath: { eq: "images/projects/hulu/onboarding-screens.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      homeScreen: file(relativePath: { eq: "images/projects/hulu/home-screen.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      searchScreen: file(relativePath: { eq: "images/projects/hulu/search-screen.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      navigationScreen: file(relativePath: { eq: "images/projects/hulu/navigation-screen.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      docsGuidesScreen: file(relativePath: { eq: "images/projects/hulu/docs-guides-screen.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      orgChartScreen: file(relativePath: { eq: "images/projects/hulu/org-chart-screen.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      moreRecommendations: file(relativePath: { eq: "images/projects/hulu/more-recommendations.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      userQuotes: file(relativePath: { eq: "images/projects/hulu/user-quotes.png" }) {
         childImageSharp {
           fluid(maxWidth: 1680, quality: 100) {
             ...GatsbyImageSharpFluid
