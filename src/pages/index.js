@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 import styled, { keyframes } from 'styled-components'
 import { TransitionState } from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion"
-import Link from "gatsby-plugin-transition-link";
 
 import Layout from "../components/layout"
 import { colors } from '../styles/colors'

@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { colors } from '../../styles/colors'
 import { spacing, layout } from '../../styles/spacing'
 import { Container, Box } from "../../styles/global"
-import { Giant, Large, Medium, Schmedium, Regular, Small } from "../../styles/typography"
+import { Giant, Large, Schmedium, Regular, Small } from "../../styles/typography"
 
 const Label = styled.div`
   color: ${colors.gray200};

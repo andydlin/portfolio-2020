@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import VizSensor from "../visibilitySensor"
 
 import { colors } from '../../styles/colors'
-import { spacing, layout } from '../../styles/spacing'
+import { spacing } from '../../styles/spacing'
 import { Container } from "../../styles/global"
 import { Giant, Large, Schmedium } from "../../styles/typography"
 

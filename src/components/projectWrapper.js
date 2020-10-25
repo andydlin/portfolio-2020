@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, useMotionValue, useViewportScroll } from "framer-motion"
+import { motion } from "framer-motion"
 
 const pageVariants = {
   visible: {
@@ -20,7 +20,7 @@ const pageVariants = {
 
 class ProjectWrapper extends React.Component {
   constructor(props) {
-    super(props);
+    super();
   }
 
   trackScrollY = () => {

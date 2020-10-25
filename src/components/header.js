@@ -149,7 +149,7 @@ class Header extends React.Component {
         <Nav className={`${this.props.path}`}>
           <NavLink
             to='/'
-            className={'link-home' + `${this.props.path === 'work' ? ' active' : ''}`}
+            className={this.props.path === 'work' ? 'link-home active' : 'link-home'}
             entry={{
               delay: 0.5,
               length: 0.35
@@ -163,7 +163,7 @@ class Header extends React.Component {
           </NavLink>
           <NavLink
             to='/about'
-            className={'link-about' + `${this.props.path === 'about' ? ' active' : ''}`}
+            className={this.props.path === 'about' ? 'link-about active' : 'link-about'}
             entry={{
               delay: 0.5,
               length: 0.35
@@ -180,7 +180,7 @@ class Header extends React.Component {
           </NavLink>
           <NavLink to='/'>Contact</NavLink>
           <NavUnderline
-            className={`${this.props.path}` + '-active'}
+            className={this.props.path + '-active'}
             css={`
               left: ${this.state.activeLeft}px;
               width: ${this.state.activeWidth}px;

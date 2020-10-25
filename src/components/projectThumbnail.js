@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef } from "react"
 import Img from "gatsby-image"
 import hexToRgba from 'hex-to-rgba';
 import styled from 'styled-components'
