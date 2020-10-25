@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
 
 const pageVariants = {
   visible: {
@@ -20,6 +20,7 @@ const pageVariants = {
 
 const ProjectWrapper = (props) => {
   const { children, mount } = props;
+  const { scrollYProgress } = useViewportScroll();
 
   return (
     <motion.div
@@ -27,6 +28,17 @@ const ProjectWrapper = (props) => {
       variants={pageVariants}
       animate={mount ? 'visible' : 'hidden'}
     >
+      <div className="wrapper">
+        <motion.div className="container">
+          <motion.div
+            className="item"
+            style={{
+              scaleX: scrollYProgress,
+              transformOrigin: "0 0"
+            }}
+          />
+        </motion.div>
+      </div>
       {children}
     </motion.div>
   )

@@ -122,8 +122,10 @@ class ImageSlider extends React.Component {
           <motion.div
             animate={{ x: this.state.xPos}}
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 200 },
-              opacity: { duration: 0.2 }
+              x: {
+                type: 'spring',
+                duration: 0.8
+              },
             }}
             drag={this.state.dragStatus}
             dragConstraints={this.containerRef}

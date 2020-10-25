@@ -17,11 +17,6 @@ import ImageWithSubsectionTitle from "../../components/project/imageWithSubsecti
 import ImageGrid from "../../components/project/imageGrid"
 import ImageSlider from "../../components/project/imageSlider"
 
-
-function test() {
-  console.log(useViewportScroll());
-}
-
 class ProjectDetails extends React.Component {
   constructor(props) {
     super();
@@ -52,7 +47,7 @@ class ProjectDetails extends React.Component {
       <ProjectWrapper
         mount={this.props.mount}
       >
-        <motion.div
+        {/* <motion.div
           css={`
             background: red;
             height: 16px;
@@ -67,7 +62,7 @@ class ProjectDetails extends React.Component {
           style={{
             scaleX: this.state.scrollProgress
           }}
-        />
+        /> */}
         <HeroImage image={this.props.data.heroImage.childImageSharp.fluid}/>
         <Summary
           subtitle={`Hulu`}
