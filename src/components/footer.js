@@ -22,11 +22,6 @@ const CustomFooter = styled.footer`
 `
 
 class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.myRef = React.createRef();
-  }
 
   render() {
 

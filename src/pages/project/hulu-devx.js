@@ -2,6 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
+import { motion } from "framer-motion"
 
 import Layout from "../../components/layout"
 import VizSensor from "../../components/visibilitySensor"
@@ -16,462 +17,497 @@ import ImageWithSubsectionTitle from "../../components/project/imageWithSubsecti
 import ImageGrid from "../../components/project/imageGrid"
 import ImageSlider from "../../components/project/imageSlider"
 
-const ProjectDetails = (props) => {
-  const { mount } = props;
+class ProjectDetails extends React.Component {
+  constructor(props) {
+    super();
 
-  return (
-    <ProjectWrapper
-      mount={mount}
-    >
-      <HeroImage image={props.data.heroImage.childImageSharp.fluid}/>
-      <Summary
-        subtitle={`Hulu`}
-        title={`DevX Console`}
-        role={`UX Designer`}
-        category={`Productivity`}
-        platforms={`Web`}
-        timeframe={`Mar - Aug 2020`}
-        summary={<div><p>For UCI's MHCID capstone project, we had the opportunity to work with Hulu's DevX team. They play a key role in improving the workflow and process for the engineering organization and focus on defining processes and creating tools to help engineers build amazing products.</p><p>I worked in a team of 4 (product manager, researcher, UX designers) to create Hulu's first unified web portal for the engineering organization. We delivered research findings, hi-fi mockups, prototypes, and detailed documentation for Hulu's DevX Console. This platform will streamline the onboarding process for their growing engineering them and establish a single source of truth for their tools, services, and documentation.</p></div>}
-      />
-      <ProjectBody>
-        <MainSectionTitle
-          title={`Our Challenge`}
-          description={<div><p>Developers at Hulu have a fragmented workflow that requires them to access many resources from a lot of different sources. On average, Hulu engineers (Hulugans) multi-task and tool switch through a minimum of 8 tools per day. Throughout the entire engineering org, Hulugans use more than 50 different tools and services. Hulu lacks a unified web portal resulting in unorganized, fragmented, and sometimes irrelevant documentation.</p><p>How might we offer them a place to see their work, track their progress, keep up to date on best practices and easily find all the tools they need?</p></div>}
+    this.state = {
+      scrollProgress: 0
+    }
+  }
+
+  trackScrollY = () => {
+    const scrollProgress = ((window.scrollY + window.innerHeight) / document.documentElement.offsetHeight) * 100;
+    
+    this.setState({
+      scrollProgress: scrollProgress
+    })
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.trackScrollY);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.trackScrollY);
+  }
+
+  render() {
+    return (
+      <ProjectWrapper
+        mount={this.props.mount}
+      >
+        <motion.div
+          css={`
+            background: red;
+            height: 16px;
+            left: 0;
+            position: fixed;
+            top: 100px;
+            z-index: 999;
+            width: ${this.state.scrollProgress}vw;
+          `}
         />
-        <MainSectionTitle
-          title={`Our Goal`}
-          description={<p>We had to opportunity to partner with Hulu's product designer, engineering manager, and lead engineer to explore ways to improve the everyday workflow for Hulugans. We sought to provide a more efficient way to switch between tools, consolidate documentation, and create an onboarding process for new hires - all in one unified web portal.</p>}
+        <HeroImage image={this.props.data.heroImage.childImageSharp.fluid}/>
+        <Summary
+          subtitle={`Hulu`}
+          title={`DevX Console`}
+          role={`UX Designer`}
+          category={`Productivity`}
+          platforms={`Web`}
+          timeframe={`Mar - Aug 2020`}
+          summary={<div><p>For UCI's MHCID capstone project, we had the opportunity to work with Hulu's DevX team. They play a key role in improving the workflow and process for the engineering organization and focus on defining processes and creating tools to help engineers build amazing products.</p><p>I worked in a team of 4 (product manager, researcher, UX designers) to create Hulu's first unified web portal for the engineering organization. We delivered research findings, hi-fi mockups, prototypes, and detailed documentation for Hulu's DevX Console. This platform will streamline the onboarding process for their growing engineering them and establish a single source of truth for their tools, services, and documentation.</p></div>}
         />
-        <ImageGrid
-          images={[
-            {
-              image: props.data.overviewImage.childImageSharp.fluid
-            }
-          ]}
-        />
-        <MainSectionTitle
-          title={`Our Process`}
-          description={<p>We established a timeline and roadmap with our stakeholders to ensure that everyone is on the same page on expectations and deliverables. This built accountability for both parties and lead to a strong partnership.</p>}
-        />
-        <Container>
-          <ImageWithSubsectionTitle
-            image={props.data.doubleDiamondImage.childImageSharp.fluid}
-            description={<div><p>The double diamond method allowed for a synchronized workflow for our team and provided a structured process for stakeholders to follow. This method is broken down into 4 phases: discover, define, develop, and deliver.</p></div>}
-            css={`
-              max-width: 1440px;
-            `}
+        <ProjectBody>
+          <MainSectionTitle
+            title={`Our Challenge`}
+            description={<div><p>Developers at Hulu have a fragmented workflow that requires them to access many resources from a lot of different sources. On average, Hulu engineers (Hulugans) multi-task and tool switch through a minimum of 8 tools per day. Throughout the entire engineering org, Hulugans use more than 50 different tools and services. Hulu lacks a unified web portal resulting in unorganized, fragmented, and sometimes irrelevant documentation.</p><p>How might we offer them a place to see their work, track their progress, keep up to date on best practices and easily find all the tools they need?</p></div>}
           />
-        </Container>
-        <MainSectionTitle
-          title={`Discover`}
-          description={<p>In the discover phase, our researchers prepared survey questions and interview protocols while I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
-        />
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.discoverWorkflowOverview.childImageSharp.fluid,
-              caption: 'We spoke with the engineer manager to get a better understanding of their workflow.'
-            },
-            {
-              image: props.data.discoverOrgChart.childImageSharp.fluid,
-              caption: 'A top level overview of the engineering organization teams.'
-            },
-            {
-              image: props.data.discoverBubbleChart.childImageSharp.fluid,
-              caption: 'Mapped out the 50+ tools to see frequency and overlap between teams.'
-            },
-            {
-              image: props.data.discoverInternalToolsAnalysis.childImageSharp.fluid,
-              caption: 'Analyzed internal tools to develop a stronger understanding of the tools the engineers use everyday.'
-            },
-            {
-              image: props.data.discoverComparativeAnalysis.childImageSharp.fluid,
-              caption: 'Worked with our researcher to perform a comparative analysis on similar platforms.'
-            },
-          ]}
-        />
-        <VizSensor>
-          <Container>
-            <SubSectionTitle
-              description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented different teams, responsibilities, and tenure at Hulu.</p>}
-            />
-          </Container>
-        </VizSensor>
-        <Container>
+          <MainSectionTitle
+            title={`Our Goal`}
+            description={<p>We had to opportunity to partner with Hulu's product designer, engineering manager, and lead engineer to explore ways to improve the everyday workflow for Hulugans. We sought to provide a more efficient way to switch between tools, consolidate documentation, and create an onboarding process for new hires - all in one unified web portal.</p>}
+          />
           <ImageGrid
             images={[
               {
-                image: props.data.surveyFindings1.childImageSharp.fluid,
-              },
-              {
-                image: props.data.surveyFindings2.childImageSharp.fluid,
+                image: this.props.data.overviewImage.childImageSharp.fluid
               }
             ]}
-            css={`
-              max-width: 1680px;
-            `}
           />
-        </Container>
-        <Container>
+          <MainSectionTitle
+            title={`Our Process`}
+            description={<p>We established a timeline and roadmap with our stakeholders to ensure that everyone is on the same page on expectations and deliverables. This built accountability for both parties and lead to a strong partnership.</p>}
+          />
+          <Container>
+            <ImageWithSubsectionTitle
+              image={this.props.data.doubleDiamondImage.childImageSharp.fluid}
+              description={<div><p>The double diamond method allowed for a synchronized workflow for our team and provided a structured process for stakeholders to follow. This method is broken down into 4 phases: discover, define, develop, and deliver.</p></div>}
+              css={`
+                max-width: 1440px;
+              `}
+            />
+          </Container>
+          <MainSectionTitle
+            title={`Discover`}
+            description={<p>In the discover phase, our researchers prepared survey questions and interview protocols while I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
+          />
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.discoverWorkflowOverview.childImageSharp.fluid,
+                caption: 'We spoke with the engineer manager to get a better understanding of their workflow.'
+              },
+              {
+                image: this.props.data.discoverOrgChart.childImageSharp.fluid,
+                caption: 'A top level overview of the engineering organization teams.'
+              },
+              {
+                image: this.props.data.discoverBubbleChart.childImageSharp.fluid,
+                caption: 'Mapped out the 50+ tools to see frequency and overlap between teams.'
+              },
+              {
+                image: this.props.data.discoverInternalToolsAnalysis.childImageSharp.fluid,
+                caption: 'Analyzed internal tools to develop a stronger understanding of the tools the engineers use everyday.'
+              },
+              {
+                image: this.props.data.discoverComparativeAnalysis.childImageSharp.fluid,
+                caption: 'Worked with our researcher to perform a comparative analysis on similar platforms.'
+              },
+            ]}
+          />
+          <VizSensor>
+            <Container>
+              <SubSectionTitle
+                description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented different teams, responsibilities, and tenure at Hulu.</p>}
+              />
+            </Container>
+          </VizSensor>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.surveyFindings1.childImageSharp.fluid,
+                },
+                {
+                  image: this.props.data.surveyFindings2.childImageSharp.fluid,
+                }
+              ]}
+              css={`
+                max-width: 1680px;
+              `}
+            />
+          </Container>
+          <Container>
+            <ImageWithSubsectionTitle
+              imageRight
+              image={this.props.data.virtualShadowingKeyInsights.childImageSharp.fluid}
+              title={'Virtual Shadowing'}
+              description={<p>We shadowed 3 participants, each from a different team with different responsibilities. During the 1 hour shadowing session, we asked participants to think out loud to provide insight into their daily tasks.</p>}
+              css={`
+                max-width: 1440px;
+              `}
+            />
+          </Container>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.virtualShadowingInsights1.childImageSharp.fluid,
+                caption: 'Each virtual shadowing session was 1 hour long over Zoom.'
+              },
+              {
+                image: this.props.data.virtualShadowingInsights2.childImageSharp.fluid,
+                caption: 'Participants immediately turned to Slack or documentation when seeking help.'
+              },
+              {
+                image: this.props.data.virtualShadowingInsights3.childImageSharp.fluid,
+                caption: 'A lot of diversity in the ways participants organized and managed their workflow.'
+              },
+              {
+                image: this.props.data.virtualShadowingInsights4.childImageSharp.fluid,
+                caption: 'Participants switched between a minimum of 8 differen tools and services.'
+              },
+            ]}
+          />
+          <Container>
+            <ImageWithSubsectionTitle
+              imageRight
+              image={this.props.data.interviewsKeyInsights.childImageSharp.fluid}
+              title={'User Interviews'}
+              description={<p>Interviews allowed us to dig deeper after the virtual shadowing. We were able to ask questions and develop a better understanding of the what engineers like, what they dislike, what they think can be improved, and overall thoughts about their workflow and process.</p>}
+              css={`
+                max-width: 1440px;
+              `}
+            />
+          </Container>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.interviewsInsights1.childImageSharp.fluid,
+                caption: 'Each interview session was 1 hour long over Zoom.'
+              },
+              {
+                image: this.props.data.interviewsInsights2.childImageSharp.fluid,
+                caption: 'Referrencing some commonly used tools, participants felt that the tools lacked navigation, feedback, felt old, and lacked ownership.'
+              },
+              {
+                image: this.props.data.interviewsInsights3.childImageSharp.fluid,
+                caption: 'Participants appreciate Hulu Wiki, but felt that the lack of ownership and management created outdated and irrelevant information.'
+              },
+              {
+                image: this.props.data.interviewsInsights4.childImageSharp.fluid,
+                caption: 'Knowing that most, if not all, Hulu engineers used Apple devices meant that we can use Apple best practices to our advantage.'
+              },
+            ]}
+          />
+          <ImageGrid
+            images={[
+              {
+                image: this.props.data.defineMuralScreenshot.childImageSharp.fluid
+              }
+            ]}
+          />
+          <MainSectionTitle
+            title={`Define`}
+            description={<p>After synthesizing our initial findings, we utilized a Mural to figure out what features specifically would be most important to our users. After this check-in, we started translating our research into user personas and user journey maps to help contextualize our end user and their context.</p>}
+          />
+          <Container>
+            <ImageWithSubsectionTitle
+              image={this.props.data.personasMural.childImageSharp.fluid}
+              title={'User Personas'}
+              description={<p>We took our research and created 3 personas: Nulugan, Seasoned Dev, and Seasoned Manager. These personas represented the interviewees and the demographic of the engineering teams. For each persona we focused on defining their tenure, team, goals, personality, needs, pain points, and tools. The goal of these personas was to help create an image of our end user and to help us further empathize with them.</p>}
+              css={`
+                max-width: 1440px;
+              `}
+            />
+          </Container>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.personaSeasonedManager.childImageSharp.fluid,
+                caption: 'The senior manager values strong documentation and resources as they seeks to stay up-to-date and support his team.'
+              },
+              {
+                image: this.props.data.personaSeasonedDev.childImageSharp.fluid,
+                caption: 'The mid-senior level developer supports other Hulu developers and switches between many tools; they often seek more efficiency.'
+              },
+              {
+                image: this.props.data.personaNulugan.childImageSharp.fluid,
+                caption: 'The Nulugan - a software developer who has just joined Hulu - is highly motivated but overwhelmed by the number of internal tools that they have never previously heard of.'
+              },
+            ]}
+          />
+          <VizSensor>
+            <Container>
+              <SubSectionTitle
+                description={<p>With these three personas in mind, we developed tool insights, ideal features list, impact/effort matrix, user journey maps, userflows, sitemaps, and "How Might We" questions. We paid special attention to our user flows and leveraged feedback from our partner that we should utilize user flows to ensure there aren’t any dead ends in our product.</p>}
+              />
+            </Container>
+          </VizSensor>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.toolInsights1.childImageSharp.fluid,
+                },
+                {
+                  image: this.props.data.toolInsights2.childImageSharp.fluid,
+                },
+              ]}
+            />
+          </Container>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.userFlow1.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.userFlow2.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.userFlow3.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.toolInsights3.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.toolInsights4.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.toolInsights5.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.toolInsights6.childImageSharp.fluid,
+              },
+            ]}
+          />
+          <VizSensor>
+            <Container>
+              <SubSectionTitle
+                description={<p>We created user journey maps to visualize each persona's userflow through a specific task. This helped us better understand what their expectations, actions, emotions, and opportunities for improvement.</p>}
+              />
+            </Container>
+          </VizSensor>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.journeyMap1.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.journeyMap2.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.journeyMap3.childImageSharp.fluid,
+              },
+            ]}
+          />
+          <ImageGrid
+            images={[
+              {
+                image: this.props.data.developOverview.childImageSharp.fluid
+              }
+            ]}
+          />
+          <MainSectionTitle
+            title={`Develop`}
+            description={<p>After we defined our user personas, journey maps, and "How Might We" questions, we took our findings to create wireframes, hi-fi mockups, and prototypes. We took an iterative approach by running multiple usability tests before developing final designs.</p>}
+          />
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.onboardingOverviewWireframe.childImageSharp.fluid,
+                  caption: 'Wireframes for onboarding screens'
+                },
+                {
+                  image: this.props.data.homeOverviewWireframe.childImageSharp.fluid,
+                  caption: 'Wireframes for home and documentation pages'
+                },
+                {
+                  image: this.props.data.menuOverviewWireframe.childImageSharp.fluid,
+                  caption: 'Wireframes for the service dropdown menu'
+                },
+              ]}
+            />
+          </Container>
+          <VizSensor>
+            <Container>
+              <SubSectionTitle
+                title={`Usability Testing: Round 1`}
+                description={<p>We initially focused on 5 key features: onboarding, the homepage, documentation, the navigational dropdown, and tool shortcuts. For this first round, we were able to find 9 participants from Hulu's engineer teams.</p>}
+              />
+            </Container>
+          </VizSensor>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.usabilityTest1KeyInsights.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest1Quotes.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest1OnboardingFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest1HomePageFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest1ServiceDropdownFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest1DocumentationFeedback.childImageSharp.fluid,
+              },
+            ]}
+          />
+          <VizSensor>
+            <Container>
+              <SubSectionTitle
+                title={`Usability Testing: Round 2`}
+                description={<p>In addition to the first usability testing, we asked our stakeholders for feedback as well. We incorporated all the feedback, iterated on our prototype, and ran a second usability test.</p>}
+              />
+            </Container>
+          </VizSensor>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.usabilityTest2KeyInsights.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest2Quotes.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest2OnboardingFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest2HomePageFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest2ServiceDropdownFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest2ToolShortcutsFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest2DocumentationFeedback.childImageSharp.fluid,
+              },
+            ]}
+          />
+          <VizSensor>
+            <Container>
+              <SubSectionTitle
+                title={`Usability Testing: Round 3`}
+                description={<p>Next, we moved towards a hi-fidelity mockup by using their design system as a starting point. This round we tested all the key features and user flows of DevX. We ran our third and final round of usability testing with five Hulu DevX developers.</p>}
+              />
+            </Container>
+          </VizSensor>
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.usabilityTest3KeyInsights.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest3Quotes.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest3OnboardingFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest3HomePageFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest3ServiceDropdownFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest3ToolShortcutsFeedback.childImageSharp.fluid,
+              },
+              {
+                image: this.props.data.usabilityTest3SearchFeedback.childImageSharp.fluid,
+              },
+            ]}
+          />
+          <MainSectionTitle
+            title={`Deliver`}
+            description={<p>After gathering insights from our usability tests and stakeolder feedback, we iterated on hi-fi mockups and prototypes to flush out the user experience throughout the entire DevX Console. We segmented our final mockups into 4 main user flows: onboarding for new users, searching for specific key terms, finding documentation & guides from the service dropdown, and accessing pinned tools from the navbar.</p>}
+          />
           <ImageWithSubsectionTitle
+            longImage
+            image={this.props.data.onboardingScreens.childImageSharp.fluid}
+            title={`Onboarding Nulugans`}
+            description={<div><p>The onboarding screens focused on welcoming Nulugans and informing them about the different tools within their team. This includes an introduction to the DevX console, asking them about their specialties, and showcasing the “Pinned Tools” feature for efficient tool switching.</p><p>Stakeholders loved the idea of tags and how Hulugans can share what skills and areas they're confident in. We also inclued a Tool Mapping screen to show the relationship of their team's to help ease them into their teams.</p></div>}
+          />
+          <ImageWithSubsectionTitle
+            longImage
             imageRight
-            image={props.data.virtualShadowingKeyInsights.childImageSharp.fluid}
-            title={'Virtual Shadowing'}
-            description={<p>We shadowed 3 participants, each from a different team with different responsibilities. During the 1 hour shadowing session, we asked participants to think out loud to provide insight into their daily tasks.</p>}
-            css={`
-              max-width: 1440px;
-            `}
+            image={this.props.data.homeScreen.childImageSharp.fluid}
+            title={`A Central Hub`}
+            description={<div><p>The homepage is structured with the intent of allowing users to discover content while giving them direct access to search, tool switching, and their bookmarks. Participants loved the sleek, minimalist design along with the ability to customize the content on this page.</p><p>Quick links allowed Nulugans to get started, Hulugans to find the right documentation, and others to find the right engineer to contact. The customizable Tools Bar provides a shortcut to their frequently used tools.</p></div>}
           />
-        </Container>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.virtualShadowingInsights1.childImageSharp.fluid,
-              caption: 'Each virtual shadowing session was 1 hour long over Zoom.'
-            },
-            {
-              image: props.data.virtualShadowingInsights2.childImageSharp.fluid,
-              caption: 'Participants immediately turned to Slack or documentation when seeking help.'
-            },
-            {
-              image: props.data.virtualShadowingInsights3.childImageSharp.fluid,
-              caption: 'A lot of diversity in the ways participants organized and managed their workflow.'
-            },
-            {
-              image: props.data.virtualShadowingInsights4.childImageSharp.fluid,
-              caption: 'Participants switched between a minimum of 8 differen tools and services.'
-            },
-          ]}
-        />
-        <Container>
           <ImageWithSubsectionTitle
+            longImage
+            image={this.props.data.searchScreen.childImageSharp.fluid}
+            title={`Customized Search`}
+            description={<p>We streamlined the search experience so that it’s accessible on every screen. Search autocomplete is categorized by your tools, suggestions related to your tools, by documentation, and by guides. On the search results page, users can filter by tags to narrow down their search results. In addition to documentation and guides, team members with relevant specialties are also shown. Many participants found this feature helpful because they can reach out to team members with an expertise in that related tag or search.</p>}
+          />
+          <ImageWithSubsectionTitle
+            longImage
             imageRight
-            image={props.data.interviewsKeyInsights.childImageSharp.fluid}
-            title={'User Interviews'}
-            description={<p>Interviews allowed us to dig deeper after the virtual shadowing. We were able to ask questions and develop a better understanding of the what engineers like, what they dislike, what they think can be improved, and overall thoughts about their workflow and process.</p>}
-            css={`
-              max-width: 1440px;
-            `}
+            image={this.props.data.navigationScreen.childImageSharp.fluid}
+            title={`Intuitive Navigation`}
+            description={<div><p>The service dropdown was the next most important feature in this console. Almost all participants in our surveys, interviews, and user testing rounds stated that they expect to see some form of menu that lists all the tools. The service dropdown is our proposed solution.</p><p>Users can open the service dropdown from every page. Once they open the service dropdown, they can quickly navigate to guides, documentation, org chart, tool mapping, and developer environments. For documentation, users can browse by tool, by team, or browse specific dev frameworks that are frequently used. Users also mentioned that they liked how this is similar to the menu on AWS, it was new but familiar.</p></div>}
           />
-        </Container>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.interviewsInsights1.childImageSharp.fluid,
-              caption: 'Each interview session was 1 hour long over Zoom.'
-            },
-            {
-              image: props.data.interviewsInsights2.childImageSharp.fluid,
-              caption: 'Referrencing some commonly used tools, participants felt that the tools lacked navigation, feedback, felt old, and lacked ownership.'
-            },
-            {
-              image: props.data.interviewsInsights3.childImageSharp.fluid,
-              caption: 'Participants appreciate Hulu Wiki, but felt that the lack of ownership and management created outdated and irrelevant information.'
-            },
-            {
-              image: props.data.interviewsInsights4.childImageSharp.fluid,
-              caption: 'Knowing that most, if not all, Hulu engineers used Apple devices meant that we can use Apple best practices to our advantage.'
-            },
-          ]}
-        />
-        <ImageGrid
-          images={[
-            {
-              image: props.data.defineMuralScreenshot.childImageSharp.fluid
-            }
-          ]}
-        />
-        <MainSectionTitle
-          title={`Define`}
-          description={<p>After synthesizing our initial findings, we utilized a Mural to figure out what features specifically would be most important to our users. After this check-in, we started translating our research into user personas and user journey maps to help contextualize our end user and their context.</p>}
-        />
-        <Container>
           <ImageWithSubsectionTitle
-            image={props.data.personasMural.childImageSharp.fluid}
-            title={'User Personas'}
-            description={<p>We took our research and created 3 personas: Nulugan, Seasoned Dev, and Seasoned Manager. These personas represented the interviewees and the demographic of the engineering teams. For each persona we focused on defining their tenure, team, goals, personality, needs, pain points, and tools. The goal of these personas was to help create an image of our end user and to help us further empathize with them.</p>}
-            css={`
-              max-width: 1440px;
-            `}
+            longImage
+            image={this.props.data.docsGuidesScreen.childImageSharp.fluid}
+            title={`Relevant Documentation & Guides`}
+            description={<div><p>Currently, developers have to sift through thousands of documentation in Hulu Wiki. Developers have a hard time finding relevant and updated content.</p><p>With that feedback in mind, we designed these pages to include the date when the documentation or guide was last updated and the author who created the documentation or guide. Users found this detail extremely helpful. In addition to authors and last updated dates, we included the feature to provide inline comments and overall feedback ratings for documentation and guides. Users love this option and think this will help keep content relevant and up to date.</p></div>}
           />
-        </Container>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.personaSeasonedManager.childImageSharp.fluid,
-              caption: 'The senior manager values strong documentation and resources as they seeks to stay up-to-date and support his team.'
-            },
-            {
-              image: props.data.personaSeasonedDev.childImageSharp.fluid,
-              caption: 'The mid-senior level developer supports other Hulu developers and switches between many tools; they often seek more efficiency.'
-            },
-            {
-              image: props.data.personaNulugan.childImageSharp.fluid,
-              caption: 'The Nulugan - a software developer who has just joined Hulu - is highly motivated but overwhelmed by the number of internal tools that they have never previously heard of.'
-            },
-          ]}
-        />
-        <VizSensor>
+          <ImageWithSubsectionTitle
+            longImage
+            imageRight
+            image={this.props.data.orgChartScreen.childImageSharp.fluid}
+            title={`Find the Right Person`}
+            description={<p>Other requirements from this project included an organization chart and tool mapping. The org chart lists all the team members for each team along with their tags, email, and link to message them on Slack. This allows developers to quickly find specific team members by narrowing down through teams and tags.There was also a need for a clear relationship between tools. The tool mapping shows how tools interact with each other for a specific flow. Users felt that this will be super helpful especially when debugging and error.</p>}
+          />
           <Container>
-            <SubSectionTitle
-              description={<p>With these three personas in mind, we developed tool insights, ideal features list, impact/effort matrix, user journey maps, userflows, sitemaps, and "How Might We" questions. We paid special attention to our user flows and leveraged feedback from our partner that we should utilize user flows to ensure there aren’t any dead ends in our product.</p>}
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.moreRecommendations.childImageSharp.fluid
+                }
+              ]}
             />
           </Container>
-        </VizSensor>
-        <Container>
-          <ImageGrid
-            images={[
-              {
-                image: props.data.toolInsights1.childImageSharp.fluid,
-              },
-              {
-                image: props.data.toolInsights2.childImageSharp.fluid,
-              },
-            ]}
+          <MainSectionTitle
+            title={`Results`}
+            description={<p>Capping off our last design sprint, we presented our final prototypes to our stakeholders at Hulu during our last week on the project. We handed off mockups, descriptions, and prototypes for onboarding, home page, search flow, documentation and guides, service dropdown, bookmark flow, org chart, and tool mapping. Each flow accommodates research and data explaining every decision we made.</p>}
           />
-        </Container>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.userFlow1.childImageSharp.fluid,
-            },
-            {
-              image: props.data.userFlow2.childImageSharp.fluid,
-            },
-            {
-              image: props.data.userFlow3.childImageSharp.fluid,
-            },
-            {
-              image: props.data.toolInsights3.childImageSharp.fluid,
-            },
-            {
-              image: props.data.toolInsights4.childImageSharp.fluid,
-            },
-            {
-              image: props.data.toolInsights5.childImageSharp.fluid,
-            },
-            {
-              image: props.data.toolInsights6.childImageSharp.fluid,
-            },
-          ]}
-        />
-        <VizSensor>
           <Container>
-            <SubSectionTitle
-              description={<p>We created user journey maps to visualize each persona's userflow through a specific task. This helped us better understand what their expectations, actions, emotions, and opportunities for improvement.</p>}
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.userQuotes.childImageSharp.fluid
+                }
+              ]}
             />
           </Container>
-        </VizSensor>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.journeyMap1.childImageSharp.fluid,
-            },
-            {
-              image: props.data.journeyMap2.childImageSharp.fluid,
-            },
-            {
-              image: props.data.journeyMap3.childImageSharp.fluid,
-            },
-          ]}
-        />
-        <ImageGrid
-          images={[
-            {
-              image: props.data.developOverview.childImageSharp.fluid
-            }
-          ]}
-        />
-        <MainSectionTitle
-          title={`Develop`}
-          description={<p>After we defined our user personas, journey maps, and "How Might We" questions, we took our findings to create wireframes, hi-fi mockups, and prototypes. We took an iterative approach by running multiple usability tests before developing final designs.</p>}
-        />
-        <Container>
-          <ImageGrid
-            images={[
-              {
-                image: props.data.onboardingOverviewWireframe.childImageSharp.fluid,
-                caption: 'Wireframes for onboarding screens'
-              },
-              {
-                image: props.data.homeOverviewWireframe.childImageSharp.fluid,
-                caption: 'Wireframes for home and documentation pages'
-              },
-              {
-                image: props.data.menuOverviewWireframe.childImageSharp.fluid,
-                caption: 'Wireframes for the service dropdown menu'
-              },
-            ]}
+          <MainSectionTitle
+            title={`Reflection`}
+            description={<div><p>I was lucky enough to have an amazing team to work with along with great partners from Hulu. Having a dedicated product manager, researcher, and multiple designers on one project allowed us to really get to know the problem and our stakeholders.</p><p>Frequent and open communication, in-depth user research, extensive usability testing, and user-centered design were some of the key factors that allowed us to create a user-centered solution.</p></div>}
           />
-        </Container>
-        <VizSensor>
-          <Container>
-            <SubSectionTitle
-              title={`Usability Testing: Round 1`}
-              description={<p>We initially focused on 5 key features: onboarding, the homepage, documentation, the navigational dropdown, and tool shortcuts. For this first round, we were able to find 9 participants from Hulu's engineer teams.</p>}
-            />
-          </Container>
-        </VizSensor>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.usabilityTest1KeyInsights.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest1Quotes.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest1OnboardingFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest1HomePageFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest1ServiceDropdownFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest1DocumentationFeedback.childImageSharp.fluid,
-            },
-          ]}
-        />
-        <VizSensor>
-          <Container>
-            <SubSectionTitle
-              title={`Usability Testing: Round 2`}
-              description={<p>In addition to the first usability testing, we asked our stakeholders for feedback as well. We incorporated all the feedback, iterated on our prototype, and ran a second usability test.</p>}
-            />
-          </Container>
-        </VizSensor>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.usabilityTest2KeyInsights.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest2Quotes.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest2OnboardingFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest2HomePageFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest2ServiceDropdownFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest2ToolShortcutsFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest2DocumentationFeedback.childImageSharp.fluid,
-            },
-          ]}
-        />
-        <VizSensor>
-          <Container>
-            <SubSectionTitle
-              title={`Usability Testing: Round 3`}
-              description={<p>Next, we moved towards a hi-fidelity mockup by using their design system as a starting point. This round we tested all the key features and user flows of DevX. We ran our third and final round of usability testing with five Hulu DevX developers.</p>}
-            />
-          </Container>
-        </VizSensor>
-        <ImageSlider
-          slides={[
-            {
-              image: props.data.usabilityTest3KeyInsights.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest3Quotes.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest3OnboardingFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest3HomePageFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest3ServiceDropdownFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest3ToolShortcutsFeedback.childImageSharp.fluid,
-            },
-            {
-              image: props.data.usabilityTest3SearchFeedback.childImageSharp.fluid,
-            },
-          ]}
-        />
-        <MainSectionTitle
-          title={`Deliver`}
-          description={<p>After gathering insights from our usability tests and stakeolder feedback, we iterated on hi-fi mockups and prototypes to flush out the user experience throughout the entire DevX Console. We segmented our final mockups into 4 main user flows: onboarding for new users, searching for specific key terms, finding documentation & guides from the service dropdown, and accessing pinned tools from the navbar.</p>}
-        />
-        <ImageWithSubsectionTitle
-          longImage
-          image={props.data.onboardingScreens.childImageSharp.fluid}
-          title={`Onboarding Nulugans`}
-          description={<div><p>The onboarding screens focused on welcoming Nulugans and informing them about the different tools within their team. This includes an introduction to the DevX console, asking them about their specialties, and showcasing the “Pinned Tools” feature for efficient tool switching.</p><p>Stakeholders loved the idea of tags and how Hulugans can share what skills and areas they're confident in. We also inclued a Tool Mapping screen to show the relationship of their team's to help ease them into their teams.</p></div>}
-        />
-        <ImageWithSubsectionTitle
-          longImage
-          imageRight
-          image={props.data.homeScreen.childImageSharp.fluid}
-          title={`A Central Hub`}
-          description={<div><p>The homepage is structured with the intent of allowing users to discover content while giving them direct access to search, tool switching, and their bookmarks. Participants loved the sleek, minimalist design along with the ability to customize the content on this page.</p><p>Quick links allowed Nulugans to get started, Hulugans to find the right documentation, and others to find the right engineer to contact. The customizable Tools Bar provides a shortcut to their frequently used tools.</p></div>}
-        />
-        <ImageWithSubsectionTitle
-          longImage
-          image={props.data.searchScreen.childImageSharp.fluid}
-          title={`Customized Search`}
-          description={<p>We streamlined the search experience so that it’s accessible on every screen. Search autocomplete is categorized by your tools, suggestions related to your tools, by documentation, and by guides. On the search results page, users can filter by tags to narrow down their search results. In addition to documentation and guides, team members with relevant specialties are also shown. Many participants found this feature helpful because they can reach out to team members with an expertise in that related tag or search.</p>}
-        />
-        <ImageWithSubsectionTitle
-          longImage
-          imageRight
-          image={props.data.navigationScreen.childImageSharp.fluid}
-          title={`Intuitive Navigation`}
-          description={<div><p>The service dropdown was the next most important feature in this console. Almost all participants in our surveys, interviews, and user testing rounds stated that they expect to see some form of menu that lists all the tools. The service dropdown is our proposed solution.</p><p>Users can open the service dropdown from every page. Once they open the service dropdown, they can quickly navigate to guides, documentation, org chart, tool mapping, and developer environments. For documentation, users can browse by tool, by team, or browse specific dev frameworks that are frequently used. Users also mentioned that they liked how this is similar to the menu on AWS, it was new but familiar.</p></div>}
-        />
-        <ImageWithSubsectionTitle
-          longImage
-          image={props.data.docsGuidesScreen.childImageSharp.fluid}
-          title={`Relevant Documentation & Guides`}
-          description={<div><p>Currently, developers have to sift through thousands of documentation in Hulu Wiki. Developers have a hard time finding relevant and updated content.</p><p>With that feedback in mind, we designed these pages to include the date when the documentation or guide was last updated and the author who created the documentation or guide. Users found this detail extremely helpful. In addition to authors and last updated dates, we included the feature to provide inline comments and overall feedback ratings for documentation and guides. Users love this option and think this will help keep content relevant and up to date.</p></div>}
-        />
-        <ImageWithSubsectionTitle
-          longImage
-          imageRight
-          image={props.data.orgChartScreen.childImageSharp.fluid}
-          title={`Find the Right Person`}
-          description={<p>Other requirements from this project included an organization chart and tool mapping. The org chart lists all the team members for each team along with their tags, email, and link to message them on Slack. This allows developers to quickly find specific team members by narrowing down through teams and tags.There was also a need for a clear relationship between tools. The tool mapping shows how tools interact with each other for a specific flow. Users felt that this will be super helpful especially when debugging and error.</p>}
-        />
-        <Container>
-          <ImageGrid
-            images={[
-              {
-                image: props.data.moreRecommendations.childImageSharp.fluid
-              }
-            ]}
-          />
-        </Container>
-        <MainSectionTitle
-          title={`Results`}
-          description={<p>Capping off our last design sprint, we presented our final prototypes to our stakeholders at Hulu during our last week on the project. We handed off mockups, descriptions, and prototypes for onboarding, home page, search flow, documentation and guides, service dropdown, bookmark flow, org chart, and tool mapping. Each flow accommodates research and data explaining every decision we made.</p>}
-        />
-        <Container>
-          <ImageGrid
-            images={[
-              {
-                image: props.data.userQuotes.childImageSharp.fluid
-              }
-            ]}
-          />
-        </Container>
-        <MainSectionTitle
-          title={`Reflection`}
-          description={<div><p>I was lucky enough to have an amazing team to work with along with great partners from Hulu. Having a dedicated product manager, researcher, and multiple designers on one project allowed us to really get to know the problem and our stakeholders.</p><p>Frequent and open communication, in-depth user research, extensive usability testing, and user-centered design were some of the key factors that allowed us to create a user-centered solution.</p></div>}
-        />
-      </ProjectBody>
-    </ProjectWrapper>
-  )
+        </ProjectBody>
+      </ProjectWrapper>
+    )
+  }
 }
 
 const ProjectPage = (props) => {

@@ -88,7 +88,7 @@ const headerVariants = {
 
 class Header extends React.Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.workLink = React.createRef();
     this.aboutLink = React.createRef();

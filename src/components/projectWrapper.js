@@ -18,35 +18,18 @@ const pageVariants = {
   },
 }
 
-class ProjectWrapper extends React.Component {
-  constructor(props) {
-    super();
-  }
+const ProjectWrapper = (props) => {
+  const { children, mount } = props;
 
-  trackScrollY = () => {
-    console.log('hi');
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.trackScrollY);
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.trackScrollY);
-  }
-
-  render() {
-    return (
-      <motion.div
-        initial='hidden'
-        variants={pageVariants}
-        animate={this.props.mount ? 'visible' : 'hidden'}
-      >
-        {this.props.children}
-        
-      </motion.div>
-    )
-  }
+  return (
+    <motion.div
+      initial='hidden'
+      variants={pageVariants}
+      animate={mount ? 'visible' : 'hidden'}
+    >
+      {children}
+    </motion.div>
+  )
 }
 
 export default ProjectWrapper
