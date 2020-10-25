@@ -86,7 +86,7 @@ const ProjectThumbnail = (props) => {
 
   const projectVariants = {
     exiting: (custom) => ({
-      opacity: 0,
+      opacity: 1,
       y: 100,
       transition: {
         duration: 0.8,
@@ -106,6 +106,7 @@ const ProjectThumbnail = (props) => {
   const thumbnailVariants = {
     start: {
       height: 'auto',
+      width: 'auto'
     },
     end: (custom) => ({
       x: custom.newXPos,
@@ -139,7 +140,7 @@ const ProjectThumbnail = (props) => {
             <ThumbnailInner
               initial='start'
               variants={thumbnailVariants}
-              animate={thumbnailStatus}
+              animate={transitionStatus}
               custom={{
                 newXPos: newXPos,
               }}

@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 import { Container } from '../styles/global'
 import { layout } from '../styles/spacing'
-import { colors } from '../styles/colors'
 import ProjectThumbnail from './projectThumbnail'
 import VizSensor from "./visibilitySensor"
 
@@ -15,10 +14,6 @@ const ThumbnailWrapper = styled.div`
   @media (min-width: 1024px) {
     margin-bottom: ${layout.l600};
   }
-`
-
-const CustomLink = styled(Link)`
-  
 `
 
 const ProjectsList = (props) => {
@@ -50,7 +45,7 @@ const ProjectsList = (props) => {
         return (
           <ThumbnailWrapper key={card.title}>
             <VizSensor>
-              <CustomLink
+              <Link
                 to={card.link}
                 exit={{
                   length: 1.65,
@@ -63,7 +58,7 @@ const ProjectsList = (props) => {
                 `}
               >
                 <ProjectThumbnail card={card} />
-              </CustomLink>
+              </Link>
             </VizSensor>
           </ThumbnailWrapper>
         )

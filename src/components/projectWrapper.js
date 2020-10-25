@@ -24,8 +24,7 @@ class ProjectWrapper extends React.Component {
   }
 
   trackScrollY = () => {
-    const { scrollY } = useViewportScroll();
-    console.log(scrollY);
+    console.log('hi');
   }
 
   componentDidMount() {
