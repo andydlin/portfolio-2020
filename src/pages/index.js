@@ -256,7 +256,7 @@ const IndexPage = (props) => {
                       </WaveIcon>
                       Hi, my name is Andy.
                     </GreetingMessage>
-                    <WelcomeMessage>I’m a product designer focused on interaction design & design systems.</WelcomeMessage>
+                    <WelcomeMessage>I’m a product designer specializing in interaction design & design systems.</WelcomeMessage>
                     <CurrentMessage>Currently a Product Designer at <span>Dictionary.com</span></CurrentMessage>
                   </div>
                   <CartoonProfile>
