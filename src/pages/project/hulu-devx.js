@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
-import { motion } from "framer-motion"
+import { motion, useViewportScroll } from "framer-motion"
 
 import Layout from "../../components/layout"
 import VizSensor from "../../components/visibilitySensor"
@@ -17,6 +17,11 @@ import ImageWithSubsectionTitle from "../../components/project/imageWithSubsecti
 import ImageGrid from "../../components/project/imageGrid"
 import ImageSlider from "../../components/project/imageSlider"
 
+
+function test() {
+  console.log(useViewportScroll());
+}
+
 class ProjectDetails extends React.Component {
   constructor(props) {
     super();
@@ -27,7 +32,7 @@ class ProjectDetails extends React.Component {
   }
 
   trackScrollY = () => {
-    const scrollProgress = ((window.scrollY + window.innerHeight) / document.documentElement.offsetHeight) * 100;
+    const scrollProgress = (window.scrollY / (document.documentElement.offsetHeight - window.innerHeight));
     
     this.setState({
       scrollProgress: scrollProgress
@@ -53,10 +58,15 @@ class ProjectDetails extends React.Component {
             height: 16px;
             left: 0;
             position: fixed;
+            transform: scaleX(0);
+            transform-origin: 0 0;
             top: 100px;
             z-index: 999;
-            width: ${this.state.scrollProgress}vw;
+            width: 100%;
           `}
+          style={{
+            scaleX: this.state.scrollProgress
+          }}
         />
         <HeroImage image={this.props.data.heroImage.childImageSharp.fluid}/>
         <Summary
