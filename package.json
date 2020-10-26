@@ -1,7 +1,7 @@
 {
   "name": "gatsby-starter-hello-world",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Andy Lin's Portfolio",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -35,6 +35,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-scroll": "^1.8.1",
     "react-visibility-sensor": "^5.1.1",
     "styled-components": "^5.2.0"
   },

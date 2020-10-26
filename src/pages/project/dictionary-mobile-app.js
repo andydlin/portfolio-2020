@@ -6,7 +6,7 @@ import { TransitionState } from "gatsby-plugin-transition-link";
 import Layout from "../../components/layout"
 import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
-import { Container, ProjectBody } from "../../styles/global"
+import { Container } from "../../styles/global"
 import { layout } from '../../styles/spacing'
 
 import HeroImage from "../../components/project/heroImage"
@@ -33,12 +33,10 @@ const ProjectDetails = (props) => {
         timeframe={`Jan - Mar 2020`}
         summary={<div><p>I was challenged with creating a cohesive design throughout the site and setting up the infrastructure for the marketing and store pages. The brand uses e-commerce as the face of the company and community stories as the support content.</p><p>In order to provide a seamless experience between both fronts, I worked closely with Victor (founder and designer). We ended up using Wordpress to allow for full customization of our community stories and Shopify as the storefront. I wrote custom code with HTML, CSS, jQuery, and Twig.</p></div>}
       />
-      <ProjectBody>
         <MainSectionTitle
           title={`Section Title`}
           description={`Doggo ipsum very jealous pupper yapper doge pats aqua doggo big ol pupper, thicc woofer shoob. Wrinkler borkf doing me a frighten vvv heckin angery woofer fat boi heckin angery woofer, borkdrive fat boi boofers ruff. Doggorino the neighborhood pupper extremely cuuuuuute aqua doggo floofs, fluffer dat tungg tho you are doin me a concern doing me a frighten shoob, floofs wrinkler many pats.`}
         />
-      </ProjectBody>
     </ProjectWrapper>
   )
 }

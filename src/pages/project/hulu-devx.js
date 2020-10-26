@@ -2,12 +2,12 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
-import { motion, useViewportScroll } from "framer-motion"
 
 import Layout from "../../components/layout"
 import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
-import { Container, ProjectBody } from "../../styles/global"
+import ContentNav from "../../components/contentNav"
+import { Container, ProjectSection } from "../../styles/global"
 
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
@@ -18,28 +18,10 @@ import ImageGrid from "../../components/project/imageGrid"
 import ImageSlider from "../../components/project/imageSlider"
 
 class ProjectDetails extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
 
-    this.state = {
-      scrollProgress: 0
-    }
-  }
-
-  trackScrollY = () => {
-    const scrollProgress = (window.scrollY / (document.documentElement.offsetHeight - window.innerHeight));
-    
-    this.setState({
-      scrollProgress: scrollProgress
-    })
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.trackScrollY);
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.trackScrollY);
+    this.sections = ['Intro', 'Discover'];
   }
 
   render() {
@@ -47,22 +29,10 @@ class ProjectDetails extends React.Component {
       <ProjectWrapper
         mount={this.props.mount}
       >
-        {/* <motion.div
-          css={`
-            background: red;
-            height: 16px;
-            left: 0;
-            position: fixed;
-            transform: scaleX(0);
-            transform-origin: 0 0;
-            top: 100px;
-            z-index: 999;
-            width: 100%;
-          `}
-          style={{
-            scaleX: this.state.scrollProgress
-          }}
-        /> */}
+        <ContentNav
+          sections={this.sections}
+          projectTitle={`Hulu DevX Console`}
+        />
         <HeroImage image={this.props.data.heroImage.childImageSharp.fluid}/>
         <Summary
           subtitle={`Hulu`}
@@ -73,7 +43,7 @@ class ProjectDetails extends React.Component {
           timeframe={`Mar - Aug 2020`}
           summary={<div><p>For UCI's MHCID capstone project, we had the opportunity to work with Hulu's DevX team. They play a key role in improving the workflow and process for the engineering organization and focus on defining processes and creating tools to help engineers build amazing products.</p><p>I worked in a team of 4 (product manager, researcher, UX designers) to create Hulu's first unified web portal for the engineering organization. We delivered research findings, hi-fi mockups, prototypes, and detailed documentation for Hulu's DevX Console. This platform will streamline the onboarding process for their growing engineering them and establish a single source of truth for their tools, services, and documentation.</p></div>}
         />
-        <ProjectBody>
+        <ProjectSection name={'intro-section'}>
           <MainSectionTitle
             title={`Our Challenge`}
             description={<div><p>Developers at Hulu have a fragmented workflow that requires them to access many resources from a lot of different sources. On average, Hulu engineers (Hulugans) multi-task and tool switch through a minimum of 8 tools per day. Throughout the entire engineering org, Hulugans use more than 50 different tools and services. Hulu lacks a unified web portal resulting in unorganized, fragmented, and sometimes irrelevant documentation.</p><p>How might we offer them a place to see their work, track their progress, keep up to date on best practices and easily find all the tools they need?</p></div>}
@@ -102,6 +72,8 @@ class ProjectDetails extends React.Component {
               `}
             />
           </Container>
+        </ProjectSection>
+        <ProjectSection name={'discover-section'}>
           <MainSectionTitle
             title={`Discover`}
             description={<p>In the discover phase, our researchers prepared survey questions and interview protocols while I worked with the other designer to create an organization map, analyzed widely used internal tools, and performed a comparative analysis.</p>}
@@ -221,6 +193,8 @@ class ProjectDetails extends React.Component {
               }
             ]}
           />
+        </ProjectSection>
+        <ProjectSection name={'define-section'}>
           <MainSectionTitle
             title={`Define`}
             description={<p>After synthesizing our initial findings, we utilized a Mural to figure out what features specifically would be most important to our users. After this check-in, we started translating our research into user personas and user journey maps to help contextualize our end user and their context.</p>}
@@ -322,6 +296,8 @@ class ProjectDetails extends React.Component {
               }
             ]}
           />
+        </ProjectSection>
+        <ProjectSection name={'develop-section'}>
           <MainSectionTitle
             title={`Develop`}
             description={<p>After we defined our user personas, journey maps, and "How Might We" questions, we took our findings to create wireframes, hi-fi mockups, and prototypes. We took an iterative approach by running multiple usability tests before developing final designs.</p>}
@@ -440,6 +416,8 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
+        </ProjectSection>
+        <ProjectSection name={'deliver-section'}>
           <MainSectionTitle
             title={`Deliver`}
             description={<p>After gathering insights from our usability tests and stakeolder feedback, we iterated on hi-fi mockups and prototypes to flush out the user experience throughout the entire DevX Console. We segmented our final mockups into 4 main user flows: onboarding for new users, searching for specific key terms, finding documentation & guides from the service dropdown, and accessing pinned tools from the navbar.</p>}
@@ -492,6 +470,8 @@ class ProjectDetails extends React.Component {
               ]}
             />
           </Container>
+        </ProjectSection>
+        <ProjectSection name={'results-section'}>
           <MainSectionTitle
             title={`Results`}
             description={<p>Capping off our last design sprint, we presented our final prototypes to our stakeholders at Hulu during our last week on the project. We handed off mockups, descriptions, and prototypes for onboarding, home page, search flow, documentation and guides, service dropdown, bookmark flow, org chart, and tool mapping. Each flow accommodates research and data explaining every decision we made.</p>}
@@ -509,7 +489,7 @@ class ProjectDetails extends React.Component {
             title={`Reflection`}
             description={<div><p>I was lucky enough to have an amazing team to work with along with great partners from Hulu. Having a dedicated product manager, researcher, and multiple designers on one project allowed us to really get to know the problem and our stakeholders.</p><p>Frequent and open communication, in-depth user research, extensive usability testing, and user-centered design were some of the key factors that allowed us to create a user-centered solution.</p></div>}
           />
-        </ProjectBody>
+        </ProjectSection>
       </ProjectWrapper>
     )
   }

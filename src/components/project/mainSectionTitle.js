@@ -46,7 +46,6 @@ const Description = styled.div`
 `
 
 const MainSectionTitle = (props) => {
-
   return (
     <VizSensor>
       <Container>

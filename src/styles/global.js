@@ -41,12 +41,21 @@ export const Container = styled.div`
   }
 `
 
-export const ProjectBody = styled.div`
+export const ProjectSection = styled.div`
   > * {
     margin-bottom: ${layout.l300};
 
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: ${layout.l300};
+    }
+
     @media (min-width: 768px) {
       margin-bottom: ${layout.l600};
+
+      &:last-child {
+        padding-bottom: ${layout.l600};
+      }
     }
   }
 
