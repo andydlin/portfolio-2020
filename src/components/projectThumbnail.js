@@ -86,7 +86,7 @@ const ProjectThumbnail = (props) => {
 
   const projectVariants = {
     exiting: (custom) => ({
-      opacity: 1,
+      opacity: 0,
       y: 100,
       transition: {
         duration: 0.8,
@@ -94,6 +94,7 @@ const ProjectThumbnail = (props) => {
       }
     }),
     end: (custom) => ({
+      opacity: 1,
       y: custom.newTop,
       transition: {
         delay: 0.15,

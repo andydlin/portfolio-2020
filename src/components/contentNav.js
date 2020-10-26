@@ -1,7 +1,6 @@
-import React from "react"
-import * as Scroll from 'react-scroll';
-import { Link, Eleme, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-import { motion, useViewportScroll } from "framer-motion"
+import React, { useEffect } from "react"
+import { Link, Events } from 'react-scroll'
+import { motion, useViewportScroll, useAnimation } from "framer-motion"
 
 import { colors } from '../styles/colors'
 import { spacing } from '../styles/spacing'
@@ -31,6 +30,38 @@ class ContentNav extends React.Component {
     super(props);
 
     this.navRefs = [];
+    this.state = {
+      activePos: 0,
+      activeWidth: 0
+    }
+
+    this.controls = useAnimation();
+  }
+
+  handleSetActive(index) {
+    // this.setState({
+    //   activePos: this.navRefs[index].offsetLeft,
+    //   activeWidth: this.navRefs[index].offsetWidth,
+    // })
+
+    useEffect(() => {
+      const sequence = async() => {
+        await this.controls.start({
+          x: this.navRefs[index].offsetLeft,
+        });
+        await this.controls.start({
+          width: this.navRefs[index].offsetWidth,
+        });
+      }
+
+      sequence()
+    }, [this.controls]);
+  }
+
+  componentDidMount() {
+    Events.scrollEvent.register('end', function(to, element) {
+      //console.log('end', to, element);
+    });
   }
 
   render() {
@@ -79,6 +110,8 @@ class ContentNav extends React.Component {
               list-style: none;
               margin: 0;
               padding: 0;
+              position: relative;
+              width: auto;
   
               > * {
                 flex-grow: 0;
@@ -93,17 +126,31 @@ class ContentNav extends React.Component {
               }
             `}
           >
+            <motion.div
+              css={`
+                background: ${colors.blue};
+                bottom: -2px;
+                height: 2px;
+                left: 0;
+                margin-right: 0;
+                position: absolute;
+              `}
+              animate={controls}
+            />
             {this.props.sections.map((section, index) => {
               return (
-                <div key={index}>
+                <div
+                  key={index}
+                  ref={navRefs => this.navRefs[index] = navRefs}
+                >
                   <Link
                     activeClass='active'
                     to={section.toLowerCase() + '-section'}
                     spy={true}
                     duration={1000}
                     smooth={'easeInOut'}
-                    offset={-48}
-                    ref={navRefs => this.navRefs[index] = navRefs}
+                    offset={-120}
+                    onSetActive={() => this.handleSetActive(index)}
                     css={`
                       color: ${colors.gray200};
                       cursor: pointer;

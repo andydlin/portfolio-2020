@@ -21,7 +21,7 @@ class ProjectDetails extends React.Component {
   constructor() {
     super();
 
-    this.sections = ['Intro', 'Discover'];
+    this.sections = ['Intro', 'Discover', 'Define', 'Develop', 'Deliver', 'Results'];
   }
 
   render() {
