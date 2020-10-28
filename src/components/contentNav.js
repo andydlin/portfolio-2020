@@ -9,6 +9,7 @@ import { Box } from "../styles/global"
 
 export const ProgressBar = () => {
   const { scrollYProgress } = useViewportScroll();
+
   return (
     <motion.div
       style={{
@@ -23,49 +24,197 @@ export const ProgressBar = () => {
       `}
     />
   )
-} 
+}
 
-class ContentNav extends React.Component {
+
+class NavLinks extends React.Component {
   constructor(props) {
     super(props);
 
     this.navRefs = [];
     this.state = {
-      activePos: 0,
-      activeWidth: 0
+      currPos: 0,
+      currWidth: 0
     }
-
-    this.controls = useAnimation();
+    this.updatePos = this.updatePos.bind(this);
   }
 
-  handleSetActive(index) {
-    // this.setState({
-    //   activePos: this.navRefs[index].offsetLeft,
-    //   activeWidth: this.navRefs[index].offsetWidth,
-    // })
-
-    useEffect(() => {
-      const sequence = async() => {
-        await this.controls.start({
-          x: this.navRefs[index].offsetLeft,
-        });
-        await this.controls.start({
-          width: this.navRefs[index].offsetWidth,
-        });
-      }
-
-      sequence()
-    }, [this.controls]);
-  }
-
-  componentDidMount() {
-    Events.scrollEvent.register('end', function(to, element) {
-      //console.log('end', to, element);
+  updatePos(newPos, newWidth) {
+    this.setState({
+      currPos: newPos,
+      currWidth: newWidth
     });
   }
 
-  render() {
 
+  async handleSetActive(currPos, currWidth, index, navRefs, controls, updatePos) {
+    if(navRefs[index].offsetLeft > currPos) {
+      await controls.start({
+        width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
+        transition: {
+          duration: 0.1
+        }
+      });
+
+      await controls.start({
+        x: navRefs[index].offsetLeft,
+        width: navRefs[index].offsetWidth,
+        transition: {
+          delay: 0.1,
+          duration: 0.1
+        }
+      });
+    } else {
+      await controls.start({
+        x:  navRefs[index].offsetLeft,
+        width: ((currPos - navRefs[index].offsetLeft) + currWidth),
+        transition: {
+          duration: 0.1
+        }
+      });
+
+      await controls.start({
+        width: navRefs[index].offsetWidth,
+        transition: {
+          delay: 0.1,
+          duration: 0.1
+        }
+      })
+    }
+
+    updatePos(navRefs[index].offsetLeft, navRefs[index].offsetWidth);
+  }
+
+  render() {
+    return (
+      <Box
+        css={`
+          justify-content: flex-end;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          width: auto;
+
+          > * {
+            flex-grow: 0;
+          }
+
+          > div {
+            margin-right: 16px;
+
+            &:last-of-type {
+              margin-right: 0;
+            }
+          }
+        `}
+      >
+        {this.props.sections.map((section, index) => {
+          return (
+            <div
+              key={index}
+              ref={navRefs => this.navRefs[index] = navRefs}
+            >
+              <Link
+                activeClass='active'
+                to={section.toLowerCase() + '-section'}
+                spy={true}
+                duration={1000}
+                smooth={'easeInOut'}
+                offset={-120}
+                onSetActive={() => {
+                  this.handleSetActive(this.state.currPos, this.state.currWidth, index, this.navRefs, this.props.controls, this.updatePos);
+                }}
+                css={`
+                  color: ${colors.gray200};
+                  cursor: pointer;
+                  font-weight: 500;
+                  transition: all 0.25s;
+
+                  &.active {
+                    color: ${colors.gray400};
+                  }
+                `}
+              >
+                {section}
+              </Link>
+            </div>
+          )
+        })}
+      </Box>
+    )
+  }
+}
+
+export const NavLinksWrapper = (props) => {
+  const controls = useAnimation();
+
+  return (
+    <div
+      css={`
+        position: relative; 
+      `}
+    >
+      <motion.div
+        css={`
+          background: ${colors.blue};
+          bottom: -2px;
+          height: 2px;
+          left: 0;
+          margin-right: 0;
+          position: absolute;
+        `}
+        animate={controls}
+      />
+      <NavLinks
+        controls={controls}
+        sections={props.sections}
+      />
+    </div>
+  )
+}
+
+class ContentNav extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      navStatus: 'hidden',
+    }
+  }
+ 
+  navVariants = {
+    hidden: {
+      x: `-50%`,
+      y: `calc(-100% - ${spacing.s600})`
+    },
+    visible: {
+      x: `-50%`,
+      y: 0
+    }
+  }
+
+  handleScroll(props) {
+    if(window.scrollY >= (props.introRef.current.offsetTop - 128)) {
+      this.setState({
+        navStatus: 'visible'
+      });
+    } else {
+      this.setState({
+        navStatus: 'hidden'
+      });
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', () => {this.handleScroll(this.props)});
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', () => {this.handleScroll(this.props)});
+  }
+
+  render() {
     return (
       <motion.div
         css={`
@@ -75,11 +224,12 @@ class ContentNav extends React.Component {
           left: 50%;
           max-width: 800px;
           position: fixed;
-          transform: translate(-50%, 0);
           top: ${spacing.s300};
           width: 100%;
           z-index: 999;
         `}
+        variants={this.navVariants}
+        animate={this.state.navStatus}
       >
         <div
           css={`
@@ -104,70 +254,9 @@ class ContentNav extends React.Component {
           >
             {this.props.projectTitle}
           </div>
-          <Box
-            css={`
-              justify-content: flex-end;
-              list-style: none;
-              margin: 0;
-              padding: 0;
-              position: relative;
-              width: auto;
-  
-              > * {
-                flex-grow: 0;
-              }
-  
-              > div {
-                margin-right: 16px;
-  
-                &:last-of-type {
-                  margin-right: 0;
-                }
-              }
-            `}
-          >
-            <motion.div
-              css={`
-                background: ${colors.blue};
-                bottom: -2px;
-                height: 2px;
-                left: 0;
-                margin-right: 0;
-                position: absolute;
-              `}
-              animate={controls}
-            />
-            {this.props.sections.map((section, index) => {
-              return (
-                <div
-                  key={index}
-                  ref={navRefs => this.navRefs[index] = navRefs}
-                >
-                  <Link
-                    activeClass='active'
-                    to={section.toLowerCase() + '-section'}
-                    spy={true}
-                    duration={1000}
-                    smooth={'easeInOut'}
-                    offset={-120}
-                    onSetActive={() => this.handleSetActive(index)}
-                    css={`
-                      color: ${colors.gray200};
-                      cursor: pointer;
-                      font-weight: 500;
-                      transition: all 0.25s;
-  
-                      &.active {
-                        color: ${colors.gray400};
-                      }
-                    `}
-                  >
-                    {section}
-                  </Link>
-                </div>
-              )
-            })}
-          </Box>
+          <NavLinksWrapper
+            sections={this.props.sections}
+          />
         </Box>
       </motion.div>
     )

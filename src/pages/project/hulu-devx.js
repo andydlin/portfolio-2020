@@ -21,29 +21,32 @@ class ProjectDetails extends React.Component {
   constructor() {
     super();
 
-    this.sections = ['Intro', 'Discover', 'Define', 'Develop', 'Deliver', 'Results'];
+    this.introRef = React.createRef();
   }
 
   render() {
+    const sections = ['Intro', 'Discover', 'Define', 'Develop', 'Deliver', 'Results'];
+
     return (
       <ProjectWrapper
         mount={this.props.mount}
       >
         <ContentNav
-          sections={this.sections}
+          sections={sections}
           projectTitle={`Hulu DevX Console`}
+          introRef={this.introRef}
         />
         <HeroImage image={this.props.data.heroImage.childImageSharp.fluid}/>
-        <Summary
-          subtitle={`Hulu`}
-          title={`DevX Console`}
-          role={`UX Designer`}
-          category={`Productivity`}
-          platforms={`Web`}
-          timeframe={`Mar - Aug 2020`}
-          summary={<div><p>For UCI's MHCID capstone project, we had the opportunity to work with Hulu's DevX team. They play a key role in improving the workflow and process for the engineering organization and focus on defining processes and creating tools to help engineers build amazing products.</p><p>I worked in a team of 4 (product manager, researcher, UX designers) to create Hulu's first unified web portal for the engineering organization. We delivered research findings, hi-fi mockups, prototypes, and detailed documentation for Hulu's DevX Console. This platform will streamline the onboarding process for their growing engineering them and establish a single source of truth for their tools, services, and documentation.</p></div>}
-        />
-        <ProjectSection name={'intro-section'}>
+        <ProjectSection name={'intro-section'} ref={this.introRef}>
+          <Summary
+            subtitle={`Hulu`}
+            title={`DevX Console`}
+            role={`UX Designer`}
+            category={`Productivity`}
+            platforms={`Web`}
+            timeframe={`Mar - Aug 2020`}
+            summary={<div><p>For UCI's MHCID capstone project, we had the opportunity to work with Hulu's DevX team. They play a key role in improving the workflow and process for the engineering organization and focus on defining processes and creating tools to help engineers build amazing products.</p><p>I worked in a team of 4 (product manager, researcher, UX designers) to create Hulu's first unified web portal for the engineering organization. We delivered research findings, hi-fi mockups, prototypes, and detailed documentation for Hulu's DevX Console. This platform will streamline the onboarding process for their growing engineering them and establish a single source of truth for their tools, services, and documentation.</p></div>}
+          />
           <MainSectionTitle
             title={`Our Challenge`}
             description={<div><p>Developers at Hulu have a fragmented workflow that requires them to access many resources from a lot of different sources. On average, Hulu engineers (Hulugans) multi-task and tool switch through a minimum of 8 tools per day. Throughout the entire engineering org, Hulugans use more than 50 different tools and services. Hulu lacks a unified web portal resulting in unorganized, fragmented, and sometimes irrelevant documentation.</p><p>How might we offer them a place to see their work, track their progress, keep up to date on best practices and easily find all the tools they need?</p></div>}
@@ -495,7 +498,7 @@ class ProjectDetails extends React.Component {
   }
 }
 
-const ProjectPage = (props) => {
+const ProjectPage = () => {
   const data = useStaticQuery(graphql`
     query {
       heroImage: file(relativePath: { eq: "images/projects/hulu-thumbnail.jpg" }) {
