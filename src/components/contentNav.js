@@ -52,7 +52,8 @@ class NavLinks extends React.Component {
       await controls.start({
         width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
         transition: {
-          duration: 0.1
+          duration: 0.1,
+          ease: [0.42, 0, 0.58, 1],
         }
       });
 
@@ -61,7 +62,8 @@ class NavLinks extends React.Component {
         width: navRefs[index].offsetWidth,
         transition: {
           delay: 0.1,
-          duration: 0.1
+          duration: 0.1,
+          ease: [0.42, 0, 0.58, 1],
         }
       });
     } else {
@@ -69,7 +71,8 @@ class NavLinks extends React.Component {
         x:  navRefs[index].offsetLeft,
         width: ((currPos - navRefs[index].offsetLeft) + currWidth),
         transition: {
-          duration: 0.1
+          duration: 0.1,
+          ease: [0.42, 0, 0.58, 1],
         }
       });
 
@@ -77,7 +80,8 @@ class NavLinks extends React.Component {
         width: navRefs[index].offsetWidth,
         transition: {
           delay: 0.1,
-          duration: 0.1
+          duration: 0.1,
+          ease: [0.42, 0, 0.58, 1],
         }
       })
     }
