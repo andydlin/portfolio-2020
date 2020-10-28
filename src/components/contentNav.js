@@ -186,11 +186,19 @@ class ContentNav extends React.Component {
   navVariants = {
     hidden: {
       x: `-50%`,
-      y: `calc(-100% - ${spacing.s600})`
+      y: `calc(-100% - ${spacing.s600})`,
+      transition: {
+        duration: 0.5,
+        ease: [1,-0.5,.25,1.25],
+      }
     },
     visible: {
       x: `-50%`,
-      y: 0
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [1,-0.5,.25,1.25],
+      }
     }
   }
 
