@@ -189,14 +189,14 @@ class ContentNav extends React.Component {
       y: `calc(-100% - ${spacing.s600})`,
       transition: {
         duration: 0.5,
-        ease: [1,-0.5,.25,1.25],
+        ease: [0,-0.5,.25,1.25],
       }
     },
     visible: {
       x: `-50%`,
       y: 0,
       transition: {
-        duration: 1,
+        duration: 0.8,
         ease: [1,-0.5,.25,1.25],
       }
     }
@@ -232,7 +232,7 @@ class ContentNav extends React.Component {
           left: 50%;
           max-width: 800px;
           position: fixed;
-          top: ${spacing.s300};
+          top: ${spacing.s100};
           width: 100%;
           z-index: 999;
         `}
