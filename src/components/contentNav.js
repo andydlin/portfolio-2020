@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Link, Events } from 'react-scroll'
 import { motion, useViewportScroll, useAnimation } from "framer-motion"
 
@@ -46,7 +46,7 @@ class NavLinks extends React.Component {
       currWidth: newWidth
     });
   }
-
+  
   async handleSetActive(currPos, currWidth, index, navRefs, controls, updatePos, isNavClick) {
     if(!isNavClick) {
       if(navRefs[index].offsetLeft > currPos) {
@@ -206,24 +206,28 @@ export const NavLinksWrapper = (props) => {
 }
 
 class ContentNav extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
       navStatus: 'hidden'
     }
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
  
   navVariants = {
     hidden: () => ({
+      opacity: 0,
       x: `-50%`,
-      y: `${window.innerWidth > 768 ? `-calc(100% - ${spacing.s300})` : `calc(100% + ${spacing.s300})`}`,
+      y: `${window.innerWidth > 768 ? `calc(-100% - ${spacing.s300})` : `calc(100% + ${spacing.s300})`}`,
       transition: {
         duration: 0.5,
         ease: [0,-0.5,.25,1.25],
       }
     }),
     visible: {
+      opacity: 1,
       x: `-50%`,
       y: 0,
       transition: {
@@ -233,8 +237,8 @@ class ContentNav extends React.Component {
     }
   }
 
-  handleScroll(props) {
-    if(window.scrollY >= (props.introRef.current.offsetTop - 128)) {
+  handleScroll() {
+    if(window.scrollY >= (this.props.introRef.current.offsetTop - 128)) {
       this.setState({
         navStatus: 'visible'
       });
@@ -246,11 +250,11 @@ class ContentNav extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', () => {this.handleScroll(this.props)});
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', () => {this.handleScroll(this.props)});
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
