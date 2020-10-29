@@ -34,7 +34,8 @@ class NavLinks extends React.Component {
     this.navRefs = [];
     this.state = {
       currPos: 0,
-      currWidth: 0
+      currWidth: 0,
+      isNavClick: false
     }
     this.updatePos = this.updatePos.bind(this);
   }
@@ -46,47 +47,48 @@ class NavLinks extends React.Component {
     });
   }
 
+  async handleSetActive(currPos, currWidth, index, navRefs, controls, updatePos, isNavClick) {
+    if(!isNavClick) {
+      if(navRefs[index].offsetLeft > currPos) {
+        await controls.start({
+          width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
+          transition: {
+            duration: 0.1,
+            ease: [0.42, 0, 0.58, 1],
+          }
+        });
 
-  async handleSetActive(currPos, currWidth, index, navRefs, controls, updatePos) {
-    if(navRefs[index].offsetLeft > currPos) {
-      await controls.start({
-        width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
-        transition: {
-          duration: 0.1,
-          ease: [0.42, 0, 0.58, 1],
-        }
-      });
+        await controls.start({
+          x: navRefs[index].offsetLeft,
+          width: navRefs[index].offsetWidth,
+          transition: {
+            delay: 0.1,
+            duration: 0.1,
+            ease: [0.42, 0, 0.58, 1],
+          }
+        });
+      } else {
+        await controls.start({
+          x:  navRefs[index].offsetLeft,
+          width: ((currPos - navRefs[index].offsetLeft) + currWidth),
+          transition: {
+            duration: 0.1,
+            ease: [0.42, 0, 0.58, 1],
+          }
+        });
 
-      await controls.start({
-        x: navRefs[index].offsetLeft,
-        width: navRefs[index].offsetWidth,
-        transition: {
-          delay: 0.1,
-          duration: 0.1,
-          ease: [0.42, 0, 0.58, 1],
-        }
-      });
-    } else {
-      await controls.start({
-        x:  navRefs[index].offsetLeft,
-        width: ((currPos - navRefs[index].offsetLeft) + currWidth),
-        transition: {
-          duration: 0.1,
-          ease: [0.42, 0, 0.58, 1],
-        }
-      });
+        await controls.start({
+          width: navRefs[index].offsetWidth,
+          transition: {
+            delay: 0.1,
+            duration: 0.1,
+            ease: [0.42, 0, 0.58, 1],
+          }
+        })
+      }
 
-      await controls.start({
-        width: navRefs[index].offsetWidth,
-        transition: {
-          delay: 0.1,
-          duration: 0.1,
-          ease: [0.42, 0, 0.58, 1],
-        }
-      })
+      updatePos(navRefs[index].offsetLeft, navRefs[index].offsetWidth);
     }
-
-    updatePos(navRefs[index].offsetLeft, navRefs[index].offsetWidth);
   }
 
   render() {
@@ -127,7 +129,25 @@ class NavLinks extends React.Component {
                 smooth={'easeInOut'}
                 offset={-120}
                 onSetActive={() => {
-                  this.handleSetActive(this.state.currPos, this.state.currWidth, index, this.navRefs, this.props.controls, this.updatePos);
+                  this.handleSetActive(this.state.currPos, this.state.currWidth, index, this.navRefs, this.props.controls, this.updatePos, this.state.isNavClick);
+                }}
+                onClick={() => {
+                  Events.scrollEvent.register('begin', () => {
+                    this.setState({
+                      isNavClick: true
+                    });
+                    Events.scrollEvent.remove('begin');
+                  });
+
+                  Events.scrollEvent.register('end', () => {
+                    this.setState({
+                      isNavClick: false
+                    });
+
+                    this.handleSetActive(this.state.currPos, this.state.currWidth, index, this.navRefs, this.props.controls, this.updatePos, this.state.isNavClick);
+
+                    Events.scrollEvent.remove('end');
+                  });
                 }}
                 css={`
                   color: ${colors.gray200};
