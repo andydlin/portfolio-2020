@@ -95,6 +95,7 @@ class NavLinks extends React.Component {
     return (
       <Box
         css={`
+          flex-wrap: nowrap;
           justify-content: flex-end;
           list-style: none;
           margin: 0;
@@ -176,7 +177,13 @@ export const NavLinksWrapper = (props) => {
   return (
     <div
       css={`
+        margin-left ${spacing.s500};
+        padding-right: ${spacing.s500};
         position: relative; 
+
+        @media (min-width: 768px) {
+          margin-left: 0;
+        }
       `}
     >
       <motion.div
@@ -203,19 +210,19 @@ class ContentNav extends React.Component {
     super();
 
     this.state = {
-      navStatus: 'hidden',
+      navStatus: 'hidden'
     }
   }
  
   navVariants = {
-    hidden: {
+    hidden: () => ({
       x: `-50%`,
-      y: `calc(-100% - ${spacing.s600})`,
+      y: `${window.innerWidth > 768 ? `-calc(100% - ${spacing.s300})` : `calc(100% + ${spacing.s300})`}`,
       transition: {
         duration: 0.5,
         ease: [0,-0.5,.25,1.25],
       }
-    },
+    }),
     visible: {
       x: `-50%`,
       y: 0,
@@ -253,12 +260,20 @@ class ContentNav extends React.Component {
           background: #fff;
           border-radius: 4px;
           box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.1);
+          bottom: ${spacing.s100};
           left: 50%;
           max-width: 800px;
           position: fixed;
-          top: ${spacing.s100};
-          width: 100%;
+          transform: translate(-50%, calc(100% + ${spacing.s600}));
+          top: auto;
+          width: calc(100vw - ${spacing.s300});
           z-index: 999;
+
+          @media (min-width: 768px) {
+            bottom: auto;
+            transform: translate(-50%, calc(-100% - ${spacing.s600}));
+            top: ${spacing.s100};
+          }
         `}
         variants={this.navVariants}
         animate={this.state.navStatus}
@@ -275,13 +290,23 @@ class ContentNav extends React.Component {
         <Box
           css={`
             ${Small}
-            padding: 0 ${spacing.s500} ${spacing.s300};
+            padding: 0 0 ${spacing.s300};
+            -webkit-overflow-scrolling: touch;
+            overflow-x: auto;
           `}
         >
           <div
             css={`
               color: ${colors.gray200};
+              display: none;
+              margin-right: ${spacing.s300};
+              padding: 0 0 0 ${spacing.s500};
+              white-space: nowrap;
               width: 100%;
+
+              @media (min-width: 768px) {
+                display: inline-block;
+              }
             `}
           >
             {this.props.projectTitle}
