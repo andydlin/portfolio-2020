@@ -27,7 +27,7 @@ class Footer extends React.Component {
 
     return (
       <CustomFooter>
-        <p>Made with lots of sweat and tears San Francisco, Bay Area.</p>
+        <p>Made with lots of sweat and tears in San Francisco, Bay Area.</p>
         <p><a href="https://github.com/andydlin/portfolio-2020" target="_blank" rel="noreferrer">Handcrafted</a> with <a href="https://www.figma.com/" target="_blank" rel="noreferrer">Figma</a>, <a href="https://www.gatsbyjs.org" target="_blank" rel="noreferrer">Gatsby</a>, & <a href="https://www.netlify.com/" target="_blank" rel="noreferrer">Netlify</a>.</p>
       </CustomFooter>
     )
