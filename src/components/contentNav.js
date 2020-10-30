@@ -48,9 +48,8 @@ class NavLinks extends React.Component {
   }
   
   async handleSetActive(currPos, currWidth, index, navRefs, controls, updatePos, isNavClick) {
-    console.log('handleSetActive');
     if(!isNavClick) {
-      if(navRefs !== null && navRefs !== undefined) {
+      if(navRefs[index] !== null && navRefs[index] !== undefined) {
         if(navRefs[index].offsetLeft > currPos) {
           await controls.start({
             width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
