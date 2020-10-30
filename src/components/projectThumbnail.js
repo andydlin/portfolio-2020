@@ -122,6 +122,15 @@ const ProjectThumbnail = (props) => {
     })
   }
 
+  const thumbnailTitleVariants = {
+    entered: {
+      opacity: 1,
+    },
+    exited: {
+      opacity: 0
+    }
+  }
+
   const [thumbnailStatus, cycleThumbStatus] = useCycle('start', 'end');
 
   return (
@@ -158,7 +167,9 @@ const ProjectThumbnail = (props) => {
                 fluid={props.card.image.childImageSharp.fluid} 
               />
             </ThumbnailInner>
-            <div
+            <motion.div
+              variants={thumbnailTitleVariants}
+              animate={transitionStatus}
               css={`
                 padding: 0 ${spacing.s400};
 
@@ -169,7 +180,7 @@ const ProjectThumbnail = (props) => {
             >
               <ProjectTitle>{props.card.client}</ProjectTitle>
               <ProjectDescription>{props.card.description}</ProjectDescription>
-            </div>
+            </motion.div>
           </motion.div>
         )
       }}

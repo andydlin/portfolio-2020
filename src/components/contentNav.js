@@ -48,46 +48,49 @@ class NavLinks extends React.Component {
   }
   
   async handleSetActive(currPos, currWidth, index, navRefs, controls, updatePos, isNavClick) {
+    console.log('handleSetActive');
     if(!isNavClick) {
-      if(navRefs[index].offsetLeft > currPos) {
-        await controls.start({
-          width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
-          transition: {
-            duration: 0.1,
-            ease: [0.42, 0, 0.58, 1],
-          }
-        });
+      if(navRefs !== null && navRefs !== undefined) {
+        if(navRefs[index].offsetLeft > currPos) {
+          await controls.start({
+            width: ((navRefs[index].offsetLeft - currPos) + navRefs[index].offsetWidth),
+            transition: {
+              duration: 0.1,
+              ease: [0.42, 0, 0.58, 1],
+            }
+          });
 
-        await controls.start({
-          x: navRefs[index].offsetLeft,
-          width: navRefs[index].offsetWidth,
-          transition: {
-            delay: 0.1,
-            duration: 0.1,
-            ease: [0.42, 0, 0.58, 1],
-          }
-        });
-      } else {
-        await controls.start({
-          x:  navRefs[index].offsetLeft,
-          width: ((currPos - navRefs[index].offsetLeft) + currWidth),
-          transition: {
-            duration: 0.1,
-            ease: [0.42, 0, 0.58, 1],
-          }
-        });
+          await controls.start({
+            x: navRefs[index].offsetLeft,
+            width: navRefs[index].offsetWidth,
+            transition: {
+              delay: 0.1,
+              duration: 0.1,
+              ease: [0.42, 0, 0.58, 1],
+            }
+          });
+        } else {
+          await controls.start({
+            x:  navRefs[index].offsetLeft,
+            width: ((currPos - navRefs[index].offsetLeft) + currWidth),
+            transition: {
+              duration: 0.1,
+              ease: [0.42, 0, 0.58, 1],
+            }
+          });
 
-        await controls.start({
-          width: navRefs[index].offsetWidth,
-          transition: {
-            delay: 0.1,
-            duration: 0.1,
-            ease: [0.42, 0, 0.58, 1],
-          }
-        })
+          await controls.start({
+            width: navRefs[index].offsetWidth,
+            transition: {
+              delay: 0.1,
+              duration: 0.1,
+              ease: [0.42, 0, 0.58, 1],
+            }
+          })
+        }
+
+        updatePos(navRefs[index].offsetLeft, navRefs[index].offsetWidth);
       }
-
-      updatePos(navRefs[index].offsetLeft, navRefs[index].offsetWidth);
     }
   }
 
