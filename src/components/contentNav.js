@@ -240,14 +240,16 @@ class ContentNav extends React.Component {
   }
 
   handleScroll() {
-    if(window.scrollY >= (this.props.introRef.current.offsetTop - 128)) {
-      this.setState({
-        navStatus: 'visible'
-      });
-    } else {
-      this.setState({
-        navStatus: 'hidden'
-      });
+    if(this.props.introRef.current !== null && this.props.introRef.current !== undefined) {
+      if(window.scrollY >= (this.props.introRef.current.offsetTop - 128)) {
+        this.setState({
+          navStatus: 'visible'
+        });
+      } else {
+        this.setState({
+          navStatus: 'hidden'
+        });
+      }
     }
   }
 
