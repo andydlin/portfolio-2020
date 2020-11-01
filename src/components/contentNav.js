@@ -222,7 +222,7 @@ class ContentNav extends React.Component {
     hidden: () => ({
       opacity: 0,
       x: `-50%`,
-      y: `${window.innerWidth > 768 ? `calc(-100% - ${spacing.s300})` : `calc(100% + ${spacing.s300})`}`,
+      y: `${window !== undefined ? window.innerWidth > 768 ? `calc(-100% - ${spacing.s300})` : `calc(100% + ${spacing.s300})` : ``}`,
       transition: {
         duration: 0.5,
         ease: [0,-0.5,.25,1.25],
