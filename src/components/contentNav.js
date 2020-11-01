@@ -213,17 +213,16 @@ class ContentNav extends React.Component {
 
     this.state = {
       navStatus: 'hidden',
-      customY: 0
     }
 
     this.handleScroll = this.handleScroll.bind(this);
   }
  
   navVariants = {
-    hidden: (custom) => ({
+    hidden: () => ({
       opacity: 0,
       x: `-50%`,
-      y: custom.customY,
+      y: `calc(-100% - ${spacing.s300})`,
       transition: {
         duration: 0.5,
         ease: [0,-0.5,.25,1.25],
@@ -256,9 +255,6 @@ class ContentNav extends React.Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-    this.setState({
-      customY: window.innerWidth > 768 ? `calc(-100% - ${spacing.s300})` : `calc(100% + ${spacing.s300})`
-    });
   }
 
   componentWillUnmount() {
@@ -272,26 +268,16 @@ class ContentNav extends React.Component {
           background: #fff;
           border-radius: 4px;
           box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.1);
-          bottom: ${spacing.s100};
           left: 50%;
           max-width: 800px;
           position: fixed;
-          transform: translate(-50%, calc(100% + ${spacing.s600}));
-          top: auto;
+          transform: translate(-50%, calc(-100% - ${spacing.s600}));
+          top: ${spacing.s100};
           width: calc(100vw - ${spacing.s300});
           z-index: 999;
-
-          @media (min-width: 768px) {
-            bottom: auto;
-            transform: translate(-50%, calc(-100% - ${spacing.s600}));
-            top: ${spacing.s100};
-          }
         `}
         variants={this.navVariants}
         animate={this.state.navStatus}
-        custom={{
-          customY: this.state.customY
-        }}
       >
         <div
           css={`
