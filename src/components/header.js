@@ -178,7 +178,7 @@ class Header extends React.Component {
           >
             About
           </NavLink>
-          <NavLink to='/'>Contact</NavLink>
+          {/* <NavLink to='/'>Contact</NavLink> */}
           <NavUnderline
             className={this.props.path + '-active'}
             css={`
