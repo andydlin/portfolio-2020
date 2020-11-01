@@ -65,7 +65,7 @@ const AboutPage = (props) => {
                     css={`
                       margin-bottom: 24px;
                     `}
-                  >🚧 Currently work in progress, I will be updating this soon.</h1>
+                  ><span role="img" title="Under construction sign emoji">🚧</span> Currently work in progress, I will be updating this soon.</h1>
                   <h2
                     css={`
                       margin-bottom: 16px;
@@ -77,11 +77,11 @@ const AboutPage = (props) => {
                       max-width: 500px;
                     `}
                   >
-                    <a href="https://www.linkedin.com/in/andydlin/" target="_blank">LinkedIn</a>
-                    <a href="https://dribbble.com/andydlin" target="_blank">Dribbble</a>
-                    <a href="https://codepen.io/ND44" target="_blank">Codepen</a>
-                    <a href="https://github.com/andydlin" target="_blank">Github</a>
-                    <a href="https://twitter.com/andydlin" target="_blank">Twitter</a>
+                    <a href="https://www.linkedin.com/in/andydlin/" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="https://dribbble.com/andydlin" target="_blank" rel="noreferrer">Dribbble</a>
+                    <a href="https://codepen.io/ND44" target="_blank" rel="noreferrer">Codepen</a>
+                    <a href="https://github.com/andydlin" target="_blank" rel="noreferrer">Github</a>
+                    <a href="https://twitter.com/andydlin" target="_blank" rel="noreferrer">Twitter</a>
                   </Box>
                 </div>
               </Container>
