@@ -4,17 +4,11 @@ import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 
 import Layout from "../../components/layout"
-import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
-import { Container } from "../../styles/global"
-import { layout } from '../../styles/spacing'
 
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
 import MainSectionTitle from "../../components/project/mainSectionTitle"
-import SubSectionTitle from "../../components/project/subSectionTitle"
-import ImageWithSubsectionTitle from "../../components/project/imageWithSubsectionTitle"
-import ImageGrid from "../../components/project/imageGrid"
 
 const ProjectDetails = (props) => {
   const { mount } = props;

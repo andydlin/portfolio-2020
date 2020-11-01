@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Andy Lin's Portfolio`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Andy Lin's Design Portfolio`,
+    description: `I’m a product designer specializing in interaction design & design systems. Currently a product designer at Dictionary.com, located in San Francisco Bay Area.`,
     author: `@andydlin`,
   },
   plugins: [
@@ -45,7 +45,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-styled-components`,
