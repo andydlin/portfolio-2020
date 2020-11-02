@@ -271,6 +271,16 @@ const IndexPage = (props) => {
             >
               <ProjectList/>
             </motion.div>
+            <p
+              css={`
+                border: 1px solid #e1e1e1;
+                font-size: 18px;
+                margin: 0 auto;
+                max-width: 600px;
+                padding: 48px 24px;
+                text-align: center;
+              `}
+            >More projects coming soon!</p>
           </Layout>
         )
       }}
