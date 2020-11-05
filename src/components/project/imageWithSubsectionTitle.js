@@ -55,7 +55,7 @@ const ImageWithSubsectionTitle = (props) => {
               order: ${props.imageRight ? '1' : '2'};
               padding-left ${props.imageRight ? spacing.s300 : '0'};
               padding-right ${props.imageRight ? '0' : spacing.s300};
-              padding-top: ${props.longImage ? spacing.s800 : '0'};
+              padding-top: ${props.longImage ? layout.l500 : '0'};
               position: ${props.longImage ? 'sticky' : 'relative'};
               top: ${props.longImage ? spacing.s800 : '0'};
               width: 50vw;

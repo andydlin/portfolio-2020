@@ -7,5 +7,14 @@
     "alt": "Thumbnail image for Hulu DevX project",
     "link": "/project/hulu-devx",
     "hex": "#0FAE60"
+  },
+  {
+    "title": "Thesaurus.com - Grammar Coach",
+    "client": "Thesaurus.com",
+    "description": "I lead the design for Thesaurus.com's first writing product.",
+    "image": "grammar-coach-thumbnail.jpg",
+    "alt": "Thumbnail image for Thesaurus.com's Grammar Coach",
+    "link": "/project/thesaurus-grammar-coach",
+    "hex": "#FF9900"
   }
 ]

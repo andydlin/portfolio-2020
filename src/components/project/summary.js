@@ -189,6 +189,7 @@ const Summary = (props) => {
                       flex-direction: column;
                       margin-right: ${layout.l400};
                       max-width: 200px;
+                      min-width: 200px;
                     }
                   `}
                 >

@@ -21,7 +21,7 @@ export const Medium = css`
 `
 
 export const Schmedium = css`
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.5;
 `
 
