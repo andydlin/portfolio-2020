@@ -52,18 +52,13 @@ class ProjectDetails extends React.Component {
             description={<div><p>Thesaurus.com is well-known for providing relevant synonyms and antonyms for your emails, messages, academic papers, and more. In order to provide more resources to help people improve their writing, we decided to explore a writing tool that leverages our existing product and capabilities. I worked closely with the product manager to brainstorm and ideate an MVP writing tool.</p></div>}
           />
           <Container>
-            <div
-              css={`
-                padding: 24px 0;
-                text-align: center;
-              `}
-            >
-              <h1
-                css={`
-                  margin-bottom: 24px;
-                `}
-              ><span role="img" title="Under construction sign emoji">🚧</span> Currently work in progress, I will be updating this soon.</h1>
-            </div>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.overviewImage.childImageSharp.fluid,
+                }
+              ]}
+            />
           </Container>
         </ProjectSection>
       </ProjectWrapper>
@@ -77,6 +72,13 @@ const ProjectPage = () => {
       heroImage: file(relativePath: { eq: "images/projects/grammar-coach-thumbnail.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2880, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      overviewImage: file(relativePath: { eq: "images/projects/grammar-coach/overview.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
