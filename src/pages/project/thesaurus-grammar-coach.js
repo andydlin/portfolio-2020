@@ -48,8 +48,8 @@ class ProjectDetails extends React.Component {
             summary={<div><p>Thesaurus.com steps into the education space by providing resources, services, and tools for writing. Grammar Coach is their first writing product and it offers spelling and grammar check, synonym suggestions, sentiment analysis, and tone, formality, and engagement, to help users hone their writing skills.</p><p>I was the lead designer for ideation, design, research, and launch of Grammar Coach. I worked closely with a product manager, 4 engineers, and 3 data scientists to deliver a writing tool that provides linguist-curated synonyms and customized grammar recommendations. The MVP release of Grammar Coach has an average session duration of more than 30 minutes.</p></div>}
           />
           <MainSectionTitle
-            title={`Our Goal`}
-            description={<div><p>Thesaurus.com is well-known for providing relevant synonyms and antonyms for your emails, messages, academic papers, and more. In order to provide more resources to help people improve their writing, we decided to explore a writing tool that leverages our existing product and capabilities. I worked closely with the product manager to brainstorm and ideate an MVP writing tool.</p></div>}
+            title={`Objective`}
+            description={<p>Thesaurus.com is well-known for providing relevant synonyms and antonyms for your emails, messages, academic papers, and more. In order to provide more resources to help people improve their writing, we decided to explore a writing tool that leverages our existing product and capabilities. I worked closely with the product manager to brainstorm and ideate an MVP writing tool along with creating a roadmap to test, iterate, and add more features.</p>}
           />
           <Container>
             <ImageGrid
@@ -60,6 +60,28 @@ class ProjectDetails extends React.Component {
               ]}
             />
           </Container>
+        </ProjectSection>
+        <ProjectSection name={'discover-section'}>
+          <MainSectionTitle
+            title={`Discover`}
+            description={<div><p>We conducted research on Usertesting.com on both existing users and new users to learn more about the tools and services they use. In addition, we performed competitive analysis, sent out surveys, and ran usability tests on early ideas.</p><p>Thesaurus.com has a wide audience, anywhere from elementary students to grandparents. In order to narrow our scope, we focused on learning more about college students, writers, and professionals in our research.</p></div>}
+          />
+          <ImageSlider
+            slides={[
+              {
+                image: this.props.data.discoverUserNeeds.childImageSharp.fluid
+              },
+              {
+                image: this.props.data.discoverUserInterviews.childImageSharp.fluid
+              },
+              {
+                image: this.props.data.discoverCompetitiveGrammarly.childImageSharp.fluid
+              },
+              {
+                image: this.props.data.discoverCompetitiveGoogle.childImageSharp.fluid
+              },
+            ]}
+          />
         </ProjectSection>
       </ProjectWrapper>
     )
@@ -78,7 +100,35 @@ const ProjectPage = () => {
       },
       overviewImage: file(relativePath: { eq: "images/projects/grammar-coach/overview.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1680, quality: 100) {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverUserNeeds: file(relativePath: { eq: "images/projects/grammar-coach/discover-user-needs.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverUserInterviews: file(relativePath: { eq: "images/projects/grammar-coach/discover-user-interviews.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverCompetitiveGrammarly: file(relativePath: { eq: "images/projects/grammar-coach/discover-competitive-analysis-grammarly.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      discoverCompetitiveGoogle: file(relativePath: { eq: "images/projects/grammar-coach/discover-competitive-analysis-google-docs.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

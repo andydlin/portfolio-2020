@@ -13,6 +13,7 @@ const ImgCaption = styled.div`
   ${Small}
   font-style: italic;
   margin-top: ${spacing.s100};
+  text-align: center;
 
   @media (min-width: 768px) {
     ${Regular}
