@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from './colors'
 import { spacing, layout } from './spacing'
 
 export const Box = styled.div`
@@ -69,5 +70,13 @@ export const ProjectSection = styled.div`
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+`
+export const SectionWithBgColor = styled.div`
+  background: ${colors.bgBlue};
+  padding: ${layout.l300} 0;
+
+  @media (min-width: 768px) {
+    padding: ${layout.l600} 0;
   }
 `

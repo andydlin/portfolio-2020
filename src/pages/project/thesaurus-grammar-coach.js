@@ -7,7 +7,7 @@ import Layout from "../../components/layout"
 import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
 import ContentNav from "../../components/contentNav"
-import { Container, ProjectSection } from "../../styles/global"
+import { Container, ProjectSection, SectionWithBgColor } from "../../styles/global"
 
 import HeroImage from "../../components/project/heroImage"
 import Summary from "../../components/project/summary"
@@ -25,17 +25,17 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const sections = ['Intro', 'Discover', 'Define', 'Develop', 'Deliver', 'Results'];
+    const sections = ['Intro', 'MVP', 'Iterations', 'Outcome', 'Explorations'];
 
     return (
       <ProjectWrapper
         mount={this.props.mount}
       >
-        {/* <ContentNav
+        <ContentNav
           sections={sections}
           projectTitle={`Grammar Coach`}
           introRef={this.introRef}
-        /> */}
+        />
         <HeroImage image={this.props.data.heroImage.childImageSharp.fluid}/>
         <ProjectSection name={'intro-section'} ref={this.introRef}>
           <Summary
@@ -61,10 +61,10 @@ class ProjectDetails extends React.Component {
             />
           </Container>
         </ProjectSection>
-        <ProjectSection name={'discover-section'}>
+        <ProjectSection name={'mvp-section'}>
           <MainSectionTitle
-            title={`Discover`}
-            description={<div><p>We conducted research on Usertesting.com on both existing users and new users to learn more about the tools and services they use. In addition, we performed competitive analysis, sent out surveys, and ran usability tests on early ideas.</p><p>Thesaurus.com has a wide audience, anywhere from elementary students to grandparents. In order to narrow our scope, we focused on learning more about college students, writers, and professionals in our research.</p></div>}
+            title={`Initial Research`}
+            description={<div><p>We conducted research on Usertesting.com on both existing users and new users to learn more about the tools and services they use. In addition, we performed competitive analysis, sent out surveys, ran usability tests, and got direct feedback from users.</p><p>Thesaurus.com has a wide audience, anywhere from elementary students to grandparents. In order to narrow our scope, we focused on learning more about college students, writers, and professionals in our research.</p></div>}
           />
           <ImageSlider
             slides={[
@@ -82,6 +82,59 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
+          <SectionWithBgColor>
+            <Container>
+              <ImageWithSubsectionTitle
+                  image={this.props.data.researchV1.childImageSharp.fluid}
+                  title={'Early Feedback'}
+                  description={<p>We took advantage of our 70+ million monthly visitors and released a MVP v1 to start getting feedback from real users. This allowed users to enter text and find synonyms for a word by leveraging our existing products. We put this in front of real people so we can iterate quicker.</p>}
+                  longImage
+                />
+            </Container>
+          </SectionWithBgColor>
+          <Container>
+            <ImageWithSubsectionTitle
+                image={this.props.data.researchV2.childImageSharp.fluid}
+                title={'Small Iterations'}
+                description={<p>We did a quick iteration: removed unnecessary text (originally used to provide more resources for writing) and used a single background color to create a more seamless interface. Users received this small update well, so we know the more simple design was the right direction.</p>}
+                longImage
+                imageRight
+              />
+          </Container>
+          <Container>
+            <SubSectionTitle
+              title={`Spelling & Grammar Check`}
+              description={<p>While we gathered more feedback from real users, I continued to create MVP designs for spelling and grammar check. The synonym swap behavior has been received well, so for this round I reused that pattern. This allowed me to move quickly and lead to quicker releases. Along with introducing spelling and grammar check, I worked on making the tool more responsive to support users on all devices.</p>}
+            />
+          </Container>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.researchV3.childImageSharp.fluid,
+                  caption: 'Users liked being able to use the tool on their phone, but found the experience buggy and not intuitive. In addition, they were getting confused between the synonym swap and the grammar correction.'
+                }
+              ]}
+            />
+          </Container>
+        </ProjectSection>
+        <ProjectSection name={'iterations-section'}>
+          <Container>
+            <MainSectionTitle
+              title={'Layout Iterations'}
+              description={<p>Concurrently, I took this opportunity to start iterating on UX and layout ideas. I utilized Usertesting.com and UsabilityHub to get first impressions on the next round of mockups and prototypes.</p>}
+            />
+          </Container>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.iterationsImage.childImageSharp.fluid,
+                  caption: 'A sample of iterations for both desktop and mobile views.'
+                }
+              ]}
+            />
+          </Container>
         </ProjectSection>
       </ProjectWrapper>
     )
@@ -129,6 +182,34 @@ const ProjectPage = () => {
       discoverCompetitiveGoogle: file(relativePath: { eq: "images/projects/grammar-coach/discover-competitive-analysis-google-docs.png" }) {
         childImageSharp {
           fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      researchV1: file(relativePath: { eq: "images/projects/grammar-coach/research-v1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      researchV2: file(relativePath: { eq: "images/projects/grammar-coach/research-v2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      researchV3: file(relativePath: { eq: "images/projects/grammar-coach/research-v3.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      iterationsImage: file(relativePath: { eq: "images/projects/grammar-coach/iterations.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2880, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
