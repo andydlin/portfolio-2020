@@ -46,17 +46,8 @@ export const ProjectSection = styled.div`
   > * {
     margin-bottom: ${layout.l300};
 
-    &:last-child {
-      margin-bottom: 0;
-      padding-bottom: ${layout.l300};
-    }
-
     @media (min-width: 768px) {
       margin-bottom: ${layout.l600};
-
-      &:last-child {
-        padding-bottom: ${layout.l600};
-      }
     }
   }
 
@@ -78,5 +69,17 @@ export const SectionWithBgColor = styled.div`
 
   @media (min-width: 768px) {
     padding: ${layout.l600} 0;
+  }
+
+  > * {
+    margin-bottom: ${layout.l300};
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      margin-bottom: ${layout.l600};
+    }
   }
 `
