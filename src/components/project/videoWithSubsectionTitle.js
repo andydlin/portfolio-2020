@@ -8,12 +8,18 @@ import { Box } from "../../styles/global"
 import SubSectionTitle from "./subSectionTitle"
 
 const CustomVideo = styled.div`
+  margin-bottom: ${layout.l100};
+
   video {
+    ${props => props.mobileVideo ? 'display: inherit;' : ''};
     height: 100%;
+    ${props => props.mobileVideo ? 'margin: 0 0 0 auto;' : ''};
+    ${props => props.mobileVideo ? 'max-width: 375px;' : ''};
     width: 100%;
   }
 
   @media (min-width: 900px) {
+    margin-bottom: 0;
     order: ${props => props.videoRight ? '2' : '1'};
   }
 `
@@ -37,6 +43,7 @@ const VideoWithSubsectionTitle = (props) => {
       >
         <CustomVideo
           videoRight={props.videoRight}
+          mobileVideo={props.mobileVideo}
         >
           <Video
             autoPlay

@@ -98,7 +98,7 @@ class NavLinks extends React.Component {
       <Box
         css={`
           flex-wrap: nowrap;
-          justify-content: flex-end;
+          justify-content: flex-start;
           list-style: none;
           margin: 0;
           padding: 0;
@@ -115,6 +115,10 @@ class NavLinks extends React.Component {
             &:last-of-type {
               margin-right: 0;
             }
+          }
+
+          @media (min-width: 768px) {
+            justify-content: flex-end;
           }
         `}
       >

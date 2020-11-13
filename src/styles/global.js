@@ -62,6 +62,10 @@ export const ProjectSection = styled.div`
       margin-bottom: 0;
     }
   }
+
+  a {
+    color: ${colors.blue};
+  }
 `
 export const SectionWithBgColor = styled.div`
   background: ${colors.bgBlue};

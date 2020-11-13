@@ -21,6 +21,7 @@ import VideoWithSubsectionTitle from "../../components/project/videoWithSubsecti
 import IterationsProto1 from "../../images/projects/grammar-coach/iterations-proto1.mp4"
 import IterationsProto2 from "../../images/projects/grammar-coach/iterations-proto2.mp4"
 import ExplorationsProto1 from "../../images/projects/grammar-coach/explorations-proto1.mp4"
+import ExplorationsProto2 from "../../images/projects/grammar-coach/explorations-proto2.mp4"
 
 class ProjectDetails extends React.Component {
   constructor() {
@@ -30,7 +31,7 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const sections = ['Intro', 'Research', 'Iterations', 'Explorations', 'Outcome'];
+    const sections = ['Intro', 'Research', 'Iterations', 'Delivery', 'Results', 'Reflection'];
 
     return (
       <ProjectWrapper
@@ -174,10 +175,71 @@ class ProjectDetails extends React.Component {
             />
           </SectionWithBgColor>
         </ProjectSection>
-        <ProjectSection name={'explorations-section'}>
+        <ProjectSection name={'delivery-section'}>
+          <MainSectionTitle
+            title={`Delivery`}
+            description={<div><p>For delivery, I combined my explorations with existing style guides and addressed the findings from both qualitative and quantitative research. The latest release includes:</p><ul><li>Synonyms by relevancy</li><li>Overall writing score</li><li>Writing assistant with categories</li><li>Temporary "Check Grammar" button</li><li>Reponsive layout</li></ul></div>}
+          />
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.outcome3.childImageSharp.fluid,
+                  caption: 'Help menu for new users'
+                },
+                {
+                  image: this.props.data.outcome4.childImageSharp.fluid,
+                  caption: 'Empty state for first page load'
+                },
+              ]}
+            />
+          </Container>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.outcome1.childImageSharp.fluid,
+                  caption: 'Overall writing score'
+                },
+                {
+                  image: this.props.data.outcome2.childImageSharp.fluid,
+                  caption: 'Synonym swap and writing assistant'
+                },
+              ]}
+            />
+          </Container>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.outcome5.childImageSharp.fluid,
+                  caption: 'Full responsive design that works on all devices'
+                },
+              ]}
+            />
+          </Container>
+          <Container>
+              <VideoWithSubsectionTitle
+                video={IterationsProto1}
+                title={'CodePen Prototypes'}
+                description={<p>In order to flush out animations and interations, I created prototypes in CodePen. These prototypes also helped engineers when implementing the designs. You can view these live in the <a href="https://codepen.io/collection/Akqwzo" target="_blank">CodePen Collection</a>.</p>}
+              />
+            </Container>
+        </ProjectSection>
+        <ProjectSection name={'results-section'}>
+          <MainSectionTitle
+            title={`Results`}
+            description={<p>I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+          />
+        </ProjectSection>
+        <ProjectSection name={'reflection-section'}>
+          <MainSectionTitle
+            title={`Reflection`}
+            description={<p>I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+          />
           <MainSectionTitle
             title={`Explorations`}
-            description={<p>While we collected more quantitative data and the data scientists worked on improving the product, I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+            description={<p>I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
           />
           <Container>
             <ImageGrid
@@ -205,11 +267,20 @@ class ProjectDetails extends React.Component {
               description={'The show/hide assistant toggle creates a cleaner view for people who want to focus on writing. The suggestion underlines disappear as well to remove any distractions. A simple synonym swap switch lets users toggle the feature with ease.'}
             />
           </Container>
-        </ProjectSection>
-        <ProjectSection name={'outcome-section'}>
-          <MainSectionTitle
-            title={`Outcome`}
-            description={<div><p>We conducted research on Usertesting.com on both existing users and new users to learn more about the tools and services they use. In addition, we performed competitive analysis, sent out surveys, ran usability tests, and got direct feedback from users.</p><p>Thesaurus.com has a wide audience, anywhere from elementary students to grandparents. In order to narrow our scope, we focused on learning more about college students, writers, and professionals in our research.</p></div>}
+          <Container>
+            <VideoWithSubsectionTitle
+              mobileVideo
+              video={ExplorationsProto2}
+              title={'Mobile Web Experience'}
+              description={'Since about half our visitors are on their mobile phones, I focused on creating an experience that worked for both desktop and mobile devices. With the limited space of a moble phone, I separated the assistant into two steps. This solos out each suggestion to provide a distraction free experience.'}
+            />
+          </Container>
+          <ImageGrid
+            images={[
+              {
+                image: this.props.data.explorationsOverview.childImageSharp.fluid,
+              },
+            ]}
           />
         </ProjectSection>
       </ProjectWrapper>
@@ -335,6 +406,48 @@ const ProjectPage = () => {
       explorations3: file(relativePath: { eq: "images/projects/grammar-coach/explorations-3.png" }) {
         childImageSharp {
           fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      explorationsOverview: file(relativePath: { eq: "images/projects/grammar-coach/explorations-overview.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2880, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      outcome1: file(relativePath: { eq: "images/projects/grammar-coach/outcome-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      outcome2: file(relativePath: { eq: "images/projects/grammar-coach/outcome-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      outcome3: file(relativePath: { eq: "images/projects/grammar-coach/outcome-3.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      outcome4: file(relativePath: { eq: "images/projects/grammar-coach/outcome-4.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      outcome5: file(relativePath: { eq: "images/projects/grammar-coach/outcome-5.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
