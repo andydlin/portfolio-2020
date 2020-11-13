@@ -22,6 +22,7 @@ import IterationsProto1 from "../../images/projects/grammar-coach/iterations-pro
 import IterationsProto2 from "../../images/projects/grammar-coach/iterations-proto2.mp4"
 import ExplorationsProto1 from "../../images/projects/grammar-coach/explorations-proto1.mp4"
 import ExplorationsProto2 from "../../images/projects/grammar-coach/explorations-proto2.mp4"
+import OutcomeVideo from "../../images/projects/grammar-coach/outcome-video.mp4"
 
 class ProjectDetails extends React.Component {
   constructor() {
@@ -213,14 +214,14 @@ class ProjectDetails extends React.Component {
               images={[
                 {
                   image: this.props.data.outcome5.childImageSharp.fluid,
-                  caption: 'Full responsive design that works on all devices'
+                  caption: 'Fully responsive design that works on all devices'
                 },
               ]}
             />
           </Container>
           <Container>
               <VideoWithSubsectionTitle
-                video={IterationsProto1}
+                video={OutcomeVideo}
                 title={'CodePen Prototypes'}
                 description={<p>In order to flush out animations and interations, I created prototypes in CodePen. These prototypes also helped engineers when implementing the designs. You can view these live in the <a href="https://codepen.io/collection/Akqwzo" target="_blank">CodePen Collection</a>.</p>}
               />
@@ -229,17 +230,26 @@ class ProjectDetails extends React.Component {
         <ProjectSection name={'results-section'}>
           <MainSectionTitle
             title={`Results`}
-            description={<p>I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+            description={<p>About a month after our latest release, our NPS score has improved along with general feedback from our users. Our updated features for grammar and spelling check, formality and engagement check, and tone detection has been received well. We are continuously iterating on both the user experience front and the backend to create a smarter writing tool.</p>}
           />
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.results.childImageSharp.fluid,
+                },
+              ]}
+            />
+          </Container>
         </ProjectSection>
         <ProjectSection name={'reflection-section'}>
           <MainSectionTitle
             title={`Reflection`}
-            description={<p>I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+            description={<div><p>I'm super grateful for the opportunity to design a product from the ground up for millions of people. Being able to work directly with a product manager to shape the product goals and direction was both challenging and fun and very satisfying. I'm also grateful that I have access to millions of people throughout the research phase and throughout the ideation and design phases.</p><p>Some key takeaways from the work I've done so far for Grammar Coach:</p><ul><li>Communicate early and frequently with stakeholders</li><li>Don't let feedback and data decide the product, instead, use it to make informative decisions</li><li>Prototypes will help sell complex concepts and also help clarify the idea for engineers</li><li>Creating a writing tool / word processor is no joke</li></ul></div>}
           />
           <MainSectionTitle
             title={`Explorations`}
-            description={<p>I had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+            description={<p>I also had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
           />
           <Container>
             <ImageGrid
@@ -448,6 +458,13 @@ const ProjectPage = () => {
       outcome5: file(relativePath: { eq: "images/projects/grammar-coach/outcome-5.png" }) {
         childImageSharp {
           fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      results: file(relativePath: { eq: "images/projects/grammar-coach/results.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
