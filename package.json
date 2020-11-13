@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
@@ -35,6 +36,7 @@
     "gatsby-video": "^0.2.0",
     "hex-to-rgba": "^2.0.1",
     "node-sass": "^4.14.1",
+    "patch-package": "^6.2.2",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
