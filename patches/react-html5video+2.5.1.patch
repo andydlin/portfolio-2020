@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-html5video/dist/index.js b/node_modules/react-html5video/dist/index.js
+index c0cdcdc..b8f62fc 100644
+--- a/node_modules/react-html5video/dist/index.js
++++ b/node_modules/react-html5video/dist/index.js
+@@ -2480,6 +2480,8 @@ module.exports =
+ 	    video: _propTypes2.default.object.isRequired
+ 	};
+ 
++	const isServerSide = () => !(typeof window !== 'undefined' && window !== null);
++
+ 	var connectedPlayer = (0, _video2.default)(DefaultPlayer, function (_ref2) {
+ 	    var networkState = _ref2.networkState,
+ 	        readyState = _ref2.readyState,
+@@ -2493,7 +2495,7 @@ module.exports =
+ 	            // TODO: This is not pretty. Doing device detection to remove
+ 	            // spinner on iOS devices for a quick and dirty win. We should see if
+ 	            // we can use the same readyState check safely across all browsers.
+-	            loading: readyState < (/iPad|iPhone|iPod/.test(navigator.userAgent) ? 1 : 4),
++	            loading: readyState < (!isServerSide() && /iPad|iPhone|iPod/.test(navigator.userAgent) ? 1 : 4),
+ 	            percentagePlayed: (0, _api.getPercentagePlayed)(restState),
+ 	            percentageBuffered: (0, _api.getPercentageBuffered)(restState)
+ 	        }, restState)
