@@ -8,6 +8,7 @@ import { motion, useCycle } from "framer-motion"
 import { colors } from '../styles/colors'
 import { spacing } from '../styles/spacing'
 import { Giant, Large, Schmedium, Regular } from "../styles/typography"
+import { Box } from "../styles/global"
 
 const CustomImg = styled(Img)`
   height: 100%;
@@ -26,6 +27,11 @@ const ThumbnailInner = styled(motion.div)`
     &:hover {
       box-shadow: 0 16px 40px ${props => props.shadowHover};
     }
+  }
+
+  @media (min-width: 768px) {
+    order: 2;
+    width: 70%;
   }
 
   @media (min-width: 1200px) {
@@ -107,7 +113,7 @@ const ProjectThumbnail = (props) => {
   const thumbnailVariants = {
     start: {
       height: 'auto',
-      width: 'auto'
+      width: '70%'
     },
     end: (custom) => ({
       x: custom.newXPos,
@@ -147,40 +153,43 @@ const ProjectThumbnail = (props) => {
             ref={containerRef}
             onClick={() => cycleThumbStatus()}
           >
-            <ThumbnailInner
-              initial='start'
-              variants={thumbnailVariants}
-              animate={transitionStatus}
-              custom={{
-                newXPos: newXPos,
-              }}
-              whileHover={{
-                scale: 1.005,
-                transition: { duration: 0.25 },
-              }}
-              whileTap={{ scale: 1 }}
-              shadowInitial={hexToRgba(props.card.hex, '0')}
-              shadowHover={hexToRgba(props.card.hex, '0.3')}
-            >
-              <CustomImg
-                alt={props.card.alt}
-                fluid={props.card.image.childImageSharp.fluid} 
-              />
-            </ThumbnailInner>
-            <motion.div
-              variants={thumbnailTitleVariants}
-              animate={transitionStatus}
-              css={`
-                padding: 0 ${spacing.s400};
+            <Box>
+              <ThumbnailInner
+                initial='start'
+                variants={thumbnailVariants}
+                animate={transitionStatus}
+                custom={{
+                  newXPos: newXPos,
+                }}
+                whileHover={{
+                  scale: 1.005,
+                  transition: { duration: 0.25 },
+                }}
+                whileTap={{ scale: 1 }}
+                shadowInitial={hexToRgba(props.card.hex, '0')}
+                shadowHover={hexToRgba(props.card.hex, '0.3')}
+              >
+                <CustomImg
+                  alt={props.card.alt}
+                  fluid={props.card.image.childImageSharp.fluid} 
+                />
+              </ThumbnailInner>
+              <motion.div
+                variants={thumbnailTitleVariants}
+                animate={transitionStatus}
+                css={`
+                  padding: 0 ${spacing.s400};
 
-                @media (min-width: 768px) {
-                  padding: 0 ${spacing.s600};
-                }
-              `}
-            >
-              <ProjectTitle>{props.card.client}</ProjectTitle>
-              <ProjectDescription>{props.card.description}</ProjectDescription>
-            </motion.div>
+                  @media (min-width: 768px) {
+                    padding: 0 ${spacing.s600};
+                    width: 30%;
+                  }
+                `}
+              >
+                <ProjectTitle>{props.card.client}</ProjectTitle>
+                <ProjectDescription>{props.card.description}</ProjectDescription>
+              </motion.div>
+            </Box>
           </motion.div>
         )
       }}
