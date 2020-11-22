@@ -1,10 +1,10 @@
 import React from "react"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 import VizSensor from "../visibilitySensor"
 
-import { colors } from '../../styles/colors'
-import { spacing } from '../../styles/spacing'
+import { colors } from "../../styles/colors"
+import { spacing } from "../../styles/spacing"
 import { Container } from "../../styles/global"
 import { Giant, Large, Schmedium } from "../../styles/typography"
 
@@ -21,7 +21,7 @@ const Title = styled.h2`
 
   &:before {
     background: ${colors.gray000};
-    content: '';
+    content: "";
     display: inline-block;
     height: 4px;
     left: 0;
@@ -39,34 +39,32 @@ const Title = styled.h2`
 
 const Description = styled.div`
   color: ${colors.gray300};
-  
+
   @media (min-width: 768px) {
     ${Schmedium}
   }
 `
 
-const MainSectionTitle = (props) => {
-  return (
-    <VizSensor>
-      <Container>
-        <div
-          css={`
-            margin: 0 auto;
-            max-width: 860px;
-            padding-top: 24px;
+const Subcontainer = styled.div`
+  margin: 0 auto;
+  max-width: 860px;
+  padding-top: 24px;
 
-            @media (min-width: 768px) {
-              padding-top: 0;
-              padding-left: 160px;
-            }
-          `}
-        >
-          <Title>{props.title}</Title>
-          <Description>{props.description}</Description>
-        </div>
-      </Container>
-    </VizSensor>
-  )
-}
+  @media (min-width: 768px) {
+    padding-top: 0;
+    padding-left: 160px;
+  }
+`
+
+const MainSectionTitle = ({ title, description }) => (
+  <VizSensor>
+    <Container>
+      <Subcontainer>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+      </Subcontainer>
+    </Container>
+  </VizSensor>
+)
 
 export default MainSectionTitle
