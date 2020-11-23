@@ -48,10 +48,10 @@ const ProjectsList = (props) => {
               <Link
                 to={card.link}
                 exit={{
-                  length: 1.65,
+                  length: 1.9,
                 }}
                 entry={{
-                  delay: 1.65,
+                  delay: 1.9,
                 }}
                 css={`
                   text-decoration: none;

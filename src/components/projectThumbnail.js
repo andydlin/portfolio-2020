@@ -8,7 +8,6 @@ import { motion, useCycle } from "framer-motion"
 import { colors } from '../styles/colors'
 import { spacing } from '../styles/spacing'
 import { Giant, Large, Schmedium, Regular } from "../styles/typography"
-import { Box } from "../styles/global"
 
 const CustomImg = styled(Img)`
   height: 100%;
@@ -30,12 +29,25 @@ const ThumbnailInner = styled(motion.div)`
   }
 
   @media (min-width: 768px) {
-    order: 2;
+    display: inline-block;
+    margin-left: 30%;
     width: 70%;
   }
 
   @media (min-width: 1200px) {
     border-radius: 16px;
+  }
+`
+
+const ThumbnailDetails = styled(motion.div)`
+  padding: 0 ${spacing.s400};
+
+  @media (min-width: 768px) {
+    display: inline-block;
+    left: 0;
+    padding: 0 ${spacing.s600};
+    position: absolute;
+    width: 30%;
   }
 `
 
@@ -113,26 +125,41 @@ const ProjectThumbnail = (props) => {
   const thumbnailVariants = {
     start: {
       height: 'auto',
+      marginLeft: '30%',
       width: '70%'
     },
     end: (custom) => ({
       x: custom.newXPos,
       height: 'calc(100vh - 124px)',
+      marginLeft: ['30%', '15%', '15%', '0%'],
       borderRadius: '0px',
       width: '100vw',
       transition: {
         delay: 0.9,
-        duration: 0.25,
+        duration: 0.9,
         ease: [0.65, 0.01, 0.5, 1],
+        times: [0, .3, .6, .85],
+        x: {
+          delay: 1.5
+        },
+        height: {
+          delay: 1.5
+        },
+        borderRadius: {
+          delay: 1.5
+        },
+        width: {
+          delay: 1.5
+        }
       }
     })
   }
 
   const thumbnailTitleVariants = {
-    entered: {
+    start: {
       opacity: 1,
     },
-    exited: {
+    end: {
       opacity: 0
     }
   }
@@ -153,43 +180,33 @@ const ProjectThumbnail = (props) => {
             ref={containerRef}
             onClick={() => cycleThumbStatus()}
           >
-            <Box>
-              <ThumbnailInner
-                initial='start'
-                variants={thumbnailVariants}
-                animate={transitionStatus}
-                custom={{
-                  newXPos: newXPos,
-                }}
-                whileHover={{
-                  scale: 1.005,
-                  transition: { duration: 0.25 },
-                }}
-                whileTap={{ scale: 1 }}
-                shadowInitial={hexToRgba(props.card.hex, '0')}
-                shadowHover={hexToRgba(props.card.hex, '0.3')}
-              >
-                <CustomImg
-                  alt={props.card.alt}
-                  fluid={props.card.image.childImageSharp.fluid} 
-                />
-              </ThumbnailInner>
-              <motion.div
-                variants={thumbnailTitleVariants}
-                animate={transitionStatus}
-                css={`
-                  padding: 0 ${spacing.s400};
-
-                  @media (min-width: 768px) {
-                    padding: 0 ${spacing.s600};
-                    width: 30%;
-                  }
-                `}
-              >
-                <ProjectTitle>{props.card.client}</ProjectTitle>
-                <ProjectDescription>{props.card.description}</ProjectDescription>
-              </motion.div>
-            </Box>
+            <ThumbnailInner
+              initial='start'
+              variants={thumbnailVariants}
+              animate={transitionStatus}
+              custom={{
+                newXPos: newXPos,
+              }}
+              whileHover={{
+                scale: 1.005,
+                transition: { duration: 0.25 },
+              }}
+              whileTap={{ scale: 1 }}
+              shadowInitial={hexToRgba(props.card.hex, '0')}
+              shadowHover={hexToRgba(props.card.hex, '0.3')}
+            >
+              <CustomImg
+                alt={props.card.alt}
+                fluid={props.card.image.childImageSharp.fluid} 
+              />
+            </ThumbnailInner>
+            <ThumbnailDetails
+              variants={thumbnailTitleVariants}
+              animate={thumbnailStatus}
+            >
+              <ProjectTitle>{props.card.client}</ProjectTitle>
+              <ProjectDescription>{props.card.description}</ProjectDescription>
+            </ThumbnailDetails>
           </motion.div>
         )
       }}
