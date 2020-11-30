@@ -1,7 +1,7 @@
 [
   {
-    "title": "Hulu - DevX Console",
     "client": "Hulu",
+    "title": "Creating DevX's First Developer Console",
     "description": "I helped design Hulu's first developer console to support thousands of engineers.",
     "image": "hulu-thumbnail.jpg",
     "alt": "Thumbnail image for Hulu DevX project",
@@ -9,8 +9,8 @@
     "hex": "#0FAE60"
   },
   {
-    "title": "Thesaurus.com - Grammar Coach",
     "client": "Thesaurus.com",
+    "title": "Grammar Coach - Entering the Writing Space",
     "description": "I lead the design for Thesaurus.com's first writing product.",
     "image": "grammar-coach-thumbnail.jpg",
     "alt": "Thumbnail image for Thesaurus.com's Grammar Coach",

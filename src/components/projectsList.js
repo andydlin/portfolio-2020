@@ -40,7 +40,11 @@ const ProjectsList = (props) => {
   `);
 
   return (
-    <Container>
+    <Container
+      css={`
+        max-width: 2000px;
+      `}
+    >
       {data.allPortfolioCard.nodes.map((card, index, arr) => {
         return (
           <ThumbnailWrapper key={card.title}>

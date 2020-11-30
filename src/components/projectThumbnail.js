@@ -7,7 +7,7 @@ import { motion, useCycle } from "framer-motion"
 
 import { colors } from '../styles/colors'
 import { spacing } from '../styles/spacing'
-import { Giant, Large, Schmedium, Regular } from "../styles/typography"
+import { Giant, Large, Medium, Schmedium, Regular } from "../styles/typography"
 
 const CustomImg = styled(Img)`
   height: 100%;
@@ -19,6 +19,7 @@ const ThumbnailInner = styled(motion.div)`
   border-radius: 8px;
   box-shadow: 0 0 0 ${props => props.shadowInitial};
   overflow: hidden;
+  margin-bottom: ${spacing.s400};
   position: relative;
   transition: box-shadow 0.25s ease-in-out;
 
@@ -31,6 +32,7 @@ const ThumbnailInner = styled(motion.div)`
   @media (min-width: 768px) {
     display: inline-block;
     margin-left: 30%;
+    margin-bottom: 0;
     width: 70%;
   }
 
@@ -40,21 +42,21 @@ const ThumbnailInner = styled(motion.div)`
 `
 
 const ThumbnailDetails = styled(motion.div)`
-  padding: 0 ${spacing.s400};
-
   @media (min-width: 768px) {
     display: inline-block;
     left: 0;
     padding: 0 ${spacing.s600};
     position: absolute;
+    top: ${spacing.s800};
     width: 30%;
   }
 `
 
 const ProjectTitle = styled.h2`
   color: ${colors.gray300};
-  ${Large}
-  margin-top: ${spacing.s300};
+  ${Medium}
+  font-weight: 500;
+  margin-bottom: ${spacing.s100};
   text-decoration: none;
   transition: color 0.5s;
 
@@ -64,19 +66,24 @@ const ProjectTitle = styled.h2`
     }
   }
 
-  @media (min-width: 768px) {
-    margin-top: ${spacing.s600};
+  @media (min-width: 1024px) {
+    ${Large}
+    margin-bottom: ${spacing.s400};
   }
+`
+
+const ProjectClient = styled.h3`
+  color: ${colors.gray200};
+  ${Regular}
 
   @media (min-width: 1024px) {
-    ${Giant}
+    ${Medium}
   }
 `
 
 const ProjectDescription = styled.p`
   color: ${colors.gray200};
   ${Regular}
-  margin-top: ${spacing.s000};
 
   @media (min-width: 1024px) {
     ${Schmedium}
@@ -125,13 +132,13 @@ const ProjectThumbnail = (props) => {
   const thumbnailVariants = {
     start: {
       height: 'auto',
-      marginLeft: '30%',
-      width: '70%'
+      marginLeft: window.innerWidth <= 1024 ? '0px' : '30%',
+      width: window.innerWidth <= 1024 ? '100%' : '70%'
     },
     end: (custom) => ({
       x: custom.newXPos,
       height: 'calc(100vh - 124px)',
-      marginLeft: ['30%', '15%', '15%', '0%'],
+      marginLeft: window.innerWidth <= 1024 ? '0' : ['30%', '15%', '15%', '0%'],
       borderRadius: '0px',
       width: '100vw',
       transition: {
@@ -204,7 +211,8 @@ const ProjectThumbnail = (props) => {
               variants={thumbnailTitleVariants}
               animate={thumbnailStatus}
             >
-              <ProjectTitle>{props.card.client}</ProjectTitle>
+              <ProjectClient>{props.card.client}</ProjectClient>
+              <ProjectTitle>{props.card.title}</ProjectTitle>
               <ProjectDescription>{props.card.description}</ProjectDescription>
             </ThumbnailDetails>
           </motion.div>
