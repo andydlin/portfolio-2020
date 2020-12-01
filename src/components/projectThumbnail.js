@@ -132,13 +132,13 @@ const ProjectThumbnail = (props) => {
   const thumbnailVariants = {
     start: {
       height: 'auto',
-      marginLeft: window.innerWidth <= 1024 ? '0px' : '30%',
-      width: window.innerWidth <= 1024 ? '100%' : '70%'
+      marginLeft: typeof window !== 'undefined' ? window.innerWidth <= 1024 ? '0px' : '30%' : '',
+      width: typeof window !== 'undefined' ? window.innerWidth <= 1024 ? '100%' : '70%' : ''
     },
     end: (custom) => ({
       x: custom.newXPos,
       height: 'calc(100vh - 124px)',
-      marginLeft: window.innerWidth <= 1024 ? '0' : ['30%', '15%', '15%', '0%'],
+      marginLeft: typeof window !== 'undefined' ? window.innerWidth <= 1024 ? '0' : ['30%', '15%', '15%', '0%'] : '',
       borderRadius: '0px',
       width: '100vw',
       transition: {
