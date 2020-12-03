@@ -51,7 +51,7 @@ class ProjectDetails extends React.Component {
             role={`Product Designer`}
             category={`Education`}
             platforms={`Web`}
-            timeframe={`2020`}
+            timeframe={`2019 - Current`}
             summary={<div><p>Thesaurus.com steps into the education space by providing resources, services, and tools for writing. Grammar Coach is their first writing product and it offers spelling and grammar check, synonym suggestions, sentiment analysis, and tone, formality, and engagement, to help users hone their writing skills.</p><p>I was the lead designer for ideation, design, research, and launch of Grammar Coach. I worked closely with a product manager, 4 engineers, and 3 data scientists to deliver a writing tool that provides linguist-curated synonyms and customized grammar recommendations. The MVP release of Grammar Coach has an average session duration of more than 30 minutes.</p></div>}
           />
           <MainSectionTitle
