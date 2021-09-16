@@ -1,7 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from 'styled-components'
-import VizSensor from "../visibilitySensor"
 
 import { spacing } from '../../styles/spacing'
 import { Grid } from "../../styles/global"
@@ -63,12 +62,10 @@ const Images = (props) => {
 const ImageGrid = (props) => {
 
   return (
-    <VizSensor>
-      <Images
-        images={props.images}
-        {...props}
-      />
-    </VizSensor>
+    <Images
+      images={props.images}
+      {...props}
+    />
   )
 }
 

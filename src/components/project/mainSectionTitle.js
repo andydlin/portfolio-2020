@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-import VizSensor from "../visibilitySensor"
-
 import { colors } from "../../styles/colors"
 import { spacing } from "../../styles/spacing"
 import { Container } from "../../styles/global"
@@ -57,14 +55,12 @@ const Subcontainer = styled.div`
 `
 
 const MainSectionTitle = ({ title, description }) => (
-  <VizSensor>
-    <Container>
-      <Subcontainer>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-      </Subcontainer>
-    </Container>
-  </VizSensor>
+  <Container>
+    <Subcontainer>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+    </Subcontainer>
+  </Container>
 )
 
 export default MainSectionTitle

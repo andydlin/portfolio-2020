@@ -2,7 +2,6 @@ import React from "react"
 import Img from "gatsby-image"
 import { motion } from "framer-motion";
 import styled from 'styled-components'
-import VizSensor from "../visibilitySensor"
 
 import { spacing } from '../../styles/spacing'
 import { Regular, Small } from "../../styles/typography"
@@ -105,7 +104,7 @@ class ImageSlider extends React.Component {
   render() {
 
     return (
-      <VizSensor
+      <div
         css={`
           overflow-x: hidden;
         `}
@@ -183,7 +182,7 @@ class ImageSlider extends React.Component {
             })}
           </motion.div>
         </div>
-      </VizSensor>
+      </div>
     )
   }
 }
