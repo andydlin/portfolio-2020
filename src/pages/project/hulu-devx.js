@@ -4,7 +4,6 @@ import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 
 import Layout from "../../components/layout"
-import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
 import ContentNav from "../../components/contentNav"
 import { Container, ProjectSection } from "../../styles/global"
@@ -105,13 +104,11 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented different teams, responsibilities, and tenure at Hulu.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              description={<p>We sent out surveys, conducted user interviews, and shadowed engineers virtually due to shelter-in-place. We made sure our participants represented different teams, responsibilities, and tenure at Hulu.</p>}
+            />
+          </Container>
           <Container>
             <ImageGrid
               images={[
@@ -228,13 +225,11 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                description={<p>With these three personas in mind, we developed tool insights, ideal features list, impact/effort matrix, user journey maps, userflows, sitemaps, and "How Might We" questions. We paid special attention to our user flows and leveraged feedback from our partner that we should utilize user flows to ensure there aren’t any dead ends in our product.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              description={<p>With these three personas in mind, we developed tool insights, ideal features list, impact/effort matrix, user journey maps, userflows, sitemaps, and "How Might We" questions. We paid special attention to our user flows and leveraged feedback from our partner that we should utilize user flows to ensure there aren’t any dead ends in our product.</p>}
+            />
+          </Container>
           <Container>
             <ImageGrid
               images={[
@@ -272,13 +267,11 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                description={<p>We created user journey maps to visualize each persona's userflow through a specific task. This helped us better understand what their expectations, actions, emotions, and opportunities for improvement.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              description={<p>We created user journey maps to visualize each persona's userflow through a specific task. This helped us better understand what their expectations, actions, emotions, and opportunities for improvement.</p>}
+            />
+          </Container>
           <ImageSlider
             slides={[
               {
@@ -323,14 +316,12 @@ class ProjectDetails extends React.Component {
               ]}
             />
           </Container>
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                title={`Usability Testing: Round 1`}
-                description={<p>We initially focused on 5 key features: onboarding, the homepage, documentation, the navigational dropdown, and tool shortcuts. For this first round, we were able to find 9 participants from Hulu's engineer teams.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Usability Testing: Round 1`}
+              description={<p>We initially focused on 5 key features: onboarding, the homepage, documentation, the navigational dropdown, and tool shortcuts. For this first round, we were able to find 9 participants from Hulu's engineer teams.</p>}
+            />
+          </Container>
           <ImageSlider
             slides={[
               {
@@ -353,14 +344,12 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                title={`Usability Testing: Round 2`}
-                description={<p>In addition to the first usability testing, we asked our stakeholders for feedback as well. We incorporated all the feedback, iterated on our prototype, and ran a second usability test.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Usability Testing: Round 2`}
+              description={<p>In addition to the first usability testing, we asked our stakeholders for feedback as well. We incorporated all the feedback, iterated on our prototype, and ran a second usability test.</p>}
+            />
+          </Container>
           <ImageSlider
             slides={[
               {
@@ -386,14 +375,12 @@ class ProjectDetails extends React.Component {
               },
             ]}
           />
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                title={`Usability Testing: Round 3`}
-                description={<p>Next, we moved towards a hi-fidelity mockup by using their design system as a starting point. This round we tested all the key features and user flows of DevX. We ran our third and final round of usability testing with five Hulu DevX developers.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Usability Testing: Round 3`}
+              description={<p>Next, we moved towards a hi-fidelity mockup by using their design system as a starting point. This round we tested all the key features and user flows of DevX. We ran our third and final round of usability testing with five Hulu DevX developers.</p>}
+            />
+          </Container>
           <ImageSlider
             slides={[
               {

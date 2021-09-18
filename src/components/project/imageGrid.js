@@ -62,10 +62,12 @@ const Images = (props) => {
 const ImageGrid = (props) => {
 
   return (
-    <Images
-      images={props.images}
-      {...props}
-    />
+    <div>
+      <Images
+        images={props.images}
+        {...props}
+      />
+    </div>
   )
 }
 

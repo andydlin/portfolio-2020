@@ -4,7 +4,6 @@ import SEO from "../../components/seo"
 import { TransitionState } from "gatsby-plugin-transition-link";
 
 import Layout from "../../components/layout"
-import VizSensor from "../../components/visibilitySensor"
 import ProjectWrapper from "../../components/projectWrapper"
 import ContentNav from "../../components/contentNav"
 import { Container, ProjectSection, SectionWithBgColor } from "../../styles/global"
@@ -108,14 +107,12 @@ class ProjectDetails extends React.Component {
               />
             </Container>
           </SectionWithBgColor>
-          <VizSensor>
-            <Container>
-              <SubSectionTitle
-                title={`Spelling & Grammar Check`}
-                description={<p>While we gathered more feedback from real users, I continued to create MVP designs for spelling and grammar check. The synonym swap behavior has been received well, so for this round I reused that pattern. This allowed me to move quickly and lead to quicker releases. Along with introducing spelling and grammar check, I worked on making the tool more responsive to support users on all devices.</p>}
-              />
-            </Container>
-          </VizSensor>
+          <Container>
+            <SubSectionTitle
+              title={`Spelling & Grammar Check`}
+              description={<p>While we gathered more feedback from real users, I continued to create MVP designs for spelling and grammar check. The synonym swap behavior has been received well, so for this round I reused that pattern. This allowed me to move quickly and lead to quicker releases. Along with introducing spelling and grammar check, I worked on making the tool more responsive to support users on all devices.</p>}
+            />
+          </Container>
           <Container>
             <ImageGrid
               images={[
@@ -249,7 +246,7 @@ class ProjectDetails extends React.Component {
           />
           <MainSectionTitle
             title={`Explorations`}
-            description={<p>I also had the opportunity to explore blue sky ideas. I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
+            description={<p>On my own time, I explored designs that were similar to Thesaurus.com's style guide but not necessarily following the existing system. This exercise was a lot of fun and allowed me to run with my imagination.</p>}
           />
           <Container>
             <ImageGrid
