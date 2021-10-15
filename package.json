@@ -15,6 +15,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@mkitio/gatsby-theme-password-protect": "^2.1.2",
     "babel-plugin-styled-components": "^1.11.1",
     "framer-motion": "^2.9.4",
     "gatsby": "^2.24.91",
