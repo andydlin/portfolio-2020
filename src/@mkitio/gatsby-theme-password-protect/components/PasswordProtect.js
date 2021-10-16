@@ -2,50 +2,12 @@
  * Write-only the password as cookie
  */
  import React, { useState } from 'react';
+ import { Helmet } from "react-helmet"
  import { setSessionPassword } from '../utils/utils';
- 
- const styles = {
-   wrapper: {
-     height: '100vh',
-     background: '#424242',
-     display: 'flex',
-     flexDirection: 'column',
-     justifyContent: 'center',
-     alignItems: 'center'
-   },
-   input: {
-     width: '100%',
-     height: '48px',
-     borderRadius: '4px'
-   },
-   button: {
-     width: '100%',
-     height: '48px',
-     background: 'rebeccapurple',
-     color: '#fff',
-     border: '1px solid rebeccapurple',
-     borderRadius: '4px',
-     marginTop: '16px',
-     textTransform: 'uppercase',
-     fontWeight: '300',
-     fontFamily: 'sans-serif'
-   },
-   buttonHover: {
-     background: '#fff',
-     color: '#000000'
-   },
-   link: {
-     color: '#fff',
-     fontFamily: 'sans-serif'
-   },
-   linkHover: {
-     color: 'dodgerblue'
-   }
- };
+ import { colors } from '../../../styles/colors';
  
  const PasswordProtect = () => {
    const [password, setPassword] = useState('');
-   const [isButtonHovered, buttonHover] = useState(false);
  
    const onSubmit = event => {
      event.preventDefault();
@@ -54,31 +16,91 @@
    };
  
    return (
-     <div style={styles.wrapper}>
-       <h1 style={{ color: '#fff' }}>Welcome!!!</h1>
-       <h4 style={{ color: '#fff' }}>Enter Password</h4>
- 
-       <form onSubmit={onSubmit} style={{ width: '320px' }}>
+     <div
+      css={`
+        align-items: center;
+        background: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        line-height: 1;
+        padding: 0 24px;
+        text-align: center;
+        width: 100vw;
+      `}
+     >
+       <h1
+        css={`
+          font-size: 40px;
+          margin-bottom: 16px;
+        `}
+       >The content is protected.</h1>
+       <p
+        css={`
+          font-size: 16px;
+          margin-bottom: 32px;
+        `}
+       >To view, please enter the password.</p>
+       <form
+        onSubmit={onSubmit}
+        css={`
+          max-width: 400px;
+          width: 100%;
+        `}
+      >
          <input
            name="password"
            type="password"
            value={password}
+           placeholder="Password"
            onChange={event => setPassword(event.target.value)}
-           style={styles.input}
+           css={`
+            border-radius: 4px;
+            border: 1px solid #e1e1e1;
+            display: block;
+            height: 48px;
+            margin-bottom: 16px;
+            padding: 0 16px;
+            transition: all 0.25s;
+            width: 100%;
+
+            &:focus {
+              border-color: ${colors.blue};
+            }
+           `}
          />
  
          <button
            type="submit"
-           style={{
-             ...styles.button,
-             ...(isButtonHovered ? styles.buttonHover : null)
-           }}
-           onMouseEnter={() => buttonHover(true)}
-           onMouseLeave={() => buttonHover(false)}
+           css={`
+            background: ${colors.gray400};
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            height: 48px;
+            transition: all 0.25s;
+            width: 100%;
+
+            &:hover {
+              background: ${colors.gray300};
+              transform: scale(1.05);
+            }
+
+            &:active {
+              transform: scale(0.95);
+            }
+          `}
          >
-           Enter
+           ENTER
          </button>
        </form>
+       <Helmet>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&amp;display=swap" rel="stylesheet"/>
+          <link rel="stylesheet" href="https://use.typekit.net/nsk0omo.css"/>
+        </Helmet>
      </div>
    );
  };

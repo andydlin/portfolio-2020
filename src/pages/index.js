@@ -253,10 +253,10 @@ const IndexPage = (props) => {
                       >
                         <Img fluid={data.waveImage.childImageSharp.fluid}/>
                       </WaveIcon>
-                      Hi, my name is Andy!!!
+                      Hi, my name is Andy.
                     </GreetingMessage>
-                    <WelcomeMessage>I’m a product designer specializing in interaction design & design systems.</WelcomeMessage>
-                    <CurrentMessage>Currently a Product Designer at <span>Dictionary.com</span></CurrentMessage>
+                    <WelcomeMessage>I’m a product designer with an interest in interaction design & design systems.</WelcomeMessage>
+                    <CurrentMessage>Currently a Product Designer at <span>Quizlet</span></CurrentMessage>
                   </div>
                   <CartoonProfile>
                     <Img fluid={data.profileImage.childImageSharp.fluid}/>
