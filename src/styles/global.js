@@ -47,7 +47,7 @@ export const ProjectSection = styled.div`
     margin-bottom: ${layout.l300};
 
     @media (min-width: 768px) {
-      margin-bottom: ${layout.l600};
+      margin-bottom: ${layout.l700};
     }
   }
 

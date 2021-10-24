@@ -148,7 +148,7 @@ const Summary = (props) => {
               top: -${layout.l500};
 
               @media (min-width: 1024px) {
-                margin-bottom: ${layout.l300};
+                margin-bottom: ${layout.l700};
               }
             `}  
           >
