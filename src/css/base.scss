@@ -8,6 +8,7 @@ body {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-size: 1em;
+  font-weight: 500;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.25px;
@@ -16,13 +17,19 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: brandon-grotesque, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.5px;
   margin: 0;
 }
 
 p {
+  font-size: 16px;
+  line-height: 1.65;
   margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .tl-edges {
