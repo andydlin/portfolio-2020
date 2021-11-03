@@ -40,6 +40,14 @@ export const Container = styled.div`
   @media (min-width: 1680px) {
     max-width: 90vw;
   }
+
+  > div {
+    margin-bottom: 2.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 `
 
 export const ProjectSection = styled.div`

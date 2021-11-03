@@ -43,7 +43,7 @@ const VideoWithSubsectionTitle = (props) => {
         videoRight={props.videoRight}
         mobileVideo={props.mobileVideo}
       >
-        <Video
+        <Video  
           autoPlay
           loop
           muted
@@ -56,6 +56,7 @@ const VideoWithSubsectionTitle = (props) => {
         title={props.title}
         description={props.description}
         css={`
+          display: ${props.description == null ? 'none' : 'inline-block'};
           order: ${props.videoRight ? '2' : '1'};
           padding: 0 ${spacing.s300};
 
