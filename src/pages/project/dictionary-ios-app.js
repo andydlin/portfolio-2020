@@ -16,11 +16,11 @@ import ImageWithSubsectionTitle from "../../components/project/imageWithSubsecti
 import ImageGrid from "../../components/project/imageGrid"
 import ImageSlider from "../../components/project/imageSlider"
 import VideoWithSubsectionTitle from "../../components/project/videoWithSubsectionTitle"
+import VideoGrid from "../../components/project/videoGrid"
 
 import NavProto from "../../images/projects/dcom-ios-app/nav-proto.mp4"
 import NewWotdCarousel from "../../images/projects/dcom-ios-app/new-wotd-carousel.mp4"
 import NewSearchToggle from "../../images/projects/dcom-ios-app/new-search-toggle.mp4"
-import PuzzlePiecesFloating from "../../images/projects/dcom-ios-app/puzzle-pieces-floating.mp4"
 
 class ProjectDetails extends React.Component {
   constructor() {
@@ -30,7 +30,7 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const sections = ['Intro', 'Redesign', 'Game', 'Results', 'Reflection'];
+    const sections = ['Intro', 'Redesign', 'Game', 'Results'];
 
     return (
       <ProjectWrapper
@@ -149,12 +149,6 @@ class ProjectDetails extends React.Component {
             />
           </Container>
           <Container>
-            <VideoWithSubsectionTitle
-              video={PuzzlePiecesFloating}
-              description={`On the home screen, users can start the game, view their current points and coins, and view last week's words.`}
-            />
-          </Container>
-          <Container>
             <SubSectionTitle
               title={`Immersive Experience`}
               description={`We balanced the cohesive branding with a new game-like experience that still felt like Dictionary.com. I created every new element for this game: puzzle pieces, buttons, icons, and more.`}
@@ -171,6 +165,19 @@ class ProjectDetails extends React.Component {
                 },
                 {
                   image: this.props.data.gameScreen2.childImageSharp.fluid,
+                },
+              ]}
+            />
+          </Container>
+          <Container>
+            <VideoGrid
+              videos={[
+                {
+                  video: NewSearchToggle,
+                  caption: 'This is a caption'
+                },
+                {
+                  video: NewSearchToggle,
                 },
               ]}
             />
