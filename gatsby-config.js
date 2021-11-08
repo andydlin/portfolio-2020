@@ -61,7 +61,7 @@ module.exports = {
     {
       resolve: '@mkitio/gatsby-theme-password-protect',
       options: {
-        password: 'portfolio2021' // delete or `undefined` to disable password protection
+        password: undefined // delete or `undefined` to disable password protection
       }
     },
     `gatsby-plugin-styled-components`,
