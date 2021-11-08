@@ -21,6 +21,10 @@ import VideoGrid from "../../components/project/videoGrid"
 import NavProto from "../../images/projects/dcom-ios-app/nav-proto.mp4"
 import NewWotdCarousel from "../../images/projects/dcom-ios-app/new-wotd-carousel.mp4"
 import NewSearchToggle from "../../images/projects/dcom-ios-app/new-search-toggle.mp4"
+import EnterWord from "../../images/projects/dcom-ios-app/enter-word.mp4"
+import EarnPoints from "../../images/projects/dcom-ios-app/earn-points.mp4"
+import EarnCoin from "../../images/projects/dcom-ios-app/earn-coin.mp4"
+import SwapLetter from "../../images/projects/dcom-ios-app/swap-letter.mp4"
 
 class ProjectDetails extends React.Component {
   constructor() {
@@ -30,7 +34,7 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const sections = ['Intro', 'Redesign', 'Game', 'Results'];
+    const sections = ['Intro', 'Redesign', 'Game'];
 
     return (
       <ProjectWrapper
@@ -64,7 +68,7 @@ class ProjectDetails extends React.Component {
             ]}
           />
         </ProjectSection>
-        <ProjectSection name={`navigation-section`} ref={this.redesignRef}>
+        <ProjectSection name={`redesign-section`} ref={this.redesignRef}>
           <Container>
             <SubSectionTitle
               title={`Streamlined Navigation`}
@@ -151,7 +155,7 @@ class ProjectDetails extends React.Component {
           <Container>
             <SubSectionTitle
               title={`Immersive Experience`}
-              description={`We balanced the cohesive branding with a new game-like experience that still felt like Dictionary.com. I created every new element for this game: puzzle pieces, buttons, icons, and more.`}
+              description={`We balanced the cohesive branding with a new game-like experience that still felt like Dictionary.com. The game has its own experience, but users can easily switch back to other tasks. I created every new element for this game: puzzle pieces, buttons, icons, and more.`}
             />
           </Container>
           <Container>
@@ -170,14 +174,46 @@ class ProjectDetails extends React.Component {
             />
           </Container>
           <Container>
+            <SubSectionTitle
+              description={`We wanted the game to feel light, fun, and a little challenging. Every week a new set of letters are created based on a random word list that we generate. From feedback, users preferred smaller segmented rounds of words over one large bucket of words per week.`}
+            />
+          </Container>
+          <Container>
             <VideoGrid
               videos={[
                 {
-                  video: NewSearchToggle,
-                  caption: 'This is a caption'
+                  video: EnterWord,
+                  caption: "Each letter can be used once to create a word"
                 },
                 {
-                  video: NewSearchToggle,
+                  video: EarnPoints,
+                  caption: "Finding a word earns you points"
+                }
+              ]}
+            />
+            <VideoGrid
+              videos={[
+                {
+                  video: EarnCoin,
+                  caption: "Every 100 points will earn you a coin"
+                },
+                {
+                  video: SwapLetter,
+                  caption: "Replace a letter for 5 coins"
+                },
+              ]}
+            />
+          </Container>
+          <Container>
+            <SubSectionTitle
+              description={`After finding 10 words, users can restart the game with the same letters to find another set of 10 words. They can rinse and repeat this until the end of the week. Users can also save words to their Lists.`}
+            />
+          </Container>
+          <Container>
+            <ImageGrid
+              images={[
+                {
+                  image: this.props.data.lastScreens.childImageSharp.fluid,
                 },
               ]}
             />
@@ -271,6 +307,13 @@ const ProjectPage = () => {
       gameScreen2: file(relativePath: { eq: "images/projects/dcom-ios-app/game-screen-2.png" }) {
         childImageSharp {
           fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      lastScreens: file(relativePath: { eq: "images/projects/dcom-ios-app/last-screens.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1680, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

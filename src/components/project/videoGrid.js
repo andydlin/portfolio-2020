@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { DefaultPlayer as Video } from 'react-html5video';
 
 import { spacing, layout } from '../../styles/spacing'
-import { Grid } from "../../styles/global"
+import { Box, Grid } from "../../styles/global"
 import { Regular, Small } from "../../styles/typography"
 import { colors } from "../../styles/colors"
 
@@ -34,9 +34,11 @@ const Caption = styled.div`
 
 const Videos = (props) => {
   const videoList = props.videos.map((video, index) =>
-    <div
+    <Box
       css={`
+        flex-direction: column;
         grid-column: span 2;
+        position: relative;
 
         @media (min-width: 768px) {
           grid-column: ${props.videos.length === 3 && index === 0 ? 'span 2' : 'auto'};
@@ -44,7 +46,13 @@ const Videos = (props) => {
       `}
       key={index}
     >
-      <CustomVideo>
+      <CustomVideo
+        css={`
+          > div > div > div {
+            display: none;
+          }
+        `}
+      >
         <Video  
           autoPlay
           loop
@@ -55,7 +63,7 @@ const Videos = (props) => {
         </Video>
       </CustomVideo>
       {video.caption !== null ? <Caption>{video.caption}</Caption> : null}
-    </div>
+    </Box>
   )
 
   return (

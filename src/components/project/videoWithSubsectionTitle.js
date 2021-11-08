@@ -42,6 +42,11 @@ const VideoWithSubsectionTitle = (props) => {
       <CustomVideo
         videoRight={props.videoRight}
         mobileVideo={props.mobileVideo}
+        css={`
+          > div > div > div {
+            display: none;
+          }
+        `}
       >
         <Video  
           autoPlay
