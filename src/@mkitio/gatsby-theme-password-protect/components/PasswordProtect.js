@@ -5,6 +5,7 @@
  import { Helmet } from "react-helmet"
  import { setSessionPassword } from '../utils/utils';
  import { colors } from '../../../styles/colors';
+ import Cookies from 'js-cookie';
  
  const PasswordProtect = () => {
    const [password, setPassword] = useState('');
@@ -14,10 +15,14 @@
      setSessionPassword(password);
      window.location.reload(); // eslint-disable-line
    };
+
+   console.log('hi there');
+   console.log(Cookies.get('gatsby-theme-password-protect'));
  
    return (
      <div
       css={`
+      ${console.log('hey hey')}
         align-items: center;
         background: ${password == '' || password == null ? '#f3f3f3' : ''};
         display: ${password == '' || password == null ? 'flex' : 'block'};
