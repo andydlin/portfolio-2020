@@ -14,9 +14,6 @@
      setSessionPassword(password);
      window.location.reload(); // eslint-disable-line
    };
-
-   console.log('hi there');
-   console.log(password);
  
    return (
      <div
