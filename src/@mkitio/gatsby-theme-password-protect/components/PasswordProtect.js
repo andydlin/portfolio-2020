@@ -14,21 +14,24 @@
      setSessionPassword(password);
      window.location.reload(); // eslint-disable-line
    };
+
+   console.log('hi there');
+   console.log(password);
  
    return (
      <div
-      // css={`
-      //   align-items: center;
-      //   background: #f3f3f3;
-      //   display: flex;
-      //   flex-direction: column;
-      //   justify-content: center;
-      //   height: 100vh;
-      //   line-height: 1;
-      //   padding: 0 24px;
-      //   text-align: center;
-      //   width: 100vw;
-      // `}
+      css={`
+        align-items: center;
+        background: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        line-height: 1;
+        padding: 0 24px;
+        text-align: center;
+        width: 100vw;
+      `}
      >
        <h1
         css={`
