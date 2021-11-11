@@ -24,7 +24,7 @@
       css={`
       ${console.log('hey hey')}
         align-items: center;
-        background: ${password == '' || password == null ? '#f3f3f3' : ''};
+        background: ${password == '' || password == null ? '' : ''};
         display: ${password == '' || password == null ? 'flex' : 'block'};
         flex-direction: column;
         justify-content: center;
