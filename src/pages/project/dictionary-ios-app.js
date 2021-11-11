@@ -34,7 +34,7 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const sections = ['Intro', 'Redesign', 'Game'];
+    const sections = ['Intro', 'Redesign', 'Game', 'Results'];
 
     return (
       <ProjectWrapper
@@ -219,6 +219,22 @@ class ProjectDetails extends React.Component {
             />
           </Container>
         </ProjectSection>
+        <ProjectSection name={'results-section'} ref={this.resultsReff}>
+          <MainSectionTitle
+            title={`Results`}
+            description={`Overall slight increase to the iOS app usage, retention for existing users, app rating, and high usage for those who play Word Puzzle. From user interviews, both existing and new users love the idea of the game and would try the game out.`}
+          />
+        </ProjectSection>
+        <ImageSlider
+            slides={[
+              {
+                image: this.props.data.results1.childImageSharp.fluid
+              },
+              {
+                image: this.props.data.results2.childImageSharp.fluid
+              },
+            ]}
+          />
       </ProjectWrapper>
     )
   }
@@ -314,6 +330,20 @@ const ProjectPage = () => {
       lastScreens: file(relativePath: { eq: "images/projects/dcom-ios-app/last-screens.png" }) {
         childImageSharp {
           fluid(maxWidth: 1680, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      results1: file(relativePath: { eq: "images/projects/dcom-ios-app/results-1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      results2: file(relativePath: { eq: "images/projects/dcom-ios-app/results-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1280, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
