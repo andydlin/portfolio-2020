@@ -22,14 +22,13 @@
      <div
       css={`
         align-items: center;
-        background: #f3f3f3;
-        display: flex;
+        background: ${password == '' || password == null ? '#f3f3f3' : ''};
+        display: ${password == '' || password == null ? 'flex' : 'block'};
         flex-direction: column;
         justify-content: center;
         height: 100vh;
         line-height: 1;
         padding: 0 24px;
-        text-align: center;
         width: 100vw;
       `}
      >
@@ -37,18 +36,21 @@
         css={`
           font-size: 40px;
           margin-bottom: 16px;
+          text-align: center;
         `}
        >The content is protected.</h1>
        <p
         css={`
           font-size: 16px;
           margin-bottom: 32px;
+          text-align: center;
         `}
        >To view, please enter the password.</p>
        <form
         onSubmit={onSubmit}
         css={`
           max-width: 400px;
+          text-align: center;
           width: 100%;
         `}
       >
@@ -65,6 +67,7 @@
             height: 48px;
             margin-bottom: 16px;
             padding: 0 16px;
+            text-align: left;
             transition: all 0.25s;
             width: 100%;
 
