@@ -17,11 +17,7 @@
    };
  
    return (
-     <div
-      css={`
-        background: #fff;
-      `}
-     >
+     <div>
        <section
         css={`
           align-items: center;
