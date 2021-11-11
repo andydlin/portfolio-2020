@@ -9,6 +9,7 @@
  
  const PasswordProtect = () => {
    const [password, setPassword] = useState('');
+   const hasPassword = Cookies.get('gatsby-theme-password-protect');
  
    const onSubmit = event => {
      event.preventDefault();
@@ -22,10 +23,9 @@
    return (
      <div
       css={`
-      ${console.log('hey hey')}
         align-items: center;
-        background: ${password == '' || password == null ? '' : ''};
-        display: ${password == '' || password == null ? 'flex' : 'block'};
+        background: ${hasPassword == undefined ? '#f3f3f3' : ''};
+        display: ${hasPassword == undefined ? 'flex' : 'block'};
         flex-direction: column;
         justify-content: center;
         height: 100vh;
