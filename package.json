@@ -36,7 +36,7 @@
     "gatsby-transformer-sharp": "^2.5.20",
     "gatsby-video": "^0.2.0",
     "hex-to-rgba": "^2.0.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "patch-package": "^6.2.2",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
